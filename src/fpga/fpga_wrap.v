@@ -14,8 +14,6 @@ module tt_um_template (
 );
 
 wire [0:0] prog_clk;
-wire [0:0] set;
-wire [0:0] reset;
 wire [0:0] ccff_head;
 wire [0:0] ccff_tail;
 
@@ -32,7 +30,6 @@ assign uo_out[7:2] = 'b0;
 
 assign uio_oe = 0;
 assign uio_out = 0;
-assign ena = 0;
 
 fpga_top fpga(.prog_clk(prog_clk), .reset(rst_n),
  .clk(clk), .gfpga_pad_GPIN_PAD(fpga_io_in), 
