@@ -3,7 +3,7 @@
 //	Description: Verilog modules for pb_type: ble4
 //	Author: Xifan TANG
 //	Organization: University of Utah
-//	Date: Mon Feb 19 03:58:58 2024
+//	Date: Mon Feb 19 06:13:22 2024
 //-------------------------------------------
 // ----- BEGIN Physical programmable logic block Verilog module: ble4 -----
 //----- Default net type -----
@@ -14,7 +14,6 @@ module logical_tile_clb_mode_default__fle_mode_n1_lut4__ble4(prog_clk,
                                                              reset,
                                                              clk,
                                                              ble4_in,
-                                                             ble4_clk,
                                                              ccff_head,
                                                              ble4_out,
                                                              ccff_tail);
@@ -27,8 +26,6 @@ input [0:0] clk;
 //----- INPUT PORTS -----
 input [0:3] ble4_in;
 //----- INPUT PORTS -----
-input [0:0] ble4_clk;
-//----- INPUT PORTS -----
 input [0:0] ccff_head;
 //----- OUTPUT PORTS -----
 output [0:0] ble4_out;
@@ -37,7 +34,6 @@ output [0:0] ccff_tail;
 
 //----- BEGIN wire-connection ports -----
 wire [0:3] ble4_in;
-wire [0:0] ble4_clk;
 wire [0:0] ble4_out;
 //----- END wire-connection ports -----
 
@@ -51,7 +47,6 @@ wire [0:0] direct_interc_1_out;
 wire [0:0] direct_interc_2_out;
 wire [0:0] direct_interc_3_out;
 wire [0:0] direct_interc_4_out;
-wire [0:0] direct_interc_5_out;
 wire [0:0] logical_tile_clb_mode_default__fle_mode_n1_lut4__ble4_mode_default__ff_0_ff_Q;
 wire [0:0] logical_tile_clb_mode_default__fle_mode_n1_lut4__ble4_mode_default__lut4_0_ccff_tail;
 wire [0:0] logical_tile_clb_mode_default__fle_mode_n1_lut4__ble4_mode_default__lut4_0_lut4_out;
@@ -73,8 +68,7 @@ wire [0:1] mux_tree_tapbuf_size2_0_sram;
 		.reset(reset),
 		.clk(clk),
 		.ff_D(direct_interc_4_out),
-		.ff_Q(logical_tile_clb_mode_default__fle_mode_n1_lut4__ble4_mode_default__ff_0_ff_Q),
-		.ff_clk(direct_interc_5_out));
+		.ff_Q(logical_tile_clb_mode_default__fle_mode_n1_lut4__ble4_mode_default__ff_0_ff_Q));
 
 	mux_tree_tapbuf_size2 mux_ble4_out_0 (
 		.in({logical_tile_clb_mode_default__fle_mode_n1_lut4__ble4_mode_default__ff_0_ff_Q, logical_tile_clb_mode_default__fle_mode_n1_lut4__ble4_mode_default__lut4_0_lut4_out}),
@@ -106,10 +100,6 @@ wire [0:1] mux_tree_tapbuf_size2_0_sram;
 	direct_interc direct_interc_4_ (
 		.in(logical_tile_clb_mode_default__fle_mode_n1_lut4__ble4_mode_default__lut4_0_lut4_out),
 		.out(direct_interc_4_out));
-
-	direct_interc direct_interc_5_ (
-		.in(ble4_clk),
-		.out(direct_interc_5_out));
 
 endmodule
 // ----- END Verilog module for logical_tile_clb_mode_default__fle_mode_n1_lut4__ble4 -----

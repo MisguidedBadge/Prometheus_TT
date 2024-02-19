@@ -3,7 +3,7 @@
 //	Description: Verilog modules for physical tile: clb]
 //	Author: Xifan TANG
 //	Organization: University of Utah
-//	Date: Mon Feb 19 03:58:58 2024
+//	Date: Mon Feb 19 06:13:22 2024
 //-------------------------------------------
 // ----- BEGIN Grid Verilog module: grid_clb -----
 //----- Default net type -----
@@ -17,7 +17,6 @@ module grid_clb(prog_clk,
                 top_width_0_height_0_subtile_0__pin_I_1_,
                 top_width_0_height_0_subtile_0__pin_I_2_,
                 top_width_0_height_0_subtile_0__pin_I_3_,
-                top_width_0_height_0_subtile_0__pin_clk_0_,
                 ccff_head,
                 top_width_0_height_0_subtile_0__pin_O_0_,
                 ccff_tail);
@@ -35,8 +34,6 @@ input [0:0] top_width_0_height_0_subtile_0__pin_I_1_;
 input [0:0] top_width_0_height_0_subtile_0__pin_I_2_;
 //----- INPUT PORTS -----
 input [0:0] top_width_0_height_0_subtile_0__pin_I_3_;
-//----- INPUT PORTS -----
-input [0:0] top_width_0_height_0_subtile_0__pin_clk_0_;
 //----- INPUT PORTS -----
 input [0:0] ccff_head;
 //----- OUTPUT PORTS -----
@@ -63,7 +60,6 @@ output [0:0] ccff_tail;
 		.reset(reset),
 		.clk(clk),
 		.clb_I({top_width_0_height_0_subtile_0__pin_I_0_, top_width_0_height_0_subtile_0__pin_I_1_, top_width_0_height_0_subtile_0__pin_I_2_, top_width_0_height_0_subtile_0__pin_I_3_}),
-		.clb_clk(top_width_0_height_0_subtile_0__pin_clk_0_),
 		.ccff_head(ccff_head),
 		.clb_O(top_width_0_height_0_subtile_0__pin_O_0_),
 		.ccff_tail(ccff_tail));

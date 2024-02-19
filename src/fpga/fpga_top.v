@@ -3,7 +3,7 @@
 //	Description: Top-level Verilog module for FPGA
 //	Author: Xifan TANG
 //	Organization: University of Utah
-//	Date: Mon Feb 19 03:58:58 2024
+//	Date: Mon Feb 19 06:13:22 2024
 //-------------------------------------------
 //----- Default net type -----
 `default_nettype none
@@ -47,7 +47,6 @@ wire [0:0] cbx_1__1__0_bottom_grid_top_width_0_height_0_subtile_0__pin_I_0_;
 wire [0:0] cbx_1__1__0_bottom_grid_top_width_0_height_0_subtile_0__pin_I_1_;
 wire [0:0] cbx_1__1__0_bottom_grid_top_width_0_height_0_subtile_0__pin_I_2_;
 wire [0:0] cbx_1__1__0_bottom_grid_top_width_0_height_0_subtile_0__pin_I_3_;
-wire [0:0] cbx_1__1__0_bottom_grid_top_width_0_height_0_subtile_0__pin_clk_0_;
 wire [0:0] cbx_1__1__0_ccff_tail;
 wire [0:2] cbx_1__1__0_chanx_left_out;
 wire [0:2] cbx_1__1__0_chanx_right_out;
@@ -95,7 +94,6 @@ wire [0:2] sb_1__1__0_chany_bottom_out;
 		.top_width_0_height_0_subtile_0__pin_I_1_(cbx_1__1__0_bottom_grid_top_width_0_height_0_subtile_0__pin_I_1_),
 		.top_width_0_height_0_subtile_0__pin_I_2_(cbx_1__1__0_bottom_grid_top_width_0_height_0_subtile_0__pin_I_2_),
 		.top_width_0_height_0_subtile_0__pin_I_3_(cbx_1__1__0_bottom_grid_top_width_0_height_0_subtile_0__pin_I_3_),
-		.top_width_0_height_0_subtile_0__pin_clk_0_(cbx_1__1__0_bottom_grid_top_width_0_height_0_subtile_0__pin_clk_0_),
 		.ccff_head(cbx_1__0__0_ccff_tail),
 		.top_width_0_height_0_subtile_0__pin_O_0_(grid_clb_0_top_width_0_height_0_subtile_0__pin_O_0_),
 		.ccff_tail(ccff_tail));
@@ -167,7 +165,6 @@ wire [0:2] sb_1__1__0_chany_bottom_out;
 		.bottom_grid_top_width_0_height_0_subtile_0__pin_I_1_(cbx_1__1__0_bottom_grid_top_width_0_height_0_subtile_0__pin_I_1_),
 		.bottom_grid_top_width_0_height_0_subtile_0__pin_I_2_(cbx_1__1__0_bottom_grid_top_width_0_height_0_subtile_0__pin_I_2_),
 		.bottom_grid_top_width_0_height_0_subtile_0__pin_I_3_(cbx_1__1__0_bottom_grid_top_width_0_height_0_subtile_0__pin_I_3_),
-		.bottom_grid_top_width_0_height_0_subtile_0__pin_clk_0_(cbx_1__1__0_bottom_grid_top_width_0_height_0_subtile_0__pin_clk_0_),
 		.ccff_tail(cbx_1__1__0_ccff_tail));
 
 	cby_0__1_ cby_0__1_ (
