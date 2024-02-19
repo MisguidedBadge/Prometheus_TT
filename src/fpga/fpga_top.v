@@ -3,7 +3,7 @@
 //	Description: Top-level Verilog module for FPGA
 //	Author: Xifan TANG
 //	Organization: University of Utah
-//	Date: Mon Feb 19 02:05:40 2024
+//	Date: Mon Feb 19 03:43:33 2024
 //-------------------------------------------
 //----- Default net type -----
 `default_nettype none
@@ -45,6 +45,8 @@ wire [0:2] cbx_1__0__0_chanx_left_out;
 wire [0:2] cbx_1__0__0_chanx_right_out;
 wire [0:0] cbx_1__1__0_bottom_grid_top_width_0_height_0_subtile_0__pin_I_0_;
 wire [0:0] cbx_1__1__0_bottom_grid_top_width_0_height_0_subtile_0__pin_I_1_;
+wire [0:0] cbx_1__1__0_bottom_grid_top_width_0_height_0_subtile_0__pin_I_2_;
+wire [0:0] cbx_1__1__0_bottom_grid_top_width_0_height_0_subtile_0__pin_I_3_;
 wire [0:0] cbx_1__1__0_bottom_grid_top_width_0_height_0_subtile_0__pin_clk_0_;
 wire [0:0] cbx_1__1__0_ccff_tail;
 wire [0:2] cbx_1__1__0_chanx_left_out;
@@ -54,8 +56,6 @@ wire [0:2] cby_0__1__0_chany_top_out;
 wire [0:2] cby_0__1__1_chany_bottom_out;
 wire [0:2] cby_0__1__1_chany_top_out;
 wire [0:0] grid_clb_0_top_width_0_height_0_subtile_0__pin_O_0_;
-wire [0:0] grid_clb_1__1__undriven_top_width_0_height_0_subtile_0__pin_I_2_;
-wire [0:0] grid_clb_1__1__undriven_top_width_0_height_0_subtile_0__pin_I_3_;
 wire [0:0] grid_io_hard_bottom_0_top_width_0_height_0_subtile_0__pin_inpad_0_;
 wire [0:0] grid_io_hard_bottom_0_top_width_0_height_0_subtile_1__pin_inpad_0_;
 wire [0:0] grid_io_hard_bottom_0_top_width_0_height_0_subtile_2__pin_inpad_0_;
@@ -93,8 +93,8 @@ wire [0:2] sb_1__1__0_chany_bottom_out;
 		.clk(clk),
 		.top_width_0_height_0_subtile_0__pin_I_0_(cbx_1__1__0_bottom_grid_top_width_0_height_0_subtile_0__pin_I_0_),
 		.top_width_0_height_0_subtile_0__pin_I_1_(cbx_1__1__0_bottom_grid_top_width_0_height_0_subtile_0__pin_I_1_),
-		.top_width_0_height_0_subtile_0__pin_I_2_(grid_clb_1__1__undriven_top_width_0_height_0_subtile_0__pin_I_2_),
-		.top_width_0_height_0_subtile_0__pin_I_3_(grid_clb_1__1__undriven_top_width_0_height_0_subtile_0__pin_I_3_),
+		.top_width_0_height_0_subtile_0__pin_I_2_(cbx_1__1__0_bottom_grid_top_width_0_height_0_subtile_0__pin_I_2_),
+		.top_width_0_height_0_subtile_0__pin_I_3_(cbx_1__1__0_bottom_grid_top_width_0_height_0_subtile_0__pin_I_3_),
 		.top_width_0_height_0_subtile_0__pin_clk_0_(cbx_1__1__0_bottom_grid_top_width_0_height_0_subtile_0__pin_clk_0_),
 		.ccff_head(cbx_1__0__0_ccff_tail),
 		.top_width_0_height_0_subtile_0__pin_O_0_(grid_clb_0_top_width_0_height_0_subtile_0__pin_O_0_),
@@ -165,6 +165,8 @@ wire [0:2] sb_1__1__0_chany_bottom_out;
 		.chanx_right_out(cbx_1__1__0_chanx_right_out[0:2]),
 		.bottom_grid_top_width_0_height_0_subtile_0__pin_I_0_(cbx_1__1__0_bottom_grid_top_width_0_height_0_subtile_0__pin_I_0_),
 		.bottom_grid_top_width_0_height_0_subtile_0__pin_I_1_(cbx_1__1__0_bottom_grid_top_width_0_height_0_subtile_0__pin_I_1_),
+		.bottom_grid_top_width_0_height_0_subtile_0__pin_I_2_(cbx_1__1__0_bottom_grid_top_width_0_height_0_subtile_0__pin_I_2_),
+		.bottom_grid_top_width_0_height_0_subtile_0__pin_I_3_(cbx_1__1__0_bottom_grid_top_width_0_height_0_subtile_0__pin_I_3_),
 		.bottom_grid_top_width_0_height_0_subtile_0__pin_clk_0_(cbx_1__1__0_bottom_grid_top_width_0_height_0_subtile_0__pin_clk_0_),
 		.ccff_tail(cbx_1__1__0_ccff_tail));
 

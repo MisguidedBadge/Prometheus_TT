@@ -3,7 +3,7 @@
 //	Description: Multiplexers
 //	Author: Xifan TANG
 //	Organization: University of Utah
-//	Date: Mon Feb 19 02:05:40 2024
+//	Date: Mon Feb 19 03:43:33 2024
 //-------------------------------------------
 //----- Default net type -----
 `default_nettype none
@@ -29,34 +29,19 @@ output [0:0] out;
 
 
 wire [0:0] const1_0_const1;
-wire [0:0] sky130_fd_sc_hd__inv_1_0_Y;
-wire [0:0] sky130_fd_sc_hd__inv_1_1_Y;
 wire [0:0] sky130_fd_sc_hd__mux2_1_0_X;
-wire [0:0] sky130_fd_sc_hd__mux2_1_1_X;
 
 // ----- BEGIN Local short connections -----
 // ----- END Local short connections -----
 // ----- BEGIN Local output short connections -----
 // ----- END Local output short connections -----
 
-	sky130_fd_sc_hd__inv_1 sky130_fd_sc_hd__inv_1_0_ (
-		.A(in[0]),
-		.Y(sky130_fd_sc_hd__inv_1_0_Y));
-
-	sky130_fd_sc_hd__inv_1 sky130_fd_sc_hd__inv_1_1_ (
-		.A(in[1]),
-		.Y(sky130_fd_sc_hd__inv_1_1_Y));
-
-	sky130_fd_sc_hd__inv_1 sky130_fd_sc_hd__inv_1_2_ (
-		.A(sky130_fd_sc_hd__mux2_1_1_X),
-		.Y(out));
-
 	const1 const1_0_ (
 		.const1(const1_0_const1));
 
 	sky130_fd_sc_hd__mux2_1 mux_l1_in_0_ (
-		.A1(sky130_fd_sc_hd__inv_1_0_Y),
-		.A0(sky130_fd_sc_hd__inv_1_1_Y),
+		.A1(in[0]),
+		.A0(in[1]),
 		.S(sram[0]),
 		.X(sky130_fd_sc_hd__mux2_1_0_X));
 
@@ -64,10 +49,93 @@ wire [0:0] sky130_fd_sc_hd__mux2_1_1_X;
 		.A1(sky130_fd_sc_hd__mux2_1_0_X),
 		.A0(const1_0_const1),
 		.S(sram[1]),
-		.X(sky130_fd_sc_hd__mux2_1_1_X));
+		.X(out));
 
 endmodule
 // ----- END Verilog module for mux_tree_tapbuf_size2 -----
+
+//----- Default net type -----
+`default_nettype wire
+
+
+
+
+//----- Default net type -----
+`default_nettype none
+
+// ----- Verilog module for mux_tree_tapbuf_size6 -----
+module mux_tree_tapbuf_size6(in,
+                             sram,
+                             out);
+//----- INPUT PORTS -----
+input [0:5] in;
+//----- INPUT PORTS -----
+input [0:2] sram;
+//----- INPUT PORTS -----
+//----- OUTPUT PORTS -----
+output [0:0] out;
+
+//----- BEGIN wire-connection ports -----
+//----- END wire-connection ports -----
+
+
+//----- BEGIN Registered ports -----
+//----- END Registered ports -----
+
+
+wire [0:0] const1_0_const1;
+wire [0:0] sky130_fd_sc_hd__mux2_1_0_X;
+wire [0:0] sky130_fd_sc_hd__mux2_1_1_X;
+wire [0:0] sky130_fd_sc_hd__mux2_1_2_X;
+wire [0:0] sky130_fd_sc_hd__mux2_1_3_X;
+wire [0:0] sky130_fd_sc_hd__mux2_1_4_X;
+
+// ----- BEGIN Local short connections -----
+// ----- END Local short connections -----
+// ----- BEGIN Local output short connections -----
+// ----- END Local output short connections -----
+
+	const1 const1_0_ (
+		.const1(const1_0_const1));
+
+	sky130_fd_sc_hd__mux2_1 mux_l1_in_0_ (
+		.A1(in[0]),
+		.A0(in[1]),
+		.S(sram[0]),
+		.X(sky130_fd_sc_hd__mux2_1_0_X));
+
+	sky130_fd_sc_hd__mux2_1 mux_l1_in_1_ (
+		.A1(in[2]),
+		.A0(in[3]),
+		.S(sram[0]),
+		.X(sky130_fd_sc_hd__mux2_1_1_X));
+
+	sky130_fd_sc_hd__mux2_1 mux_l1_in_2_ (
+		.A1(in[4]),
+		.A0(in[5]),
+		.S(sram[0]),
+		.X(sky130_fd_sc_hd__mux2_1_2_X));
+
+	sky130_fd_sc_hd__mux2_1 mux_l2_in_0_ (
+		.A1(sky130_fd_sc_hd__mux2_1_0_X),
+		.A0(sky130_fd_sc_hd__mux2_1_1_X),
+		.S(sram[1]),
+		.X(sky130_fd_sc_hd__mux2_1_3_X));
+
+	sky130_fd_sc_hd__mux2_1 mux_l2_in_1_ (
+		.A1(sky130_fd_sc_hd__mux2_1_2_X),
+		.A0(const1_0_const1),
+		.S(sram[1]),
+		.X(sky130_fd_sc_hd__mux2_1_4_X));
+
+	sky130_fd_sc_hd__mux2_1 mux_l3_in_0_ (
+		.A1(sky130_fd_sc_hd__mux2_1_3_X),
+		.A0(sky130_fd_sc_hd__mux2_1_4_X),
+		.S(sram[2]),
+		.X(out));
+
+endmodule
+// ----- END Verilog module for mux_tree_tapbuf_size6 -----
 
 //----- Default net type -----
 `default_nettype wire
@@ -99,45 +167,25 @@ output [0:0] out;
 
 
 wire [0:0] const1_0_const1;
-wire [0:0] sky130_fd_sc_hd__inv_1_0_Y;
-wire [0:0] sky130_fd_sc_hd__inv_1_1_Y;
-wire [0:0] sky130_fd_sc_hd__inv_1_2_Y;
 wire [0:0] sky130_fd_sc_hd__mux2_1_0_X;
 wire [0:0] sky130_fd_sc_hd__mux2_1_1_X;
-wire [0:0] sky130_fd_sc_hd__mux2_1_2_X;
 
 // ----- BEGIN Local short connections -----
 // ----- END Local short connections -----
 // ----- BEGIN Local output short connections -----
 // ----- END Local output short connections -----
 
-	sky130_fd_sc_hd__inv_1 sky130_fd_sc_hd__inv_1_0_ (
-		.A(in[0]),
-		.Y(sky130_fd_sc_hd__inv_1_0_Y));
-
-	sky130_fd_sc_hd__inv_1 sky130_fd_sc_hd__inv_1_1_ (
-		.A(in[1]),
-		.Y(sky130_fd_sc_hd__inv_1_1_Y));
-
-	sky130_fd_sc_hd__inv_1 sky130_fd_sc_hd__inv_1_2_ (
-		.A(in[2]),
-		.Y(sky130_fd_sc_hd__inv_1_2_Y));
-
-	sky130_fd_sc_hd__inv_1 sky130_fd_sc_hd__inv_1_3_ (
-		.A(sky130_fd_sc_hd__mux2_1_2_X),
-		.Y(out));
-
 	const1 const1_0_ (
 		.const1(const1_0_const1));
 
 	sky130_fd_sc_hd__mux2_1 mux_l1_in_0_ (
-		.A1(sky130_fd_sc_hd__inv_1_0_Y),
-		.A0(sky130_fd_sc_hd__inv_1_1_Y),
+		.A1(in[0]),
+		.A0(in[1]),
 		.S(sram[0]),
 		.X(sky130_fd_sc_hd__mux2_1_0_X));
 
 	sky130_fd_sc_hd__mux2_1 mux_l1_in_1_ (
-		.A1(sky130_fd_sc_hd__inv_1_2_Y),
+		.A1(in[2]),
 		.A0(const1_0_const1),
 		.S(sram[0]),
 		.X(sky130_fd_sc_hd__mux2_1_1_X));
@@ -146,7 +194,7 @@ wire [0:0] sky130_fd_sc_hd__mux2_1_2_X;
 		.A1(sky130_fd_sc_hd__mux2_1_0_X),
 		.A0(sky130_fd_sc_hd__mux2_1_1_X),
 		.S(sram[1]),
-		.X(sky130_fd_sc_hd__mux2_1_2_X));
+		.X(out));
 
 endmodule
 // ----- END Verilog module for mux_tree_tapbuf_size3 -----
@@ -181,58 +229,28 @@ output [0:0] out;
 
 
 wire [0:0] const1_0_const1;
-wire [0:0] sky130_fd_sc_hd__inv_1_0_Y;
-wire [0:0] sky130_fd_sc_hd__inv_1_1_Y;
-wire [0:0] sky130_fd_sc_hd__inv_1_2_Y;
-wire [0:0] sky130_fd_sc_hd__inv_1_3_Y;
-wire [0:0] sky130_fd_sc_hd__inv_1_4_Y;
 wire [0:0] sky130_fd_sc_hd__mux2_1_0_X;
 wire [0:0] sky130_fd_sc_hd__mux2_1_1_X;
 wire [0:0] sky130_fd_sc_hd__mux2_1_2_X;
 wire [0:0] sky130_fd_sc_hd__mux2_1_3_X;
-wire [0:0] sky130_fd_sc_hd__mux2_1_4_X;
 
 // ----- BEGIN Local short connections -----
 // ----- END Local short connections -----
 // ----- BEGIN Local output short connections -----
 // ----- END Local output short connections -----
 
-	sky130_fd_sc_hd__inv_1 sky130_fd_sc_hd__inv_1_0_ (
-		.A(in[0]),
-		.Y(sky130_fd_sc_hd__inv_1_0_Y));
-
-	sky130_fd_sc_hd__inv_1 sky130_fd_sc_hd__inv_1_1_ (
-		.A(in[1]),
-		.Y(sky130_fd_sc_hd__inv_1_1_Y));
-
-	sky130_fd_sc_hd__inv_1 sky130_fd_sc_hd__inv_1_2_ (
-		.A(in[2]),
-		.Y(sky130_fd_sc_hd__inv_1_2_Y));
-
-	sky130_fd_sc_hd__inv_1 sky130_fd_sc_hd__inv_1_3_ (
-		.A(in[3]),
-		.Y(sky130_fd_sc_hd__inv_1_3_Y));
-
-	sky130_fd_sc_hd__inv_1 sky130_fd_sc_hd__inv_1_4_ (
-		.A(in[4]),
-		.Y(sky130_fd_sc_hd__inv_1_4_Y));
-
-	sky130_fd_sc_hd__inv_1 sky130_fd_sc_hd__inv_1_5_ (
-		.A(sky130_fd_sc_hd__mux2_1_4_X),
-		.Y(out));
-
 	const1 const1_0_ (
 		.const1(const1_0_const1));
 
 	sky130_fd_sc_hd__mux2_1 mux_l1_in_0_ (
-		.A1(sky130_fd_sc_hd__inv_1_0_Y),
-		.A0(sky130_fd_sc_hd__inv_1_1_Y),
+		.A1(in[0]),
+		.A0(in[1]),
 		.S(sram[0]),
 		.X(sky130_fd_sc_hd__mux2_1_0_X));
 
 	sky130_fd_sc_hd__mux2_1 mux_l1_in_1_ (
-		.A1(sky130_fd_sc_hd__inv_1_2_Y),
-		.A0(sky130_fd_sc_hd__inv_1_3_Y),
+		.A1(in[2]),
+		.A0(in[3]),
 		.S(sram[0]),
 		.X(sky130_fd_sc_hd__mux2_1_1_X));
 
@@ -243,7 +261,7 @@ wire [0:0] sky130_fd_sc_hd__mux2_1_4_X;
 		.X(sky130_fd_sc_hd__mux2_1_2_X));
 
 	sky130_fd_sc_hd__mux2_1 mux_l2_in_1_ (
-		.A1(sky130_fd_sc_hd__inv_1_4_Y),
+		.A1(in[4]),
 		.A0(const1_0_const1),
 		.S(sram[1]),
 		.X(sky130_fd_sc_hd__mux2_1_3_X));
@@ -252,7 +270,7 @@ wire [0:0] sky130_fd_sc_hd__mux2_1_4_X;
 		.A1(sky130_fd_sc_hd__mux2_1_2_X),
 		.A0(sky130_fd_sc_hd__mux2_1_3_X),
 		.S(sram[2]),
-		.X(sky130_fd_sc_hd__mux2_1_4_X));
+		.X(out));
 
 endmodule
 // ----- END Verilog module for mux_tree_size5 -----

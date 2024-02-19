@@ -3,7 +3,7 @@
 //	Description: Verilog modules for Unique Switch Blocks[0][0]
 //	Author: Xifan TANG
 //	Organization: University of Utah
-//	Date: Mon Feb 19 02:05:40 2024
+//	Date: Mon Feb 19 03:43:33 2024
 //-------------------------------------------
 //----- Default net type -----
 `default_nettype none
@@ -49,7 +49,6 @@ output [0:0] ccff_tail;
 
 //----- BEGIN Registered ports -----
 //----- END Registered ports -----
-
 
 
 wire [0:1] mux_tree_tapbuf_size2_0_sram;
