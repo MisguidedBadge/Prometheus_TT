@@ -34,10 +34,6 @@ wire [0:0] sky130_fd_sc_hd__buf_4_0_X;
 wire [0:0] sky130_fd_sc_hd__buf_4_1_X;
 wire [0:0] sky130_fd_sc_hd__buf_4_2_X;
 wire [0:0] sky130_fd_sc_hd__buf_4_3_X;
-wire [0:0] sky130_fd_sc_hd__inv_1_0_Y;
-wire [0:0] sky130_fd_sc_hd__inv_1_1_Y;
-wire [0:0] sky130_fd_sc_hd__inv_1_2_Y;
-wire [0:0] sky130_fd_sc_hd__inv_1_3_Y;
 
 // ----- BEGIN Local short connections -----
 // ----- END Local short connections -----
