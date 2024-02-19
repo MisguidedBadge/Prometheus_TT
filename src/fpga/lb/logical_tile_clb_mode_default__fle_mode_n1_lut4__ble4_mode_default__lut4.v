@@ -35,7 +35,6 @@ wire [0:0] lut4_out;
 //----- END Registered ports -----
 
 
-wire [0:15] lut4_0__undriven_sram_inv;
 wire [0:15] lut4_0_sram;
 
 // ----- BEGIN Local short connections -----
@@ -46,7 +45,6 @@ wire [0:15] lut4_0_sram;
 	lut4 lut4_0_ (
 		.in(lut4_in[0:3]),
 		.sram(lut4_0_sram[0:15]),
-		.sram_inv(lut4_0__undriven_sram_inv[0:15]),
 		.out(lut4_out));
 
 	lut4_sky130_fd_sc_hd__dfxtp_1_mem lut4_sky130_fd_sc_hd__dfxtp_1_mem (

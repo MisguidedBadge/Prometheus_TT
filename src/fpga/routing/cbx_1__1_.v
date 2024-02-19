@@ -48,9 +48,6 @@ output [0:0] ccff_tail;
 //----- END Registered ports -----
 
 
-wire [0:1] mux_top_ipin_0_undriven_sram_inv;
-wire [0:1] mux_top_ipin_1_undriven_sram_inv;
-wire [0:1] mux_top_ipin_2_undriven_sram_inv;
 wire [0:1] mux_tree_tapbuf_size2_0_sram;
 wire [0:1] mux_tree_tapbuf_size2_1_sram;
 wire [0:1] mux_tree_tapbuf_size2_2_sram;
@@ -89,19 +86,16 @@ wire [0:0] mux_tree_tapbuf_size2_mem_1_ccff_tail;
 	mux_tree_tapbuf_size2 mux_top_ipin_0 (
 		.in({chanx_left_in[0], chanx_right_in[0]}),
 		.sram(mux_tree_tapbuf_size2_0_sram[0:1]),
-		.sram_inv(mux_top_ipin_0_undriven_sram_inv[0:1]),
 		.out(bottom_grid_top_width_0_height_0_subtile_0__pin_I_0_));
 
 	mux_tree_tapbuf_size2 mux_top_ipin_1 (
 		.in({chanx_left_in[1], chanx_right_in[1]}),
 		.sram(mux_tree_tapbuf_size2_1_sram[0:1]),
-		.sram_inv(mux_top_ipin_1_undriven_sram_inv[0:1]),
 		.out(bottom_grid_top_width_0_height_0_subtile_0__pin_I_1_));
 
 	mux_tree_tapbuf_size2 mux_top_ipin_2 (
 		.in({chanx_left_in[2], chanx_right_in[2]}),
 		.sram(mux_tree_tapbuf_size2_2_sram[0:1]),
-		.sram_inv(mux_top_ipin_2_undriven_sram_inv[0:1]),
 		.out(bottom_grid_top_width_0_height_0_subtile_0__pin_clk_0_));
 
 	mux_tree_tapbuf_size2_mem mem_top_ipin_0 (

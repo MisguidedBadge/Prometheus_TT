@@ -11,14 +11,12 @@
 // ----- Verilog module for lut4 -----
 module lut4(in,
             sram,
-            sram_inv,
             out);
 //----- INPUT PORTS -----
 input [0:3] in;
 //----- INPUT PORTS -----
 input [0:15] sram;
 //----- INPUT PORTS -----
-input [0:15] sram_inv;
 //----- OUTPUT PORTS -----
 output [0:0] out;
 
@@ -81,7 +79,6 @@ wire [0:0] sky130_fd_sc_hd__inv_1_3_Y;
 	lut4_mux lut4_mux_0_ (
 		.in(sram[0:15]),
 		.sram({sky130_fd_sc_hd__buf_4_0_X, sky130_fd_sc_hd__buf_4_1_X, sky130_fd_sc_hd__buf_4_2_X, sky130_fd_sc_hd__buf_4_3_X}),
-		.sram_inv({sky130_fd_sc_hd__inv_1_0_Y, sky130_fd_sc_hd__inv_1_1_Y, sky130_fd_sc_hd__inv_1_2_Y, sky130_fd_sc_hd__inv_1_3_Y}),
 		.out(out));
 
 endmodule

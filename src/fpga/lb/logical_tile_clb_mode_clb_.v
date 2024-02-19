@@ -49,10 +49,6 @@ wire [0:0] clb_O;
 wire [0:0] direct_interc_1_out;
 wire [0:0] logical_tile_clb_mode_default__fle_0_ccff_tail;
 wire [0:0] logical_tile_clb_mode_default__fle_0_fle_out;
-wire [0:2] mux_fle_0_in_0_undriven_sram_inv;
-wire [0:2] mux_fle_0_in_1_undriven_sram_inv;
-wire [0:2] mux_fle_0_in_2_undriven_sram_inv;
-wire [0:2] mux_fle_0_in_3_undriven_sram_inv;
 wire [0:0] mux_tree_size5_0_out;
 wire [0:2] mux_tree_size5_0_sram;
 wire [0:0] mux_tree_size5_1_out;
@@ -91,25 +87,21 @@ wire [0:0] mux_tree_size5_mem_2_ccff_tail;
 	mux_tree_size5 mux_fle_0_in_0 (
 		.in({clb_I[0:3], logical_tile_clb_mode_default__fle_0_fle_out}),
 		.sram(mux_tree_size5_0_sram[0:2]),
-		.sram_inv(mux_fle_0_in_0_undriven_sram_inv[0:2]),
 		.out(mux_tree_size5_0_out));
 
 	mux_tree_size5 mux_fle_0_in_1 (
 		.in({clb_I[0:3], logical_tile_clb_mode_default__fle_0_fle_out}),
 		.sram(mux_tree_size5_1_sram[0:2]),
-		.sram_inv(mux_fle_0_in_1_undriven_sram_inv[0:2]),
 		.out(mux_tree_size5_1_out));
 
 	mux_tree_size5 mux_fle_0_in_2 (
 		.in({clb_I[0:3], logical_tile_clb_mode_default__fle_0_fle_out}),
 		.sram(mux_tree_size5_2_sram[0:2]),
-		.sram_inv(mux_fle_0_in_2_undriven_sram_inv[0:2]),
 		.out(mux_tree_size5_2_out));
 
 	mux_tree_size5 mux_fle_0_in_3 (
 		.in({clb_I[0:3], logical_tile_clb_mode_default__fle_0_fle_out}),
 		.sram(mux_tree_size5_3_sram[0:2]),
-		.sram_inv(mux_fle_0_in_3_undriven_sram_inv[0:2]),
 		.out(mux_tree_size5_3_out));
 
 	mux_tree_size5_mem mem_fle_0_in_0 (

@@ -42,7 +42,6 @@ output [0:0] ccff_tail;
 //----- END Registered ports -----
 
 
-wire [0:1] mux_right_track_0_undriven_sram_inv;
 wire [0:1] mux_tree_tapbuf_size2_0_sram;
 
 // ----- BEGIN Local short connections -----
@@ -73,7 +72,6 @@ wire [0:1] mux_tree_tapbuf_size2_0_sram;
 	mux_tree_tapbuf_size2 mux_right_track_0 (
 		.in({right_bottom_grid_top_width_0_height_0_subtile_0__pin_O_0_, chany_bottom_in[1]}),
 		.sram(mux_tree_tapbuf_size2_0_sram[0:1]),
-		.sram_inv(mux_right_track_0_undriven_sram_inv[0:1]),
 		.out(chanx_right_out[0]));
 
 	mux_tree_tapbuf_size2_mem mem_right_track_0 (
