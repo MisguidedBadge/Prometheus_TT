@@ -11,3 +11,4 @@ sed -i '/sram_inv/d' src/fpga/routing/cbx_1__1_.v
 sed -i '/sram_inv/d' src/fpga/routing/cbx_1__0_.v 
 sed -i '/sram_inv/d' src/fpga/routing/sb_0__0_.v 
 sed -i '/sram_inv/d' src/fpga/sub_module/muxes.v 
+

@@ -11,14 +11,12 @@
 // ----- Verilog module for lut4 -----
 module lut4(in,
             sram,
-            sram_inv,
             out);
 //----- INPUT PORTS -----
 input [0:3] in;
 //----- INPUT PORTS -----
 input [0:15] sram;
 //----- INPUT PORTS -----
-input [0:15] sram_inv;
 //----- OUTPUT PORTS -----
 output [0:0] out;
 
@@ -44,7 +42,7 @@ wire [0:0] sky130_fd_sc_hd__inv_1_3_Y;
 // ----- BEGIN Local short connections -----
 // ----- END Local short connections -----
 // ----- BEGIN Local output short connections -----
-// ----- END Local output short connections -----
+// ----- END Local output short connections ----
 	sky130_fd_sc_hd__buf_4 sky130_fd_sc_hd__buf_4_0_ (
 		.A(in[0]),
 		.X(sky130_fd_sc_hd__buf_4_0_X));
