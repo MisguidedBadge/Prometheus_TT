@@ -39,3 +39,5 @@ fpga_top fpga(.prog_clk(prog_clk), .reset(rst_n),
  .gfpga_pad_GPOUT_PAD(fpga_io_out), .ccff_head(ccff_head), .ccff_tail(ccff_tail));
 
 endmodule
+
+`undef BOGUS_USE
