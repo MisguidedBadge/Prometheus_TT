@@ -36,6 +36,7 @@ set ::env(LINTER_INCLUDE_PDK_MODELS) 1
 set script_dir [file dirname [file normalize [info script]]]
 source $::env(DESIGN_DIR)/user_config.tcl
 
+
 # Save some time
 set ::env(RUN_KLAYOUT_XOR) 0
 set ::env(RUN_KLAYOUT_DRC) 0
