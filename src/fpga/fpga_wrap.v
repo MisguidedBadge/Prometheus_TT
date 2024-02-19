@@ -13,6 +13,9 @@ module tt_um_template (
     input  wire       rst_n     // reset_n - low to reset
 );
 
+// For silencing unused signal messages.
+`define BOGUS_USE(ignore)
+
 wire [0:0] prog_clk;
 wire [0:0] ccff_head;
 wire [0:0] ccff_tail;
