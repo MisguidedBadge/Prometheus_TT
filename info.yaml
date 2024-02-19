@@ -8,14 +8,43 @@ project:
   clock_hz:     0       # Clock frequency in Hz (or 0 if not applicable)
 
   # How many tiles your design occupies? A single tile is about 167x108 uM.
-  tiles: "1x1"          # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2, 6x2 or 8x2
+  tiles: "2x2"          # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2, 6x2 or 8x2
 
   # Your top module name must start with "tt_um_". Make it unique by including your github username:
-  top_module:  "tt_um_example"
+  top_module:  "tt_um_template"
   
   # List your project's source files here. Source files must be in ./src and you must list each source file separately, one per line:
   source_files:        
-    - "project.v"
+    - fpga/fpga_wrap.v
+    - fpga/fpga_top.v
+    - fpga/gpio.v
+    - fpga/lb/grid_clb.v
+    - fpga/lb/grid_io_hard_bottom.v
+    - fpga/lb/logical_tile_clb_mode_clb_.v
+    - fpga/lb/logical_tile_clb_mode_default__fle.v
+    - fpga/lb/logical_tile_clb_mode_default__fle_mode_n1_lut4__ble4.v
+    - fpga/lb/logical_tile_clb_mode_default__fle_mode_n1_lut4__ble4_mode_default__ff.v
+    - fpga/lb/logical_tile_clb_mode_default__fle_mode_n1_lut4__ble4_mode_default__lut4.v
+    - fpga/lb/logical_tile_io_input_mode_io_input_.v
+    - fpga/lb/logical_tile_io_input_mode_physical__iopad.v
+    - fpga/lb/logical_tile_io_output_mode_io_output_.v
+    - fpga/lb/logical_tile_io_output_mode_physical__iopad.v
+    - fpga/routing/cbx_1__0_.v
+    - fpga/routing/cbx_1__1_.v
+    - fpga/routing/cby_0__1_.v
+    - fpga/routing/sb_0__0_.v
+    - fpga/routing/sb_0__1_.v
+    - fpga/routing/sb_1__0_.v
+    - fpga/routing/sb_1__1_.v
+    - fpga/sub_module/arch_encoder.v
+    - fpga/sub_module/inv_buf_passgate.v
+    - fpga/sub_module/local_encoder.v
+    - fpga/sub_module/luts.v
+    - fpga/sub_module/memories.v
+    - fpga/sub_module/muxes.v
+    - fpga/sub_module/mux_primitives.v
+    - fpga/sub_module/shift_register_banks.v
+    - fpga/sub_module/wires.v
 
 # The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
 pinout:
