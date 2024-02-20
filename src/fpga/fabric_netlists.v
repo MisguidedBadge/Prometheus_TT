@@ -3,13 +3,14 @@
 //	Description: Fabric Netlist Summary
 //	Author: Xifan TANG
 //	Organization: University of Utah
-//	Date: Tue Feb 20 01:23:35 2024
+//	Date: Tue Feb 20 02:10:40 2024
 //-------------------------------------------
 // ------ Include defines: preproc flags -----
 `include "./SRC/fpga_defines.v"
 
 // ------ Include user-defined netlists -----
 `include "/home/misguidedbadge/.volare/sky130A/libs.ref/sky130_fd_sc_hd/verilog/sky130_fd_sc_hd.v"
+`include "/home/misguidedbadge/Desktop/ASIC/OpenFPGA/OpenFPGA/openfpga_flow/prometheus/circuit_wrapper.v"
 `include "/home/misguidedbadge/Desktop/ASIC/OpenFPGA/OpenFPGA/openfpga_flow/openfpga_cell_library/verilog/gpio.v"
 // ------ Include primitive module netlists -----
 `include "./SRC/sub_module/inv_buf_passgate.v"

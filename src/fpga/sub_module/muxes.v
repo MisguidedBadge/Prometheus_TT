@@ -3,7 +3,7 @@
 //	Description: Multiplexers
 //	Author: Xifan TANG
 //	Organization: University of Utah
-//	Date: Tue Feb 20 01:23:35 2024
+//	Date: Tue Feb 20 02:10:40 2024
 //-------------------------------------------
 //----- Default net type -----
 `default_nettype none
@@ -29,7 +29,7 @@ output [0:0] out;
 
 
 wire [0:0] const1_0_const1;
-wire [0:0] sky130_fd_sc_hd__mux2_1_0_X;
+wire [0:0] p_mux_0_X;
 
 // ----- BEGIN Local short connections -----
 // ----- END Local short connections -----
@@ -39,14 +39,14 @@ wire [0:0] sky130_fd_sc_hd__mux2_1_0_X;
 	const1 const1_0_ (
 		.const1(const1_0_const1));
 
-	sky130_fd_sc_hd__mux2_1 mux_l1_in_0_ (
+	p_mux mux_l1_in_0_ (
 		.A1(in[0]),
 		.A0(in[1]),
 		.S(sram[0]),
-		.X(sky130_fd_sc_hd__mux2_1_0_X));
+		.X(p_mux_0_X));
 
-	sky130_fd_sc_hd__mux2_1 mux_l2_in_0_ (
-		.A1(sky130_fd_sc_hd__mux2_1_0_X),
+	p_mux mux_l2_in_0_ (
+		.A1(p_mux_0_X),
 		.A0(const1_0_const1),
 		.S(sram[1]),
 		.X(out));
@@ -84,11 +84,11 @@ output [0:0] out;
 
 
 wire [0:0] const1_0_const1;
-wire [0:0] sky130_fd_sc_hd__mux2_1_0_X;
-wire [0:0] sky130_fd_sc_hd__mux2_1_1_X;
-wire [0:0] sky130_fd_sc_hd__mux2_1_2_X;
-wire [0:0] sky130_fd_sc_hd__mux2_1_3_X;
-wire [0:0] sky130_fd_sc_hd__mux2_1_4_X;
+wire [0:0] p_mux_0_X;
+wire [0:0] p_mux_1_X;
+wire [0:0] p_mux_2_X;
+wire [0:0] p_mux_3_X;
+wire [0:0] p_mux_4_X;
 
 // ----- BEGIN Local short connections -----
 // ----- END Local short connections -----
@@ -98,39 +98,39 @@ wire [0:0] sky130_fd_sc_hd__mux2_1_4_X;
 	const1 const1_0_ (
 		.const1(const1_0_const1));
 
-	sky130_fd_sc_hd__mux2_1 mux_l1_in_0_ (
+	p_mux mux_l1_in_0_ (
 		.A1(in[0]),
 		.A0(in[1]),
 		.S(sram[0]),
-		.X(sky130_fd_sc_hd__mux2_1_0_X));
+		.X(p_mux_0_X));
 
-	sky130_fd_sc_hd__mux2_1 mux_l1_in_1_ (
+	p_mux mux_l1_in_1_ (
 		.A1(in[2]),
 		.A0(in[3]),
 		.S(sram[0]),
-		.X(sky130_fd_sc_hd__mux2_1_1_X));
+		.X(p_mux_1_X));
 
-	sky130_fd_sc_hd__mux2_1 mux_l1_in_2_ (
+	p_mux mux_l1_in_2_ (
 		.A1(in[4]),
 		.A0(in[5]),
 		.S(sram[0]),
-		.X(sky130_fd_sc_hd__mux2_1_2_X));
+		.X(p_mux_2_X));
 
-	sky130_fd_sc_hd__mux2_1 mux_l2_in_0_ (
-		.A1(sky130_fd_sc_hd__mux2_1_0_X),
-		.A0(sky130_fd_sc_hd__mux2_1_1_X),
+	p_mux mux_l2_in_0_ (
+		.A1(p_mux_0_X),
+		.A0(p_mux_1_X),
 		.S(sram[1]),
-		.X(sky130_fd_sc_hd__mux2_1_3_X));
+		.X(p_mux_3_X));
 
-	sky130_fd_sc_hd__mux2_1 mux_l2_in_1_ (
-		.A1(sky130_fd_sc_hd__mux2_1_2_X),
+	p_mux mux_l2_in_1_ (
+		.A1(p_mux_2_X),
 		.A0(const1_0_const1),
 		.S(sram[1]),
-		.X(sky130_fd_sc_hd__mux2_1_4_X));
+		.X(p_mux_4_X));
 
-	sky130_fd_sc_hd__mux2_1 mux_l3_in_0_ (
-		.A1(sky130_fd_sc_hd__mux2_1_3_X),
-		.A0(sky130_fd_sc_hd__mux2_1_4_X),
+	p_mux mux_l3_in_0_ (
+		.A1(p_mux_3_X),
+		.A0(p_mux_4_X),
 		.S(sram[2]),
 		.X(out));
 
@@ -167,8 +167,8 @@ output [0:0] out;
 
 
 wire [0:0] const1_0_const1;
-wire [0:0] sky130_fd_sc_hd__mux2_1_0_X;
-wire [0:0] sky130_fd_sc_hd__mux2_1_1_X;
+wire [0:0] p_mux_0_X;
+wire [0:0] p_mux_1_X;
 
 // ----- BEGIN Local short connections -----
 // ----- END Local short connections -----
@@ -178,21 +178,21 @@ wire [0:0] sky130_fd_sc_hd__mux2_1_1_X;
 	const1 const1_0_ (
 		.const1(const1_0_const1));
 
-	sky130_fd_sc_hd__mux2_1 mux_l1_in_0_ (
+	p_mux mux_l1_in_0_ (
 		.A1(in[0]),
 		.A0(in[1]),
 		.S(sram[0]),
-		.X(sky130_fd_sc_hd__mux2_1_0_X));
+		.X(p_mux_0_X));
 
-	sky130_fd_sc_hd__mux2_1 mux_l1_in_1_ (
+	p_mux mux_l1_in_1_ (
 		.A1(in[2]),
 		.A0(const1_0_const1),
 		.S(sram[0]),
-		.X(sky130_fd_sc_hd__mux2_1_1_X));
+		.X(p_mux_1_X));
 
-	sky130_fd_sc_hd__mux2_1 mux_l2_in_0_ (
-		.A1(sky130_fd_sc_hd__mux2_1_0_X),
-		.A0(sky130_fd_sc_hd__mux2_1_1_X),
+	p_mux mux_l2_in_0_ (
+		.A1(p_mux_0_X),
+		.A0(p_mux_1_X),
 		.S(sram[1]),
 		.X(out));
 
@@ -229,10 +229,10 @@ output [0:0] out;
 
 
 wire [0:0] const1_0_const1;
-wire [0:0] sky130_fd_sc_hd__mux2_1_0_X;
-wire [0:0] sky130_fd_sc_hd__mux2_1_1_X;
-wire [0:0] sky130_fd_sc_hd__mux2_1_2_X;
-wire [0:0] sky130_fd_sc_hd__mux2_1_3_X;
+wire [0:0] p_mux_0_X;
+wire [0:0] p_mux_1_X;
+wire [0:0] p_mux_2_X;
+wire [0:0] p_mux_3_X;
 
 // ----- BEGIN Local short connections -----
 // ----- END Local short connections -----
@@ -242,33 +242,33 @@ wire [0:0] sky130_fd_sc_hd__mux2_1_3_X;
 	const1 const1_0_ (
 		.const1(const1_0_const1));
 
-	sky130_fd_sc_hd__mux2_1 mux_l1_in_0_ (
+	p_mux mux_l1_in_0_ (
 		.A1(in[0]),
 		.A0(in[1]),
 		.S(sram[0]),
-		.X(sky130_fd_sc_hd__mux2_1_0_X));
+		.X(p_mux_0_X));
 
-	sky130_fd_sc_hd__mux2_1 mux_l1_in_1_ (
+	p_mux mux_l1_in_1_ (
 		.A1(in[2]),
 		.A0(in[3]),
 		.S(sram[0]),
-		.X(sky130_fd_sc_hd__mux2_1_1_X));
+		.X(p_mux_1_X));
 
-	sky130_fd_sc_hd__mux2_1 mux_l2_in_0_ (
-		.A1(sky130_fd_sc_hd__mux2_1_0_X),
-		.A0(sky130_fd_sc_hd__mux2_1_1_X),
+	p_mux mux_l2_in_0_ (
+		.A1(p_mux_0_X),
+		.A0(p_mux_1_X),
 		.S(sram[1]),
-		.X(sky130_fd_sc_hd__mux2_1_2_X));
+		.X(p_mux_2_X));
 
-	sky130_fd_sc_hd__mux2_1 mux_l2_in_1_ (
+	p_mux mux_l2_in_1_ (
 		.A1(in[4]),
 		.A0(const1_0_const1),
 		.S(sram[1]),
-		.X(sky130_fd_sc_hd__mux2_1_3_X));
+		.X(p_mux_3_X));
 
-	sky130_fd_sc_hd__mux2_1 mux_l3_in_0_ (
-		.A1(sky130_fd_sc_hd__mux2_1_2_X),
-		.A0(sky130_fd_sc_hd__mux2_1_3_X),
+	p_mux mux_l3_in_0_ (
+		.A1(p_mux_2_X),
+		.A0(p_mux_3_X),
 		.S(sram[2]),
 		.X(out));
 
@@ -304,200 +304,200 @@ output [0:0] out;
 //----- END Registered ports -----
 
 
-wire [0:0] sky130_fd_sc_hd__inv_1_0_Y;
-wire [0:0] sky130_fd_sc_hd__inv_1_10_Y;
-wire [0:0] sky130_fd_sc_hd__inv_1_11_Y;
-wire [0:0] sky130_fd_sc_hd__inv_1_12_Y;
-wire [0:0] sky130_fd_sc_hd__inv_1_13_Y;
-wire [0:0] sky130_fd_sc_hd__inv_1_14_Y;
-wire [0:0] sky130_fd_sc_hd__inv_1_15_Y;
-wire [0:0] sky130_fd_sc_hd__inv_1_1_Y;
-wire [0:0] sky130_fd_sc_hd__inv_1_2_Y;
-wire [0:0] sky130_fd_sc_hd__inv_1_3_Y;
-wire [0:0] sky130_fd_sc_hd__inv_1_4_Y;
-wire [0:0] sky130_fd_sc_hd__inv_1_5_Y;
-wire [0:0] sky130_fd_sc_hd__inv_1_6_Y;
-wire [0:0] sky130_fd_sc_hd__inv_1_7_Y;
-wire [0:0] sky130_fd_sc_hd__inv_1_8_Y;
-wire [0:0] sky130_fd_sc_hd__inv_1_9_Y;
-wire [0:0] sky130_fd_sc_hd__mux2_1_0_X;
-wire [0:0] sky130_fd_sc_hd__mux2_1_10_X;
-wire [0:0] sky130_fd_sc_hd__mux2_1_11_X;
-wire [0:0] sky130_fd_sc_hd__mux2_1_12_X;
-wire [0:0] sky130_fd_sc_hd__mux2_1_13_X;
-wire [0:0] sky130_fd_sc_hd__mux2_1_14_X;
-wire [0:0] sky130_fd_sc_hd__mux2_1_1_X;
-wire [0:0] sky130_fd_sc_hd__mux2_1_2_X;
-wire [0:0] sky130_fd_sc_hd__mux2_1_3_X;
-wire [0:0] sky130_fd_sc_hd__mux2_1_4_X;
-wire [0:0] sky130_fd_sc_hd__mux2_1_5_X;
-wire [0:0] sky130_fd_sc_hd__mux2_1_6_X;
-wire [0:0] sky130_fd_sc_hd__mux2_1_7_X;
-wire [0:0] sky130_fd_sc_hd__mux2_1_8_X;
-wire [0:0] sky130_fd_sc_hd__mux2_1_9_X;
+wire [0:0] p_invert_0_Y;
+wire [0:0] p_invert_10_Y;
+wire [0:0] p_invert_11_Y;
+wire [0:0] p_invert_12_Y;
+wire [0:0] p_invert_13_Y;
+wire [0:0] p_invert_14_Y;
+wire [0:0] p_invert_15_Y;
+wire [0:0] p_invert_1_Y;
+wire [0:0] p_invert_2_Y;
+wire [0:0] p_invert_3_Y;
+wire [0:0] p_invert_4_Y;
+wire [0:0] p_invert_5_Y;
+wire [0:0] p_invert_6_Y;
+wire [0:0] p_invert_7_Y;
+wire [0:0] p_invert_8_Y;
+wire [0:0] p_invert_9_Y;
+wire [0:0] p_mux_0_X;
+wire [0:0] p_mux_10_X;
+wire [0:0] p_mux_11_X;
+wire [0:0] p_mux_12_X;
+wire [0:0] p_mux_13_X;
+wire [0:0] p_mux_14_X;
+wire [0:0] p_mux_1_X;
+wire [0:0] p_mux_2_X;
+wire [0:0] p_mux_3_X;
+wire [0:0] p_mux_4_X;
+wire [0:0] p_mux_5_X;
+wire [0:0] p_mux_6_X;
+wire [0:0] p_mux_7_X;
+wire [0:0] p_mux_8_X;
+wire [0:0] p_mux_9_X;
 
 // ----- BEGIN Local short connections -----
 // ----- END Local short connections -----
 // ----- BEGIN Local output short connections -----
 // ----- END Local output short connections -----
 
-	sky130_fd_sc_hd__inv_1 sky130_fd_sc_hd__inv_1_0_ (
+	p_invert p_invert_0_ (
 		.A(in[0]),
-		.Y(sky130_fd_sc_hd__inv_1_0_Y));
+		.Y(p_invert_0_Y));
 
-	sky130_fd_sc_hd__inv_1 sky130_fd_sc_hd__inv_1_1_ (
+	p_invert p_invert_1_ (
 		.A(in[1]),
-		.Y(sky130_fd_sc_hd__inv_1_1_Y));
+		.Y(p_invert_1_Y));
 
-	sky130_fd_sc_hd__inv_1 sky130_fd_sc_hd__inv_1_2_ (
+	p_invert p_invert_2_ (
 		.A(in[2]),
-		.Y(sky130_fd_sc_hd__inv_1_2_Y));
+		.Y(p_invert_2_Y));
 
-	sky130_fd_sc_hd__inv_1 sky130_fd_sc_hd__inv_1_3_ (
+	p_invert p_invert_3_ (
 		.A(in[3]),
-		.Y(sky130_fd_sc_hd__inv_1_3_Y));
+		.Y(p_invert_3_Y));
 
-	sky130_fd_sc_hd__inv_1 sky130_fd_sc_hd__inv_1_4_ (
+	p_invert p_invert_4_ (
 		.A(in[4]),
-		.Y(sky130_fd_sc_hd__inv_1_4_Y));
+		.Y(p_invert_4_Y));
 
-	sky130_fd_sc_hd__inv_1 sky130_fd_sc_hd__inv_1_5_ (
+	p_invert p_invert_5_ (
 		.A(in[5]),
-		.Y(sky130_fd_sc_hd__inv_1_5_Y));
+		.Y(p_invert_5_Y));
 
-	sky130_fd_sc_hd__inv_1 sky130_fd_sc_hd__inv_1_6_ (
+	p_invert p_invert_6_ (
 		.A(in[6]),
-		.Y(sky130_fd_sc_hd__inv_1_6_Y));
+		.Y(p_invert_6_Y));
 
-	sky130_fd_sc_hd__inv_1 sky130_fd_sc_hd__inv_1_7_ (
+	p_invert p_invert_7_ (
 		.A(in[7]),
-		.Y(sky130_fd_sc_hd__inv_1_7_Y));
+		.Y(p_invert_7_Y));
 
-	sky130_fd_sc_hd__inv_1 sky130_fd_sc_hd__inv_1_8_ (
+	p_invert p_invert_8_ (
 		.A(in[8]),
-		.Y(sky130_fd_sc_hd__inv_1_8_Y));
+		.Y(p_invert_8_Y));
 
-	sky130_fd_sc_hd__inv_1 sky130_fd_sc_hd__inv_1_9_ (
+	p_invert p_invert_9_ (
 		.A(in[9]),
-		.Y(sky130_fd_sc_hd__inv_1_9_Y));
+		.Y(p_invert_9_Y));
 
-	sky130_fd_sc_hd__inv_1 sky130_fd_sc_hd__inv_1_10_ (
+	p_invert p_invert_10_ (
 		.A(in[10]),
-		.Y(sky130_fd_sc_hd__inv_1_10_Y));
+		.Y(p_invert_10_Y));
 
-	sky130_fd_sc_hd__inv_1 sky130_fd_sc_hd__inv_1_11_ (
+	p_invert p_invert_11_ (
 		.A(in[11]),
-		.Y(sky130_fd_sc_hd__inv_1_11_Y));
+		.Y(p_invert_11_Y));
 
-	sky130_fd_sc_hd__inv_1 sky130_fd_sc_hd__inv_1_12_ (
+	p_invert p_invert_12_ (
 		.A(in[12]),
-		.Y(sky130_fd_sc_hd__inv_1_12_Y));
+		.Y(p_invert_12_Y));
 
-	sky130_fd_sc_hd__inv_1 sky130_fd_sc_hd__inv_1_13_ (
+	p_invert p_invert_13_ (
 		.A(in[13]),
-		.Y(sky130_fd_sc_hd__inv_1_13_Y));
+		.Y(p_invert_13_Y));
 
-	sky130_fd_sc_hd__inv_1 sky130_fd_sc_hd__inv_1_14_ (
+	p_invert p_invert_14_ (
 		.A(in[14]),
-		.Y(sky130_fd_sc_hd__inv_1_14_Y));
+		.Y(p_invert_14_Y));
 
-	sky130_fd_sc_hd__inv_1 sky130_fd_sc_hd__inv_1_15_ (
+	p_invert p_invert_15_ (
 		.A(in[15]),
-		.Y(sky130_fd_sc_hd__inv_1_15_Y));
+		.Y(p_invert_15_Y));
 
-	sky130_fd_sc_hd__inv_1 sky130_fd_sc_hd__inv_1_16_ (
-		.A(sky130_fd_sc_hd__mux2_1_14_X),
+	p_invert p_invert_16_ (
+		.A(p_mux_14_X),
 		.Y(out));
 
-	sky130_fd_sc_hd__mux2_1 mux_l1_in_0_ (
-		.A1(sky130_fd_sc_hd__inv_1_0_Y),
-		.A0(sky130_fd_sc_hd__inv_1_1_Y),
+	p_mux mux_l1_in_0_ (
+		.A1(p_invert_0_Y),
+		.A0(p_invert_1_Y),
 		.S(sram[0]),
-		.X(sky130_fd_sc_hd__mux2_1_0_X));
+		.X(p_mux_0_X));
 
-	sky130_fd_sc_hd__mux2_1 mux_l1_in_1_ (
-		.A1(sky130_fd_sc_hd__inv_1_2_Y),
-		.A0(sky130_fd_sc_hd__inv_1_3_Y),
+	p_mux mux_l1_in_1_ (
+		.A1(p_invert_2_Y),
+		.A0(p_invert_3_Y),
 		.S(sram[0]),
-		.X(sky130_fd_sc_hd__mux2_1_1_X));
+		.X(p_mux_1_X));
 
-	sky130_fd_sc_hd__mux2_1 mux_l1_in_2_ (
-		.A1(sky130_fd_sc_hd__inv_1_4_Y),
-		.A0(sky130_fd_sc_hd__inv_1_5_Y),
+	p_mux mux_l1_in_2_ (
+		.A1(p_invert_4_Y),
+		.A0(p_invert_5_Y),
 		.S(sram[0]),
-		.X(sky130_fd_sc_hd__mux2_1_2_X));
+		.X(p_mux_2_X));
 
-	sky130_fd_sc_hd__mux2_1 mux_l1_in_3_ (
-		.A1(sky130_fd_sc_hd__inv_1_6_Y),
-		.A0(sky130_fd_sc_hd__inv_1_7_Y),
+	p_mux mux_l1_in_3_ (
+		.A1(p_invert_6_Y),
+		.A0(p_invert_7_Y),
 		.S(sram[0]),
-		.X(sky130_fd_sc_hd__mux2_1_3_X));
+		.X(p_mux_3_X));
 
-	sky130_fd_sc_hd__mux2_1 mux_l1_in_4_ (
-		.A1(sky130_fd_sc_hd__inv_1_8_Y),
-		.A0(sky130_fd_sc_hd__inv_1_9_Y),
+	p_mux mux_l1_in_4_ (
+		.A1(p_invert_8_Y),
+		.A0(p_invert_9_Y),
 		.S(sram[0]),
-		.X(sky130_fd_sc_hd__mux2_1_4_X));
+		.X(p_mux_4_X));
 
-	sky130_fd_sc_hd__mux2_1 mux_l1_in_5_ (
-		.A1(sky130_fd_sc_hd__inv_1_10_Y),
-		.A0(sky130_fd_sc_hd__inv_1_11_Y),
+	p_mux mux_l1_in_5_ (
+		.A1(p_invert_10_Y),
+		.A0(p_invert_11_Y),
 		.S(sram[0]),
-		.X(sky130_fd_sc_hd__mux2_1_5_X));
+		.X(p_mux_5_X));
 
-	sky130_fd_sc_hd__mux2_1 mux_l1_in_6_ (
-		.A1(sky130_fd_sc_hd__inv_1_12_Y),
-		.A0(sky130_fd_sc_hd__inv_1_13_Y),
+	p_mux mux_l1_in_6_ (
+		.A1(p_invert_12_Y),
+		.A0(p_invert_13_Y),
 		.S(sram[0]),
-		.X(sky130_fd_sc_hd__mux2_1_6_X));
+		.X(p_mux_6_X));
 
-	sky130_fd_sc_hd__mux2_1 mux_l1_in_7_ (
-		.A1(sky130_fd_sc_hd__inv_1_14_Y),
-		.A0(sky130_fd_sc_hd__inv_1_15_Y),
+	p_mux mux_l1_in_7_ (
+		.A1(p_invert_14_Y),
+		.A0(p_invert_15_Y),
 		.S(sram[0]),
-		.X(sky130_fd_sc_hd__mux2_1_7_X));
+		.X(p_mux_7_X));
 
-	sky130_fd_sc_hd__mux2_1 mux_l2_in_0_ (
-		.A1(sky130_fd_sc_hd__mux2_1_0_X),
-		.A0(sky130_fd_sc_hd__mux2_1_1_X),
+	p_mux mux_l2_in_0_ (
+		.A1(p_mux_0_X),
+		.A0(p_mux_1_X),
 		.S(sram[1]),
-		.X(sky130_fd_sc_hd__mux2_1_8_X));
+		.X(p_mux_8_X));
 
-	sky130_fd_sc_hd__mux2_1 mux_l2_in_1_ (
-		.A1(sky130_fd_sc_hd__mux2_1_2_X),
-		.A0(sky130_fd_sc_hd__mux2_1_3_X),
+	p_mux mux_l2_in_1_ (
+		.A1(p_mux_2_X),
+		.A0(p_mux_3_X),
 		.S(sram[1]),
-		.X(sky130_fd_sc_hd__mux2_1_9_X));
+		.X(p_mux_9_X));
 
-	sky130_fd_sc_hd__mux2_1 mux_l2_in_2_ (
-		.A1(sky130_fd_sc_hd__mux2_1_4_X),
-		.A0(sky130_fd_sc_hd__mux2_1_5_X),
+	p_mux mux_l2_in_2_ (
+		.A1(p_mux_4_X),
+		.A0(p_mux_5_X),
 		.S(sram[1]),
-		.X(sky130_fd_sc_hd__mux2_1_10_X));
+		.X(p_mux_10_X));
 
-	sky130_fd_sc_hd__mux2_1 mux_l2_in_3_ (
-		.A1(sky130_fd_sc_hd__mux2_1_6_X),
-		.A0(sky130_fd_sc_hd__mux2_1_7_X),
+	p_mux mux_l2_in_3_ (
+		.A1(p_mux_6_X),
+		.A0(p_mux_7_X),
 		.S(sram[1]),
-		.X(sky130_fd_sc_hd__mux2_1_11_X));
+		.X(p_mux_11_X));
 
-	sky130_fd_sc_hd__mux2_1 mux_l3_in_0_ (
-		.A1(sky130_fd_sc_hd__mux2_1_8_X),
-		.A0(sky130_fd_sc_hd__mux2_1_9_X),
+	p_mux mux_l3_in_0_ (
+		.A1(p_mux_8_X),
+		.A0(p_mux_9_X),
 		.S(sram[2]),
-		.X(sky130_fd_sc_hd__mux2_1_12_X));
+		.X(p_mux_12_X));
 
-	sky130_fd_sc_hd__mux2_1 mux_l3_in_1_ (
-		.A1(sky130_fd_sc_hd__mux2_1_10_X),
-		.A0(sky130_fd_sc_hd__mux2_1_11_X),
+	p_mux mux_l3_in_1_ (
+		.A1(p_mux_10_X),
+		.A0(p_mux_11_X),
 		.S(sram[2]),
-		.X(sky130_fd_sc_hd__mux2_1_13_X));
+		.X(p_mux_13_X));
 
-	sky130_fd_sc_hd__mux2_1 mux_l4_in_0_ (
-		.A1(sky130_fd_sc_hd__mux2_1_12_X),
-		.A0(sky130_fd_sc_hd__mux2_1_13_X),
+	p_mux mux_l4_in_0_ (
+		.A1(p_mux_12_X),
+		.A0(p_mux_13_X),
 		.S(sram[3]),
-		.X(sky130_fd_sc_hd__mux2_1_14_X));
+		.X(p_mux_14_X));
 
 endmodule
 // ----- END Verilog module for lut4_mux -----

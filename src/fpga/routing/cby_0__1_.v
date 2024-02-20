@@ -3,7 +3,7 @@
 //	Description: Verilog modules for Unique Connection Blocks[0][1]
 //	Author: Xifan TANG
 //	Organization: University of Utah
-//	Date: Tue Feb 20 01:23:35 2024
+//	Date: Tue Feb 20 02:10:40 2024
 //-------------------------------------------
 //----- Default net type -----
 `default_nettype none

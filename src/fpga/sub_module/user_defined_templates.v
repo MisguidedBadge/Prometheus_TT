@@ -3,15 +3,15 @@
 //	Description: Template for user-defined Verilog modules
 //	Author: Xifan TANG
 //	Organization: University of Utah
-//	Date: Tue Feb 20 01:23:35 2024
+//	Date: Tue Feb 20 02:10:40 2024
 //-------------------------------------------
-// ----- Template Verilog module for sky130_fd_sc_hd__inv_1 -----
+// ----- Template Verilog module for p_invert -----
 //----- Default net type -----
 `default_nettype none
 
-// ----- Verilog module for sky130_fd_sc_hd__inv_1 -----
-module sky130_fd_sc_hd__inv_1(A,
-                              Y);
+// ----- Verilog module for p_invert -----
+module p_invert(A,
+                Y);
 //----- INPUT PORTS -----
 input [0:0] A;
 //----- OUTPUT PORTS -----
@@ -29,19 +29,19 @@ output [0:0] Y;
 
 // ----- Internal logic should end here -----
 endmodule
-// ----- END Verilog module for sky130_fd_sc_hd__inv_1 -----
+// ----- END Verilog module for p_invert -----
 
 //----- Default net type -----
 `default_nettype wire
 
 
-// ----- Template Verilog module for sky130_fd_sc_hd__buf_4 -----
+// ----- Template Verilog module for p_buf -----
 //----- Default net type -----
 `default_nettype none
 
-// ----- Verilog module for sky130_fd_sc_hd__buf_4 -----
-module sky130_fd_sc_hd__buf_4(A,
-                              X);
+// ----- Verilog module for p_buf -----
+module p_buf(A,
+             X);
 //----- INPUT PORTS -----
 input [0:0] A;
 //----- OUTPUT PORTS -----
@@ -59,7 +59,7 @@ output [0:0] X;
 
 // ----- Internal logic should end here -----
 endmodule
-// ----- END Verilog module for sky130_fd_sc_hd__buf_4 -----
+// ----- END Verilog module for p_buf -----
 
 //----- Default net type -----
 `default_nettype wire
@@ -98,15 +98,15 @@ endmodule
 `default_nettype wire
 
 
-// ----- Template Verilog module for sky130_fd_sc_hd__mux2_1 -----
+// ----- Template Verilog module for p_mux -----
 //----- Default net type -----
 `default_nettype none
 
-// ----- Verilog module for sky130_fd_sc_hd__mux2_1 -----
-module sky130_fd_sc_hd__mux2_1(A1,
-                               A0,
-                               S,
-                               X);
+// ----- Verilog module for p_mux -----
+module p_mux(A1,
+             A0,
+             S,
+             X);
 //----- INPUT PORTS -----
 input [0:0] A1;
 //----- INPUT PORTS -----
@@ -128,21 +128,21 @@ output [0:0] X;
 
 // ----- Internal logic should end here -----
 endmodule
-// ----- END Verilog module for sky130_fd_sc_hd__mux2_1 -----
+// ----- END Verilog module for p_mux -----
 
 //----- Default net type -----
 `default_nettype wire
 
 
-// ----- Template Verilog module for sky130_fd_sc_hd__dfrtp_1 -----
+// ----- Template Verilog module for p_ff -----
 //----- Default net type -----
 `default_nettype none
 
-// ----- Verilog module for sky130_fd_sc_hd__dfrtp_1 -----
-module sky130_fd_sc_hd__dfrtp_1(RESET_B,
-                                CLK,
-                                D,
-                                Q);
+// ----- Verilog module for p_ff -----
+module p_ff(RESET_B,
+            CLK,
+            D,
+            Q);
 //----- GLOBAL PORTS -----
 input [0:0] RESET_B;
 //----- GLOBAL PORTS -----
@@ -164,20 +164,20 @@ output [0:0] Q;
 
 // ----- Internal logic should end here -----
 endmodule
-// ----- END Verilog module for sky130_fd_sc_hd__dfrtp_1 -----
+// ----- END Verilog module for p_ff -----
 
 //----- Default net type -----
 `default_nettype wire
 
 
-// ----- Template Verilog module for sky130_fd_sc_hd__dfxtp_1 -----
+// ----- Template Verilog module for p_ccff -----
 //----- Default net type -----
 `default_nettype none
 
-// ----- Verilog module for sky130_fd_sc_hd__dfxtp_1 -----
-module sky130_fd_sc_hd__dfxtp_1(CLK,
-                                D,
-                                Q);
+// ----- Verilog module for p_ccff -----
+module p_ccff(CLK,
+              D,
+              Q);
 //----- GLOBAL PORTS -----
 input [0:0] CLK;
 //----- INPUT PORTS -----
@@ -197,7 +197,7 @@ output [0:0] Q;
 
 // ----- Internal logic should end here -----
 endmodule
-// ----- END Verilog module for sky130_fd_sc_hd__dfxtp_1 -----
+// ----- END Verilog module for p_ccff -----
 
 //----- Default net type -----
 `default_nettype wire

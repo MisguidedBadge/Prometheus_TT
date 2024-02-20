@@ -3,7 +3,7 @@
 //	Description: Verilog modules for primitive pb_type: lut4
 //	Author: Xifan TANG
 //	Organization: University of Utah
-//	Date: Tue Feb 20 01:23:35 2024
+//	Date: Tue Feb 20 02:10:40 2024
 //-------------------------------------------
 //----- Default net type -----
 `default_nettype none
@@ -47,7 +47,7 @@ wire [0:15] lut4_0_sram;
 		.sram(lut4_0_sram[0:15]),
 		.out(lut4_out));
 
-	lut4_sky130_fd_sc_hd__dfxtp_1_mem lut4_sky130_fd_sc_hd__dfxtp_1_mem (
+	lut4_p_ccff_mem lut4_p_ccff_mem (
 		.prog_clk(prog_clk),
 		.ccff_head(ccff_head),
 		.ccff_tail(ccff_tail),
