@@ -3,7 +3,7 @@
 //	Description: Multiplexers
 //	Author: Xifan TANG
 //	Organization: University of Utah
-//	Date: Tue Feb 20 02:10:40 2024
+//	Date: Tue Feb 20 06:37:41 2024
 //-------------------------------------------
 //----- Default net type -----
 `default_nettype none
@@ -11,12 +11,14 @@
 // ----- Verilog module for mux_tree_tapbuf_size2 -----
 module mux_tree_tapbuf_size2(in,
                              sram,
+                             sram_inv,
                              out);
 //----- INPUT PORTS -----
 input [0:1] in;
 //----- INPUT PORTS -----
 input [0:1] sram;
 //----- INPUT PORTS -----
+input [0:1] sram_inv;
 //----- OUTPUT PORTS -----
 output [0:0] out;
 
@@ -66,12 +68,14 @@ endmodule
 // ----- Verilog module for mux_tree_tapbuf_size6 -----
 module mux_tree_tapbuf_size6(in,
                              sram,
+                             sram_inv,
                              out);
 //----- INPUT PORTS -----
 input [0:5] in;
 //----- INPUT PORTS -----
 input [0:2] sram;
 //----- INPUT PORTS -----
+input [0:2] sram_inv;
 //----- OUTPUT PORTS -----
 output [0:0] out;
 
@@ -149,12 +153,14 @@ endmodule
 // ----- Verilog module for mux_tree_tapbuf_size3 -----
 module mux_tree_tapbuf_size3(in,
                              sram,
+                             sram_inv,
                              out);
 //----- INPUT PORTS -----
 input [0:2] in;
 //----- INPUT PORTS -----
 input [0:1] sram;
 //----- INPUT PORTS -----
+input [0:1] sram_inv;
 //----- OUTPUT PORTS -----
 output [0:0] out;
 
@@ -211,12 +217,14 @@ endmodule
 // ----- Verilog module for mux_tree_size5 -----
 module mux_tree_size5(in,
                       sram,
+                      sram_inv,
                       out);
 //----- INPUT PORTS -----
 input [0:4] in;
 //----- INPUT PORTS -----
 input [0:2] sram;
 //----- INPUT PORTS -----
+input [0:2] sram_inv;
 //----- OUTPUT PORTS -----
 output [0:0] out;
 
@@ -287,12 +295,14 @@ endmodule
 // ----- Verilog module for lut4_mux -----
 module lut4_mux(in,
                 sram,
+                sram_inv,
                 out);
 //----- INPUT PORTS -----
 input [0:15] in;
 //----- INPUT PORTS -----
 input [0:3] sram;
 //----- INPUT PORTS -----
+input [0:3] sram_inv;
 //----- OUTPUT PORTS -----
 output [0:0] out;
 
@@ -304,28 +314,27 @@ output [0:0] out;
 //----- END Registered ports -----
 
 
-wire [0:0] p_invert_0_Y;
-wire [0:0] p_invert_10_Y;
-wire [0:0] p_invert_11_Y;
-wire [0:0] p_invert_12_Y;
-wire [0:0] p_invert_13_Y;
-wire [0:0] p_invert_14_Y;
-wire [0:0] p_invert_15_Y;
-wire [0:0] p_invert_1_Y;
-wire [0:0] p_invert_2_Y;
-wire [0:0] p_invert_3_Y;
-wire [0:0] p_invert_4_Y;
-wire [0:0] p_invert_5_Y;
-wire [0:0] p_invert_6_Y;
-wire [0:0] p_invert_7_Y;
-wire [0:0] p_invert_8_Y;
-wire [0:0] p_invert_9_Y;
+wire [0:0] p_buf_0_X;
+wire [0:0] p_buf_10_X;
+wire [0:0] p_buf_11_X;
+wire [0:0] p_buf_12_X;
+wire [0:0] p_buf_13_X;
+wire [0:0] p_buf_14_X;
+wire [0:0] p_buf_15_X;
+wire [0:0] p_buf_1_X;
+wire [0:0] p_buf_2_X;
+wire [0:0] p_buf_3_X;
+wire [0:0] p_buf_4_X;
+wire [0:0] p_buf_5_X;
+wire [0:0] p_buf_6_X;
+wire [0:0] p_buf_7_X;
+wire [0:0] p_buf_8_X;
+wire [0:0] p_buf_9_X;
 wire [0:0] p_mux_0_X;
 wire [0:0] p_mux_10_X;
 wire [0:0] p_mux_11_X;
 wire [0:0] p_mux_12_X;
 wire [0:0] p_mux_13_X;
-wire [0:0] p_mux_14_X;
 wire [0:0] p_mux_1_X;
 wire [0:0] p_mux_2_X;
 wire [0:0] p_mux_3_X;
@@ -341,119 +350,115 @@ wire [0:0] p_mux_9_X;
 // ----- BEGIN Local output short connections -----
 // ----- END Local output short connections -----
 
-	p_invert p_invert_0_ (
+	p_buf p_buf_0_ (
 		.A(in[0]),
-		.Y(p_invert_0_Y));
+		.X(p_buf_0_X));
 
-	p_invert p_invert_1_ (
+	p_buf p_buf_1_ (
 		.A(in[1]),
-		.Y(p_invert_1_Y));
+		.X(p_buf_1_X));
 
-	p_invert p_invert_2_ (
+	p_buf p_buf_2_ (
 		.A(in[2]),
-		.Y(p_invert_2_Y));
+		.X(p_buf_2_X));
 
-	p_invert p_invert_3_ (
+	p_buf p_buf_3_ (
 		.A(in[3]),
-		.Y(p_invert_3_Y));
+		.X(p_buf_3_X));
 
-	p_invert p_invert_4_ (
+	p_buf p_buf_4_ (
 		.A(in[4]),
-		.Y(p_invert_4_Y));
+		.X(p_buf_4_X));
 
-	p_invert p_invert_5_ (
+	p_buf p_buf_5_ (
 		.A(in[5]),
-		.Y(p_invert_5_Y));
+		.X(p_buf_5_X));
 
-	p_invert p_invert_6_ (
+	p_buf p_buf_6_ (
 		.A(in[6]),
-		.Y(p_invert_6_Y));
+		.X(p_buf_6_X));
 
-	p_invert p_invert_7_ (
+	p_buf p_buf_7_ (
 		.A(in[7]),
-		.Y(p_invert_7_Y));
+		.X(p_buf_7_X));
 
-	p_invert p_invert_8_ (
+	p_buf p_buf_8_ (
 		.A(in[8]),
-		.Y(p_invert_8_Y));
+		.X(p_buf_8_X));
 
-	p_invert p_invert_9_ (
+	p_buf p_buf_9_ (
 		.A(in[9]),
-		.Y(p_invert_9_Y));
+		.X(p_buf_9_X));
 
-	p_invert p_invert_10_ (
+	p_buf p_buf_10_ (
 		.A(in[10]),
-		.Y(p_invert_10_Y));
+		.X(p_buf_10_X));
 
-	p_invert p_invert_11_ (
+	p_buf p_buf_11_ (
 		.A(in[11]),
-		.Y(p_invert_11_Y));
+		.X(p_buf_11_X));
 
-	p_invert p_invert_12_ (
+	p_buf p_buf_12_ (
 		.A(in[12]),
-		.Y(p_invert_12_Y));
+		.X(p_buf_12_X));
 
-	p_invert p_invert_13_ (
+	p_buf p_buf_13_ (
 		.A(in[13]),
-		.Y(p_invert_13_Y));
+		.X(p_buf_13_X));
 
-	p_invert p_invert_14_ (
+	p_buf p_buf_14_ (
 		.A(in[14]),
-		.Y(p_invert_14_Y));
+		.X(p_buf_14_X));
 
-	p_invert p_invert_15_ (
+	p_buf p_buf_15_ (
 		.A(in[15]),
-		.Y(p_invert_15_Y));
-
-	p_invert p_invert_16_ (
-		.A(p_mux_14_X),
-		.Y(out));
+		.X(p_buf_15_X));
 
 	p_mux mux_l1_in_0_ (
-		.A1(p_invert_0_Y),
-		.A0(p_invert_1_Y),
+		.A1(p_buf_0_X),
+		.A0(p_buf_1_X),
 		.S(sram[0]),
 		.X(p_mux_0_X));
 
 	p_mux mux_l1_in_1_ (
-		.A1(p_invert_2_Y),
-		.A0(p_invert_3_Y),
+		.A1(p_buf_2_X),
+		.A0(p_buf_3_X),
 		.S(sram[0]),
 		.X(p_mux_1_X));
 
 	p_mux mux_l1_in_2_ (
-		.A1(p_invert_4_Y),
-		.A0(p_invert_5_Y),
+		.A1(p_buf_4_X),
+		.A0(p_buf_5_X),
 		.S(sram[0]),
 		.X(p_mux_2_X));
 
 	p_mux mux_l1_in_3_ (
-		.A1(p_invert_6_Y),
-		.A0(p_invert_7_Y),
+		.A1(p_buf_6_X),
+		.A0(p_buf_7_X),
 		.S(sram[0]),
 		.X(p_mux_3_X));
 
 	p_mux mux_l1_in_4_ (
-		.A1(p_invert_8_Y),
-		.A0(p_invert_9_Y),
+		.A1(p_buf_8_X),
+		.A0(p_buf_9_X),
 		.S(sram[0]),
 		.X(p_mux_4_X));
 
 	p_mux mux_l1_in_5_ (
-		.A1(p_invert_10_Y),
-		.A0(p_invert_11_Y),
+		.A1(p_buf_10_X),
+		.A0(p_buf_11_X),
 		.S(sram[0]),
 		.X(p_mux_5_X));
 
 	p_mux mux_l1_in_6_ (
-		.A1(p_invert_12_Y),
-		.A0(p_invert_13_Y),
+		.A1(p_buf_12_X),
+		.A0(p_buf_13_X),
 		.S(sram[0]),
 		.X(p_mux_6_X));
 
 	p_mux mux_l1_in_7_ (
-		.A1(p_invert_14_Y),
-		.A0(p_invert_15_Y),
+		.A1(p_buf_14_X),
+		.A0(p_buf_15_X),
 		.S(sram[0]),
 		.X(p_mux_7_X));
 
@@ -497,7 +502,7 @@ wire [0:0] p_mux_9_X;
 		.A1(p_mux_12_X),
 		.A0(p_mux_13_X),
 		.S(sram[3]),
-		.X(p_mux_14_X));
+		.X(out));
 
 endmodule
 // ----- END Verilog module for lut4_mux -----

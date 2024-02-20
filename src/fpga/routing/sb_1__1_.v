@@ -3,7 +3,7 @@
 //	Description: Verilog modules for Unique Switch Blocks[1][1]
 //	Author: Xifan TANG
 //	Organization: University of Utah
-//	Date: Tue Feb 20 02:10:40 2024
+//	Date: Tue Feb 20 06:37:41 2024
 //-------------------------------------------
 //----- Default net type -----
 `default_nettype none
@@ -42,6 +42,7 @@ output [0:0] ccff_tail;
 //----- END Registered ports -----
 
 
+wire [0:1] mux_left_track_1_undriven_sram_inv;
 wire [0:1] mux_tree_tapbuf_size2_0_sram;
 
 // ----- BEGIN Local short connections -----
@@ -72,6 +73,7 @@ wire [0:1] mux_tree_tapbuf_size2_0_sram;
 	mux_tree_tapbuf_size2 mux_left_track_1 (
 		.in({chany_bottom_in[2], left_bottom_grid_top_width_0_height_0_subtile_0__pin_O_0_}),
 		.sram(mux_tree_tapbuf_size2_0_sram[0:1]),
+		.sram_inv(mux_left_track_1_undriven_sram_inv[0:1]),
 		.out(chanx_left_out[0]));
 
 	mux_tree_tapbuf_size2_mem mem_left_track_1 (

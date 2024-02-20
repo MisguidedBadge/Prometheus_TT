@@ -96,4 +96,3 @@ module p_buf (X, A);
     );
 */
 endmodule
-

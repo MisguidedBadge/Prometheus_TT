@@ -3,7 +3,7 @@
 //	Description: Verilog modules for Unique Connection Blocks[1][0]
 //	Author: Xifan TANG
 //	Organization: University of Utah
-//	Date: Tue Feb 20 02:10:40 2024
+//	Date: Tue Feb 20 06:37:41 2024
 //-------------------------------------------
 //----- Default net type -----
 `default_nettype none
@@ -42,6 +42,7 @@ output [0:0] ccff_tail;
 //----- END Registered ports -----
 
 
+wire [0:1] mux_top_ipin_0_undriven_sram_inv;
 wire [0:1] mux_tree_tapbuf_size2_0_sram;
 
 // ----- BEGIN Local short connections -----
@@ -76,6 +77,7 @@ wire [0:1] mux_tree_tapbuf_size2_0_sram;
 	mux_tree_tapbuf_size2 mux_top_ipin_0 (
 		.in({chanx_left_in[0], chanx_right_in[0]}),
 		.sram(mux_tree_tapbuf_size2_0_sram[0:1]),
+		.sram_inv(mux_top_ipin_0_undriven_sram_inv[0:1]),
 		.out(bottom_grid_top_width_0_height_0_subtile_4__pin_outpad_0_));
 
 	mux_tree_tapbuf_size2_mem mem_top_ipin_0 (
