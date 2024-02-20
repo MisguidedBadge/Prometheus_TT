@@ -46,7 +46,7 @@ async def test_adder(dut):
   await ClockCycles(dut.clk, 10)
 
   #### Bistream Loading ####
-  cocotb.start_soon(Pclock.start(len(bitstream)+2))
+  cocotb.start_soon(Pclock.start(len(bitstream) + 2))
   dut._log.info("Loading Bitstream")
   for i in range(0, len(bitstream)):
     dut.ui_in[1].value = int(bitstream[i])

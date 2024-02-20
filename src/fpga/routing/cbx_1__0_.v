@@ -3,7 +3,7 @@
 //	Description: Verilog modules for Unique Connection Blocks[1][0]
 //	Author: Xifan TANG
 //	Organization: University of Utah
-//	Date: Tue Feb 20 21:08:49 2024
+//	Date: Tue Feb 20 21:20:57 2024
 //-------------------------------------------
 //----- Default net type -----
 `default_nettype none
@@ -15,13 +15,13 @@ module cbx_1__0_(prog_clk,
                  ccff_head,
                  chanx_left_out,
                  chanx_right_out,
-                 bottom_grid_top_width_0_height_0_subtile_12__pin_outpad_0_,
-                 bottom_grid_top_width_0_height_0_subtile_13__pin_outpad_0_,
                  bottom_grid_top_width_0_height_0_subtile_14__pin_outpad_0_,
                  bottom_grid_top_width_0_height_0_subtile_15__pin_outpad_0_,
                  bottom_grid_top_width_0_height_0_subtile_16__pin_outpad_0_,
                  bottom_grid_top_width_0_height_0_subtile_17__pin_outpad_0_,
                  bottom_grid_top_width_0_height_0_subtile_18__pin_outpad_0_,
+                 bottom_grid_top_width_0_height_0_subtile_19__pin_outpad_0_,
+                 bottom_grid_top_width_0_height_0_subtile_20__pin_outpad_0_,
                  ccff_tail);
 //----- GLOBAL PORTS -----
 input [0:0] prog_clk;
@@ -36,10 +36,6 @@ output [0:3] chanx_left_out;
 //----- OUTPUT PORTS -----
 output [0:3] chanx_right_out;
 //----- OUTPUT PORTS -----
-output [0:0] bottom_grid_top_width_0_height_0_subtile_12__pin_outpad_0_;
-//----- OUTPUT PORTS -----
-output [0:0] bottom_grid_top_width_0_height_0_subtile_13__pin_outpad_0_;
-//----- OUTPUT PORTS -----
 output [0:0] bottom_grid_top_width_0_height_0_subtile_14__pin_outpad_0_;
 //----- OUTPUT PORTS -----
 output [0:0] bottom_grid_top_width_0_height_0_subtile_15__pin_outpad_0_;
@@ -49,6 +45,10 @@ output [0:0] bottom_grid_top_width_0_height_0_subtile_16__pin_outpad_0_;
 output [0:0] bottom_grid_top_width_0_height_0_subtile_17__pin_outpad_0_;
 //----- OUTPUT PORTS -----
 output [0:0] bottom_grid_top_width_0_height_0_subtile_18__pin_outpad_0_;
+//----- OUTPUT PORTS -----
+output [0:0] bottom_grid_top_width_0_height_0_subtile_19__pin_outpad_0_;
+//----- OUTPUT PORTS -----
+output [0:0] bottom_grid_top_width_0_height_0_subtile_20__pin_outpad_0_;
 //----- OUTPUT PORTS -----
 output [0:0] ccff_tail;
 
@@ -114,37 +114,37 @@ wire [0:0] mux_tree_tapbuf_size2_mem_5_ccff_tail;
 	mux_tree_tapbuf_size2 mux_top_ipin_0 (
 		.in({chanx_left_in[0], chanx_right_in[0]}),
 		.sram(mux_tree_tapbuf_size2_0_sram[0:1]),
-		.out(bottom_grid_top_width_0_height_0_subtile_12__pin_outpad_0_));
+		.out(bottom_grid_top_width_0_height_0_subtile_14__pin_outpad_0_));
 
 	mux_tree_tapbuf_size2 mux_top_ipin_1 (
 		.in({chanx_left_in[1], chanx_right_in[1]}),
 		.sram(mux_tree_tapbuf_size2_1_sram[0:1]),
-		.out(bottom_grid_top_width_0_height_0_subtile_13__pin_outpad_0_));
+		.out(bottom_grid_top_width_0_height_0_subtile_15__pin_outpad_0_));
 
 	mux_tree_tapbuf_size2 mux_top_ipin_2 (
 		.in({chanx_left_in[2], chanx_right_in[2]}),
 		.sram(mux_tree_tapbuf_size2_2_sram[0:1]),
-		.out(bottom_grid_top_width_0_height_0_subtile_14__pin_outpad_0_));
+		.out(bottom_grid_top_width_0_height_0_subtile_16__pin_outpad_0_));
 
 	mux_tree_tapbuf_size2 mux_top_ipin_3 (
 		.in({chanx_left_in[3], chanx_right_in[3]}),
 		.sram(mux_tree_tapbuf_size2_3_sram[0:1]),
-		.out(bottom_grid_top_width_0_height_0_subtile_15__pin_outpad_0_));
+		.out(bottom_grid_top_width_0_height_0_subtile_17__pin_outpad_0_));
 
 	mux_tree_tapbuf_size2 mux_top_ipin_4 (
 		.in({chanx_left_in[0], chanx_right_in[0]}),
 		.sram(mux_tree_tapbuf_size2_4_sram[0:1]),
-		.out(bottom_grid_top_width_0_height_0_subtile_16__pin_outpad_0_));
+		.out(bottom_grid_top_width_0_height_0_subtile_18__pin_outpad_0_));
 
 	mux_tree_tapbuf_size2 mux_top_ipin_5 (
 		.in({chanx_left_in[1], chanx_right_in[1]}),
 		.sram(mux_tree_tapbuf_size2_5_sram[0:1]),
-		.out(bottom_grid_top_width_0_height_0_subtile_17__pin_outpad_0_));
+		.out(bottom_grid_top_width_0_height_0_subtile_19__pin_outpad_0_));
 
 	mux_tree_tapbuf_size2 mux_top_ipin_6 (
 		.in({chanx_left_in[2], chanx_right_in[2]}),
 		.sram(mux_tree_tapbuf_size2_6_sram[0:1]),
-		.out(bottom_grid_top_width_0_height_0_subtile_18__pin_outpad_0_));
+		.out(bottom_grid_top_width_0_height_0_subtile_20__pin_outpad_0_));
 
 	mux_tree_tapbuf_size2_mem mem_top_ipin_0 (
 		.prog_clk(prog_clk),

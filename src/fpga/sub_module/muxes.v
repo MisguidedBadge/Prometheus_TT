@@ -3,7 +3,7 @@
 //	Description: Multiplexers
 //	Author: Xifan TANG
 //	Organization: University of Utah
-//	Date: Tue Feb 20 21:08:49 2024
+//	Date: Tue Feb 20 21:20:57 2024
 //-------------------------------------------
 //----- Default net type -----
 `default_nettype none
@@ -162,6 +162,112 @@ wire [0:0] p_mux_3_X;
 
 endmodule
 // ----- END Verilog module for mux_tree_tapbuf_size4 -----
+
+//----- Default net type -----
+`default_nettype wire
+
+
+
+
+//----- Default net type -----
+`default_nettype none
+
+// ----- Verilog module for mux_tree_tapbuf_size5 -----
+module mux_tree_tapbuf_size5(in,
+                             sram,
+                             out);
+//----- INPUT PORTS -----
+input [0:4] in;
+//----- INPUT PORTS -----
+input [0:2] sram;
+//----- INPUT PORTS -----
+//----- OUTPUT PORTS -----
+output [0:0] out;
+
+//----- BEGIN wire-connection ports -----
+//----- END wire-connection ports -----
+
+
+//----- BEGIN Registered ports -----
+//----- END Registered ports -----
+
+
+wire [0:0] const1_0_const1;
+wire [0:0] p_buf_0_X;
+wire [0:0] p_buf_1_X;
+wire [0:0] p_buf_2_X;
+wire [0:0] p_buf_3_X;
+wire [0:0] p_buf_4_X;
+wire [0:0] p_mux_0_X;
+wire [0:0] p_mux_1_X;
+wire [0:0] p_mux_2_X;
+wire [0:0] p_mux_3_X;
+wire [0:0] p_mux_4_X;
+
+// ----- BEGIN Local short connections -----
+// ----- END Local short connections -----
+// ----- BEGIN Local output short connections -----
+// ----- END Local output short connections -----
+
+	p_buf p_buf_0_ (
+		.A(in[0]),
+		.X(p_buf_0_X));
+
+	p_buf p_buf_1_ (
+		.A(in[1]),
+		.X(p_buf_1_X));
+
+	p_buf p_buf_2_ (
+		.A(in[2]),
+		.X(p_buf_2_X));
+
+	p_buf p_buf_3_ (
+		.A(in[3]),
+		.X(p_buf_3_X));
+
+	p_buf p_buf_4_ (
+		.A(in[4]),
+		.X(p_buf_4_X));
+
+	p_buf p_buf_5_ (
+		.A(p_mux_4_X),
+		.X(out));
+
+	const1 const1_0_ (
+		.const1(const1_0_const1));
+
+	p_mux mux_l1_in_0_ (
+		.A1(p_buf_0_X),
+		.A0(p_buf_1_X),
+		.S(sram[0]),
+		.X(p_mux_0_X));
+
+	p_mux mux_l1_in_1_ (
+		.A1(p_buf_2_X),
+		.A0(p_buf_3_X),
+		.S(sram[0]),
+		.X(p_mux_1_X));
+
+	p_mux mux_l2_in_0_ (
+		.A1(p_mux_0_X),
+		.A0(p_mux_1_X),
+		.S(sram[1]),
+		.X(p_mux_2_X));
+
+	p_mux mux_l2_in_1_ (
+		.A1(p_buf_4_X),
+		.A0(const1_0_const1),
+		.S(sram[1]),
+		.X(p_mux_3_X));
+
+	p_mux mux_l3_in_0_ (
+		.A1(p_mux_2_X),
+		.A0(p_mux_3_X),
+		.S(sram[2]),
+		.X(p_mux_4_X));
+
+endmodule
+// ----- END Verilog module for mux_tree_tapbuf_size5 -----
 
 //----- Default net type -----
 `default_nettype wire

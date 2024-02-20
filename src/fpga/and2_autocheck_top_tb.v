@@ -3,7 +3,7 @@
 //	Description: FPGA Verilog full testbench for top-level netlist of design: and2
 //	Author: Xifan TANG
 //	Organization: University of Utah
-//	Date: Tue Feb 20 21:08:49 2024
+//	Date: Tue Feb 20 21:20:57 2024
 //-------------------------------------------
 //----- Default net type -----
 `default_nettype none
@@ -15,7 +15,7 @@ wire [0:0] reset;
 wire [0:0] clk;
 
 // ----- Local wires for I/Os of FPGA fabric -----
-wire [0:11] gfpga_pad_GPIN_PAD;
+wire [0:13] gfpga_pad_GPIN_PAD;
 wire [0:6] gfpga_pad_GPOUT_PAD;
 
 
@@ -135,7 +135,7 @@ initial
 		.prog_clk(prog_clk[0]),
 		.reset(reset[0]),
 		.clk(clk[0]),
-		.gfpga_pad_GPIN_PAD(gfpga_pad_GPIN_PAD[0:11]),
+		.gfpga_pad_GPIN_PAD(gfpga_pad_GPIN_PAD[0:13]),
 		.gfpga_pad_GPOUT_PAD(gfpga_pad_GPOUT_PAD[0:6]),
 		.ccff_head(ccff_head[0]),
 		.ccff_tail(ccff_tail[0]));
@@ -161,6 +161,8 @@ initial
 	assign gfpga_pad_GPIN_PAD[9] = 1'b0;
 	assign gfpga_pad_GPIN_PAD[10] = 1'b0;
 	assign gfpga_pad_GPIN_PAD[11] = 1'b0;
+	assign gfpga_pad_GPIN_PAD[12] = 1'b0;
+	assign gfpga_pad_GPIN_PAD[13] = 1'b0;
 
 	assign gfpga_pad_GPOUT_PAD[1] = 1'b0;
 	assign gfpga_pad_GPOUT_PAD[2] = 1'b0;
@@ -3726,6 +3728,12 @@ end
 // ------ END driver initialization -----
 // ------ BEGIN driver initialization -----
 	initial begin
+		$deposit(FPGA_DUT.sb_0__0_.mux_right_track_0.mux_l1_in_1_.A1, $random % 2 ? 1'b1 : 1'b0);
+		$deposit(FPGA_DUT.sb_0__0_.mux_right_track_0.mux_l1_in_1_.A0, $random % 2 ? 1'b1 : 1'b0);
+	end
+// ------ END driver initialization -----
+// ------ BEGIN driver initialization -----
+	initial begin
 		$deposit(FPGA_DUT.sb_0__0_.mux_right_track_0.mux_l2_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
 		$deposit(FPGA_DUT.sb_0__0_.mux_right_track_0.mux_l2_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
 	end
@@ -3746,6 +3754,12 @@ end
 	initial begin
 		$deposit(FPGA_DUT.sb_0__0_.mux_right_track_2.mux_l1_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
 		$deposit(FPGA_DUT.sb_0__0_.mux_right_track_2.mux_l1_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
+	end
+// ------ END driver initialization -----
+// ------ BEGIN driver initialization -----
+	initial begin
+		$deposit(FPGA_DUT.sb_0__0_.mux_right_track_2.mux_l1_in_1_.A1, $random % 2 ? 1'b1 : 1'b0);
+		$deposit(FPGA_DUT.sb_0__0_.mux_right_track_2.mux_l1_in_1_.A0, $random % 2 ? 1'b1 : 1'b0);
 	end
 // ------ END driver initialization -----
 // ------ BEGIN driver initialization -----
@@ -3990,6 +4004,12 @@ end
 // ------ END driver initialization -----
 // ------ BEGIN driver initialization -----
 	initial begin
+		$deposit(FPGA_DUT.sb_1__0_.mux_left_track_1.mux_l1_in_1_.A1, $random % 2 ? 1'b1 : 1'b0);
+		$deposit(FPGA_DUT.sb_1__0_.mux_left_track_1.mux_l1_in_1_.A0, $random % 2 ? 1'b1 : 1'b0);
+	end
+// ------ END driver initialization -----
+// ------ BEGIN driver initialization -----
+	initial begin
 		$deposit(FPGA_DUT.sb_1__0_.mux_left_track_1.mux_l2_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
 		$deposit(FPGA_DUT.sb_1__0_.mux_left_track_1.mux_l2_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
 	end
@@ -4010,6 +4030,12 @@ end
 	initial begin
 		$deposit(FPGA_DUT.sb_1__0_.mux_left_track_3.mux_l1_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
 		$deposit(FPGA_DUT.sb_1__0_.mux_left_track_3.mux_l1_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
+	end
+// ------ END driver initialization -----
+// ------ BEGIN driver initialization -----
+	initial begin
+		$deposit(FPGA_DUT.sb_1__0_.mux_left_track_3.mux_l1_in_1_.A1, $random % 2 ? 1'b1 : 1'b0);
+		$deposit(FPGA_DUT.sb_1__0_.mux_left_track_3.mux_l1_in_1_.A0, $random % 2 ? 1'b1 : 1'b0);
 	end
 // ------ END driver initialization -----
 // ------ BEGIN driver initialization -----
