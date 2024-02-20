@@ -36,39 +36,51 @@ async def test_adder(dut):
   dut.rst_n.value = 1
   await ClockCycles(dut.clk, 10)
   dut.rst_n.value = 0
+  await ClockCycles(dut.clk, 10)
 
   #### Bistream Loading ####
   cocotb.start_soon(Pclock.start(len(bitstream)))
   dut._log.info("Loading Bitstream")
   for i in range(0, len(bitstream)):
-    await ClockCycles(dut.clk, 1)
     dut.ui_in[1].value = int(bitstream[i])
+    await ClockCycles(dut.clk, 1)
   #### And Gate ####
   dut.ui_in[1].value = 0
-  await ClockCycles(dut.clk, 10)
+  await ClockCycles(dut.clk, 1)
   dut._log.info("And Gate Off")
   dut.ui_in[2].value = 0
   dut.ui_in[3].value = 0
   dut.ui_in[4].value = 0
   dut.ui_in[5].value = 1
-  await ClockCycles(dut.clk, 10)
+
+  await ClockCycles(dut.clk, 1)
+  assert dut.uo_out[0].value == 0, "And Gate Failed"
+  await ClockCycles(dut.clk, 1)
   dut._log.info("And Gate On")
-  dut.ui_in[2].value = 0
-  dut.ui_in[3].value = 0
-  dut.ui_in[4].value = 0
-  dut.ui_in[5].value = 0
-  await ClockCycles(dut.clk, 10)
+  dut.ui_in[2].value = 1
+  dut.ui_in[3].value = 1
+  dut.ui_in[4].value = 1
+  dut.ui_in[5].value = 1
+  await ClockCycles(dut.clk, 1)
+  assert dut.uo_out[0].value == 1, "And Gate Failed"
+  await ClockCycles(dut.clk, 1)
+
   dut._log.info("And Gate Off")
   dut.ui_in[2].value = 0
-  dut.ui_in[3].value = 0
-  dut.ui_in[4].value = 0
+  dut.ui_in[3].value = 1
+  dut.ui_in[4].value = 1
   dut.ui_in[5].value = 1
-  await ClockCycles(dut.clk, 10)
+  await ClockCycles(dut.clk, 1)
+  assert dut.uo_out[0].value == 0, "And Gate Failed"
+  await ClockCycles(dut.clk, 1)
+
+
+
   # Set the input values, wait one clock cycle, and check the output
   dut._log.info("Test")
   #dut.ui_in.value[1:7] = 20
   #dut.uio_in.value = 30
 
-  await ClockCycles(dut.clk, 10000)
+  # This takes time to propagate through the LUT
+  await ClockCycles(dut.clk, 1000)
 
-  assert dut.uo_out[1].value == 1
