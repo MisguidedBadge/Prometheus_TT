@@ -24,9 +24,9 @@ assign prog_clk = ui_in[0];
 assign ccff_head = ui_in[1];
 assign uo_out[4] = ccff_tail;
 
-wire [9:0] fpga_io_in;
+wire [11:0] fpga_io_in;
 
-wire [3:0] fpga_io_out;
+wire [7:0] fpga_io_out;
 assign uo_out[7:0] = fpga_io_out;
 // 8 + 4 = 12
 assign fpga_io_in = {ui_in[5:2], uio_in[7:0]};
