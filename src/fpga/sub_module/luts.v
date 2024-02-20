@@ -3,7 +3,7 @@
 //	Description: Look-Up Tables
 //	Author: Xifan TANG
 //	Organization: University of Utah
-//	Date: Mon Feb 19 06:13:22 2024
+//	Date: Tue Feb 20 01:23:35 2024
 //-------------------------------------------
 //----- Default net type -----
 `default_nettype none
@@ -38,7 +38,8 @@ wire [0:0] sky130_fd_sc_hd__buf_4_3_X;
 // ----- BEGIN Local short connections -----
 // ----- END Local short connections -----
 // ----- BEGIN Local output short connections -----
-// ----- END Local output short connections ----
+// ----- END Local output short connections -----
+
 	sky130_fd_sc_hd__buf_4 sky130_fd_sc_hd__buf_4_0_ (
 		.A(in[0]),
 		.X(sky130_fd_sc_hd__buf_4_0_X));
