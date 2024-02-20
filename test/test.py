@@ -24,13 +24,21 @@ async def test_adder(dut):
   dut._log.info("Reset")
   dut.ena.value = 1
   ### configuration chain ###s
-  dut.ui_in[1].value = 1
+  dut.ui_in[1].value = 0
   dut.ui_in[2].value = 0
   dut.ui_in[3].value = 0
   dut.ui_in[4].value = 0
   dut.ui_in[5].value = 0
   dut.ui_in[6].value = 0
   dut.ui_in[7].value = 0
+  dut.uio_in[0].value = 0
+  dut.uio_in[1].value = 0
+  dut.uio_in[2].value = 0
+  dut.uio_in[3].value = 0
+  dut.uio_in[4].value = 0
+  dut.uio_in[5].value = 0
+  dut.uio_in[6].value = 0
+  dut.uio_in[7].value = 0
   #dut.ui_in[7:1].value = 0
   #dut.uio_in.value = 0
   dut.rst_n.value = 1
@@ -51,27 +59,42 @@ async def test_adder(dut):
   dut.ui_in[2].value = 0
   dut.ui_in[3].value = 0
   dut.ui_in[4].value = 0
-  dut.ui_in[5].value = 1
+  dut.ui_in[5].value = 0
+  dut.ui_in[6].value = 0
+  dut.uio_in[0].value = 0
+  dut.uio_in[1].value = 0
+  dut.uio_in[2].value = 0
+  dut.uio_in[3].value = 0
 
   await ClockCycles(dut.clk, 1)
-  assert dut.uo_out[0].value == 0, "And Gate Failed"
+  assert dut.uo_out[3].value == 0, "And Gate Failed"
   await ClockCycles(dut.clk, 1)
   dut._log.info("And Gate On")
-  dut.ui_in[2].value = 1
-  dut.ui_in[3].value = 1
-  dut.ui_in[4].value = 1
-  dut.ui_in[5].value = 1
+  dut.ui_in[2].value = 0
+  dut.ui_in[3].value = 0
+  dut.ui_in[4].value = 0
+  dut.ui_in[5].value = 0
+  dut.ui_in[6].value = 0
+  dut.uio_in[0].value = 1
+  dut.uio_in[1].value = 1
+  dut.uio_in[2].value = 0
+  dut.uio_in[3].value = 0
   await ClockCycles(dut.clk, 1)
-  assert dut.uo_out[0].value == 1, "And Gate Failed"
+  assert dut.uo_out[3].value == 1, "And Gate Failed"
   await ClockCycles(dut.clk, 1)
 
   dut._log.info("And Gate Off")
-  dut.ui_in[2].value = 0
-  dut.ui_in[3].value = 1
-  dut.ui_in[4].value = 1
-  dut.ui_in[5].value = 1
+  dut.ui_in[2].value = 1
+  dut.ui_in[3].value = 0
+  dut.ui_in[4].value = 0
+  dut.ui_in[5].value = 0
+  dut.ui_in[6].value = 0
+  dut.uio_in[0].value = 0
+  dut.uio_in[1].value = 0
+  dut.uio_in[2].value = 0
+  dut.uio_in[3].value = 0
   await ClockCycles(dut.clk, 1)
-  assert dut.uo_out[0].value == 0, "And Gate Failed"
+  assert dut.uo_out[3].value == 0, "And Gate Failed"
   await ClockCycles(dut.clk, 1)
 
 

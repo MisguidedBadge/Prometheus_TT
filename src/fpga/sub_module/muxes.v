@@ -3,63 +3,8 @@
 //	Description: Multiplexers
 //	Author: Xifan TANG
 //	Organization: University of Utah
-//	Date: Tue Feb 20 06:37:41 2024
+//	Date: Tue Feb 20 16:36:39 2024
 //-------------------------------------------
-//----- Default net type -----
-`default_nettype none
-
-// ----- Verilog module for mux_tree_tapbuf_size2 -----
-module mux_tree_tapbuf_size2(in,
-                             sram,
-                             out);
-//----- INPUT PORTS -----
-input [0:1] in;
-//----- INPUT PORTS -----
-input [0:1] sram;
-//----- INPUT PORTS -----
-//----- OUTPUT PORTS -----
-output [0:0] out;
-
-//----- BEGIN wire-connection ports -----
-//----- END wire-connection ports -----
-
-
-//----- BEGIN Registered ports -----
-//----- END Registered ports -----
-
-
-wire [0:0] const1_0_const1;
-wire [0:0] p_mux_0_X;
-
-// ----- BEGIN Local short connections -----
-// ----- END Local short connections -----
-// ----- BEGIN Local output short connections -----
-// ----- END Local output short connections -----
-
-	const1 const1_0_ (
-		.const1(const1_0_const1));
-
-	p_mux mux_l1_in_0_ (
-		.A1(in[0]),
-		.A0(in[1]),
-		.S(sram[0]),
-		.X(p_mux_0_X));
-
-	p_mux mux_l2_in_0_ (
-		.A1(p_mux_0_X),
-		.A0(const1_0_const1),
-		.S(sram[1]),
-		.X(out));
-
-endmodule
-// ----- END Verilog module for mux_tree_tapbuf_size2 -----
-
-//----- Default net type -----
-`default_nettype wire
-
-
-
-
 //----- Default net type -----
 `default_nettype none
 
@@ -146,6 +91,173 @@ endmodule
 //----- Default net type -----
 `default_nettype none
 
+// ----- Verilog module for mux_tree_tapbuf_size18 -----
+module mux_tree_tapbuf_size18(in,
+                              sram,
+                              out);
+//----- INPUT PORTS -----
+input [0:17] in;
+//----- INPUT PORTS -----
+input [0:4] sram;
+//----- INPUT PORTS -----
+//----- OUTPUT PORTS -----
+output [0:0] out;
+
+//----- BEGIN wire-connection ports -----
+//----- END wire-connection ports -----
+
+
+//----- BEGIN Registered ports -----
+//----- END Registered ports -----
+
+
+wire [0:0] const1_0_const1;
+wire [0:0] p_mux_0_X;
+wire [0:0] p_mux_10_X;
+wire [0:0] p_mux_11_X;
+wire [0:0] p_mux_12_X;
+wire [0:0] p_mux_13_X;
+wire [0:0] p_mux_14_X;
+wire [0:0] p_mux_15_X;
+wire [0:0] p_mux_16_X;
+wire [0:0] p_mux_1_X;
+wire [0:0] p_mux_2_X;
+wire [0:0] p_mux_3_X;
+wire [0:0] p_mux_4_X;
+wire [0:0] p_mux_5_X;
+wire [0:0] p_mux_6_X;
+wire [0:0] p_mux_7_X;
+wire [0:0] p_mux_8_X;
+wire [0:0] p_mux_9_X;
+
+// ----- BEGIN Local short connections -----
+// ----- END Local short connections -----
+// ----- BEGIN Local output short connections -----
+// ----- END Local output short connections -----
+
+	const1 const1_0_ (
+		.const1(const1_0_const1));
+
+	p_mux mux_l1_in_0_ (
+		.A1(in[0]),
+		.A0(in[1]),
+		.S(sram[0]),
+		.X(p_mux_0_X));
+
+	p_mux mux_l1_in_1_ (
+		.A1(in[2]),
+		.A0(in[3]),
+		.S(sram[0]),
+		.X(p_mux_1_X));
+
+	p_mux mux_l1_in_2_ (
+		.A1(in[4]),
+		.A0(in[5]),
+		.S(sram[0]),
+		.X(p_mux_2_X));
+
+	p_mux mux_l2_in_0_ (
+		.A1(p_mux_0_X),
+		.A0(p_mux_1_X),
+		.S(sram[1]),
+		.X(p_mux_3_X));
+
+	p_mux mux_l2_in_1_ (
+		.A1(p_mux_2_X),
+		.A0(in[6]),
+		.S(sram[1]),
+		.X(p_mux_4_X));
+
+	p_mux mux_l2_in_2_ (
+		.A1(in[7]),
+		.A0(in[8]),
+		.S(sram[1]),
+		.X(p_mux_5_X));
+
+	p_mux mux_l2_in_3_ (
+		.A1(in[9]),
+		.A0(in[10]),
+		.S(sram[1]),
+		.X(p_mux_6_X));
+
+	p_mux mux_l2_in_4_ (
+		.A1(in[11]),
+		.A0(in[12]),
+		.S(sram[1]),
+		.X(p_mux_7_X));
+
+	p_mux mux_l2_in_5_ (
+		.A1(in[13]),
+		.A0(in[14]),
+		.S(sram[1]),
+		.X(p_mux_8_X));
+
+	p_mux mux_l2_in_6_ (
+		.A1(in[15]),
+		.A0(in[16]),
+		.S(sram[1]),
+		.X(p_mux_9_X));
+
+	p_mux mux_l2_in_7_ (
+		.A1(in[17]),
+		.A0(const1_0_const1),
+		.S(sram[1]),
+		.X(p_mux_10_X));
+
+	p_mux mux_l3_in_0_ (
+		.A1(p_mux_3_X),
+		.A0(p_mux_4_X),
+		.S(sram[2]),
+		.X(p_mux_11_X));
+
+	p_mux mux_l3_in_1_ (
+		.A1(p_mux_5_X),
+		.A0(p_mux_6_X),
+		.S(sram[2]),
+		.X(p_mux_12_X));
+
+	p_mux mux_l3_in_2_ (
+		.A1(p_mux_7_X),
+		.A0(p_mux_8_X),
+		.S(sram[2]),
+		.X(p_mux_13_X));
+
+	p_mux mux_l3_in_3_ (
+		.A1(p_mux_9_X),
+		.A0(p_mux_10_X),
+		.S(sram[2]),
+		.X(p_mux_14_X));
+
+	p_mux mux_l4_in_0_ (
+		.A1(p_mux_11_X),
+		.A0(p_mux_12_X),
+		.S(sram[3]),
+		.X(p_mux_15_X));
+
+	p_mux mux_l4_in_1_ (
+		.A1(p_mux_13_X),
+		.A0(p_mux_14_X),
+		.S(sram[3]),
+		.X(p_mux_16_X));
+
+	p_mux mux_l5_in_0_ (
+		.A1(p_mux_15_X),
+		.A0(p_mux_16_X),
+		.S(sram[4]),
+		.X(out));
+
+endmodule
+// ----- END Verilog module for mux_tree_tapbuf_size18 -----
+
+//----- Default net type -----
+`default_nettype wire
+
+
+
+
+//----- Default net type -----
+`default_nettype none
+
 // ----- Verilog module for mux_tree_tapbuf_size3 -----
 module mux_tree_tapbuf_size3(in,
                              sram,
@@ -208,14 +320,14 @@ endmodule
 //----- Default net type -----
 `default_nettype none
 
-// ----- Verilog module for mux_tree_size5 -----
-module mux_tree_size5(in,
-                      sram,
-                      out);
+// ----- Verilog module for mux_tree_tapbuf_size2 -----
+module mux_tree_tapbuf_size2(in,
+                             sram,
+                             out);
 //----- INPUT PORTS -----
-input [0:4] in;
+input [0:1] in;
 //----- INPUT PORTS -----
-input [0:2] sram;
+input [0:1] sram;
 //----- INPUT PORTS -----
 //----- OUTPUT PORTS -----
 output [0:0] out;
@@ -230,9 +342,73 @@ output [0:0] out;
 
 wire [0:0] const1_0_const1;
 wire [0:0] p_mux_0_X;
+
+// ----- BEGIN Local short connections -----
+// ----- END Local short connections -----
+// ----- BEGIN Local output short connections -----
+// ----- END Local output short connections -----
+
+	const1 const1_0_ (
+		.const1(const1_0_const1));
+
+	p_mux mux_l1_in_0_ (
+		.A1(in[0]),
+		.A0(in[1]),
+		.S(sram[0]),
+		.X(p_mux_0_X));
+
+	p_mux mux_l2_in_0_ (
+		.A1(p_mux_0_X),
+		.A0(const1_0_const1),
+		.S(sram[1]),
+		.X(out));
+
+endmodule
+// ----- END Verilog module for mux_tree_tapbuf_size2 -----
+
+//----- Default net type -----
+`default_nettype wire
+
+
+
+
+//----- Default net type -----
+`default_nettype none
+
+// ----- Verilog module for mux_tree_size14 -----
+module mux_tree_size14(in,
+                       sram,
+                       out);
+//----- INPUT PORTS -----
+input [0:13] in;
+//----- INPUT PORTS -----
+input [0:3] sram;
+//----- INPUT PORTS -----
+//----- OUTPUT PORTS -----
+output [0:0] out;
+
+//----- BEGIN wire-connection ports -----
+//----- END wire-connection ports -----
+
+
+//----- BEGIN Registered ports -----
+//----- END Registered ports -----
+
+
+wire [0:0] const1_0_const1;
+wire [0:0] p_mux_0_X;
+wire [0:0] p_mux_10_X;
+wire [0:0] p_mux_11_X;
+wire [0:0] p_mux_12_X;
 wire [0:0] p_mux_1_X;
 wire [0:0] p_mux_2_X;
 wire [0:0] p_mux_3_X;
+wire [0:0] p_mux_4_X;
+wire [0:0] p_mux_5_X;
+wire [0:0] p_mux_6_X;
+wire [0:0] p_mux_7_X;
+wire [0:0] p_mux_8_X;
+wire [0:0] p_mux_9_X;
 
 // ----- BEGIN Local short connections -----
 // ----- END Local short connections -----
@@ -254,26 +430,80 @@ wire [0:0] p_mux_3_X;
 		.S(sram[0]),
 		.X(p_mux_1_X));
 
+	p_mux mux_l1_in_2_ (
+		.A1(in[4]),
+		.A0(in[5]),
+		.S(sram[0]),
+		.X(p_mux_2_X));
+
+	p_mux mux_l1_in_3_ (
+		.A1(in[6]),
+		.A0(in[7]),
+		.S(sram[0]),
+		.X(p_mux_3_X));
+
+	p_mux mux_l1_in_4_ (
+		.A1(in[8]),
+		.A0(in[9]),
+		.S(sram[0]),
+		.X(p_mux_4_X));
+
+	p_mux mux_l1_in_5_ (
+		.A1(in[10]),
+		.A0(in[11]),
+		.S(sram[0]),
+		.X(p_mux_5_X));
+
+	p_mux mux_l1_in_6_ (
+		.A1(in[12]),
+		.A0(in[13]),
+		.S(sram[0]),
+		.X(p_mux_6_X));
+
 	p_mux mux_l2_in_0_ (
 		.A1(p_mux_0_X),
 		.A0(p_mux_1_X),
 		.S(sram[1]),
-		.X(p_mux_2_X));
+		.X(p_mux_7_X));
 
 	p_mux mux_l2_in_1_ (
-		.A1(in[4]),
-		.A0(const1_0_const1),
-		.S(sram[1]),
-		.X(p_mux_3_X));
-
-	p_mux mux_l3_in_0_ (
 		.A1(p_mux_2_X),
 		.A0(p_mux_3_X),
+		.S(sram[1]),
+		.X(p_mux_8_X));
+
+	p_mux mux_l2_in_2_ (
+		.A1(p_mux_4_X),
+		.A0(p_mux_5_X),
+		.S(sram[1]),
+		.X(p_mux_9_X));
+
+	p_mux mux_l2_in_3_ (
+		.A1(p_mux_6_X),
+		.A0(const1_0_const1),
+		.S(sram[1]),
+		.X(p_mux_10_X));
+
+	p_mux mux_l3_in_0_ (
+		.A1(p_mux_7_X),
+		.A0(p_mux_8_X),
 		.S(sram[2]),
+		.X(p_mux_11_X));
+
+	p_mux mux_l3_in_1_ (
+		.A1(p_mux_9_X),
+		.A0(p_mux_10_X),
+		.S(sram[2]),
+		.X(p_mux_12_X));
+
+	p_mux mux_l4_in_0_ (
+		.A1(p_mux_11_X),
+		.A0(p_mux_12_X),
+		.S(sram[3]),
 		.X(out));
 
 endmodule
-// ----- END Verilog module for mux_tree_size5 -----
+// ----- END Verilog module for mux_tree_size14 -----
 
 //----- Default net type -----
 `default_nettype wire

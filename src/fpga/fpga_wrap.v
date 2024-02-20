@@ -24,12 +24,12 @@ assign prog_clk = ui_in[0];
 assign ccff_head = ui_in[1];
 assign uo_out[1] = ccff_tail;
 
-wire [3:0] fpga_io_in;
+wire [9:0] fpga_io_in;
 
-wire [0:0] fpga_io_out;
-assign uo_out[0] = fpga_io_out;
-assign fpga_io_in = ui_in[5:2];
-assign uo_out[7:2] = 'b0;
+wire [3:0] fpga_io_out;
+assign uo_out[3:0] = fpga_io_out;
+assign fpga_io_in = {ui_in[5:2], uio_in[3:0]};
+assign uo_out[7:4] = 'b0;
 
 assign uio_oe = 0;
 assign uio_out = 0;

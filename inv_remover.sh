@@ -1,5 +1,6 @@
 #!/bin/bash
 # remove undriven stuff produced by OpenFPGA!
+# grep -Rnw './' -e 'sram_inv'
 sed -i '/sram_inv/d' src/fpga/sub_module/luts.v 
 sed -i '/sram_inv/d' src/fpga/lb/logical_tile_clb_mode_default__fle_mode_n1_lut4__ble4.v
 sed -i '/sram_inv/d' src/fpga/lb/logical_tile_clb_mode_default__fle_mode_n1_lut4__ble4_mode_default__lut4.v 

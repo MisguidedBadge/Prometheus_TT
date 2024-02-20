@@ -3,7 +3,7 @@
 //	Description: Verilog modules for pb_type: io_input
 //	Author: Xifan TANG
 //	Organization: University of Utah
-//	Date: Tue Feb 20 06:37:41 2024
+//	Date: Tue Feb 20 16:36:39 2024
 //-------------------------------------------
 // ----- BEGIN Physical programmable logic block Verilog module: io_input -----
 //----- Default net type -----
