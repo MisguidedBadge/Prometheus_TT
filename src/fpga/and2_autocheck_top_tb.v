@@ -3,7 +3,7 @@
 //	Description: FPGA Verilog full testbench for top-level netlist of design: and2
 //	Author: Xifan TANG
 //	Organization: University of Utah
-//	Date: Tue Feb 20 20:44:13 2024
+//	Date: Tue Feb 20 21:08:49 2024
 //-------------------------------------------
 //----- Default net type -----
 `default_nettype none
@@ -16,7 +16,7 @@ wire [0:0] clk;
 
 // ----- Local wires for I/Os of FPGA fabric -----
 wire [0:11] gfpga_pad_GPIN_PAD;
-wire [0:7] gfpga_pad_GPOUT_PAD;
+wire [0:6] gfpga_pad_GPOUT_PAD;
 
 
 
@@ -49,7 +49,7 @@ wire [0:0] ccff_tail;
 
 // ----- Error counter: Deposit an error for config_done signal is not raised at the beginning -----
 	integer nb_error= 1;
-// ----- Number of clock cycles in configuration phase: 453 -----
+// ----- Number of clock cycles in configuration phase: 451 -----
 // ----- Begin configuration done signal generation -----
 initial
 	begin
@@ -136,7 +136,7 @@ initial
 		.reset(reset[0]),
 		.clk(clk[0]),
 		.gfpga_pad_GPIN_PAD(gfpga_pad_GPIN_PAD[0:11]),
-		.gfpga_pad_GPOUT_PAD(gfpga_pad_GPOUT_PAD[0:7]),
+		.gfpga_pad_GPOUT_PAD(gfpga_pad_GPOUT_PAD[0:6]),
 		.ccff_head(ccff_head[0]),
 		.ccff_tail(ccff_tail[0]));
 
@@ -168,7 +168,6 @@ initial
 	assign gfpga_pad_GPOUT_PAD[4] = 1'b0;
 	assign gfpga_pad_GPOUT_PAD[5] = 1'b0;
 	assign gfpga_pad_GPOUT_PAD[6] = 1'b0;
-	assign gfpga_pad_GPOUT_PAD[7] = 1'b0;
 
 // ----- Reference Benchmark Instanication -------
 	and2 REF_DUT(
@@ -179,7 +178,7 @@ initial
 // ----- End reference Benchmark Instanication -------
 
 // ----- Begin bitstream loading during configuration phase -----
-`define BITSTREAM_LENGTH 452
+`define BITSTREAM_LENGTH 450
 `define BITSTREAM_WIDTH 1
 // ----- Virtual memory to store the bitstream from external file -----
 reg [0:`BITSTREAM_WIDTH - 1] bit_mem[0:`BITSTREAM_LENGTH - 1];
@@ -4525,18 +4524,6 @@ end
 // ------ END driver initialization -----
 // ------ BEGIN driver initialization -----
 	initial begin
-		$deposit(FPGA_DUT.cbx_1__0_.mux_top_ipin_7.mux_l1_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__0_.mux_top_ipin_7.mux_l1_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__0_.mux_top_ipin_7.mux_l2_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__0_.mux_top_ipin_7.mux_l2_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
 		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_0.mux_l1_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
 		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_0.mux_l1_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
 	end
@@ -5072,7 +5059,7 @@ initial begin
 	$timeformat(-9, 2, "ns", 20);
 	$display("Simulation start");
 // ----- Can be changed by the user for his/her need -------
-	#4555
+	#4535
 	if(nb_error == 0) begin
 		$display("Simulation Succeed");
 	end else begin

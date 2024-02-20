@@ -3,7 +3,7 @@
 //	Description: Verilog modules for pb_type: ble4
 //	Author: Xifan TANG
 //	Organization: University of Utah
-//	Date: Tue Feb 20 20:44:13 2024
+//	Date: Tue Feb 20 21:08:49 2024
 //-------------------------------------------
 // ----- BEGIN Physical programmable logic block Verilog module: ble4 -----
 //----- Default net type -----

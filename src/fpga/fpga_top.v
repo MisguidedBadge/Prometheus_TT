@@ -3,7 +3,7 @@
 //	Description: Top-level Verilog module for FPGA
 //	Author: Xifan TANG
 //	Organization: University of Utah
-//	Date: Tue Feb 20 20:44:13 2024
+//	Date: Tue Feb 20 21:08:49 2024
 //-------------------------------------------
 //----- Default net type -----
 `default_nettype none
@@ -25,7 +25,7 @@ input [0:0] clk;
 //----- GPIO PORTS -----
 inout [0:11] gfpga_pad_GPIN_PAD;
 //----- GPIO PORTS -----
-inout [0:7] gfpga_pad_GPOUT_PAD;
+inout [0:6] gfpga_pad_GPOUT_PAD;
 //----- INPUT PORTS -----
 input [0:0] ccff_head;
 //----- OUTPUT PORTS -----
@@ -46,7 +46,6 @@ wire [0:0] cbx_1__0__0_bottom_grid_top_width_0_height_0_subtile_15__pin_outpad_0
 wire [0:0] cbx_1__0__0_bottom_grid_top_width_0_height_0_subtile_16__pin_outpad_0_;
 wire [0:0] cbx_1__0__0_bottom_grid_top_width_0_height_0_subtile_17__pin_outpad_0_;
 wire [0:0] cbx_1__0__0_bottom_grid_top_width_0_height_0_subtile_18__pin_outpad_0_;
-wire [0:0] cbx_1__0__0_bottom_grid_top_width_0_height_0_subtile_19__pin_outpad_0_;
 wire [0:0] cbx_1__0__0_ccff_tail;
 wire [0:3] cbx_1__0__0_chanx_left_out;
 wire [0:3] cbx_1__0__0_chanx_right_out;
@@ -154,7 +153,7 @@ wire [0:3] sb_2__2__0_chany_bottom_out;
 
 	grid_io_hard_bottom grid_io_hard_bottom_1__0_ (
 		.gfpga_pad_GPIN_PAD(gfpga_pad_GPIN_PAD[0:11]),
-		.gfpga_pad_GPOUT_PAD(gfpga_pad_GPOUT_PAD[0:7]),
+		.gfpga_pad_GPOUT_PAD(gfpga_pad_GPOUT_PAD[0:6]),
 		.top_width_0_height_0_subtile_12__pin_outpad_0_(cbx_1__0__0_bottom_grid_top_width_0_height_0_subtile_12__pin_outpad_0_),
 		.top_width_0_height_0_subtile_13__pin_outpad_0_(cbx_1__0__0_bottom_grid_top_width_0_height_0_subtile_13__pin_outpad_0_),
 		.top_width_0_height_0_subtile_14__pin_outpad_0_(cbx_1__0__0_bottom_grid_top_width_0_height_0_subtile_14__pin_outpad_0_),
@@ -162,7 +161,6 @@ wire [0:3] sb_2__2__0_chany_bottom_out;
 		.top_width_0_height_0_subtile_16__pin_outpad_0_(cbx_1__0__0_bottom_grid_top_width_0_height_0_subtile_16__pin_outpad_0_),
 		.top_width_0_height_0_subtile_17__pin_outpad_0_(cbx_1__0__0_bottom_grid_top_width_0_height_0_subtile_17__pin_outpad_0_),
 		.top_width_0_height_0_subtile_18__pin_outpad_0_(cbx_1__0__0_bottom_grid_top_width_0_height_0_subtile_18__pin_outpad_0_),
-		.top_width_0_height_0_subtile_19__pin_outpad_0_(cbx_1__0__0_bottom_grid_top_width_0_height_0_subtile_19__pin_outpad_0_),
 		.top_width_0_height_0_subtile_0__pin_inpad_0_(grid_io_hard_bottom_0_top_width_0_height_0_subtile_0__pin_inpad_0_),
 		.top_width_0_height_0_subtile_1__pin_inpad_0_(grid_io_hard_bottom_0_top_width_0_height_0_subtile_1__pin_inpad_0_),
 		.top_width_0_height_0_subtile_2__pin_inpad_0_(grid_io_hard_bottom_0_top_width_0_height_0_subtile_2__pin_inpad_0_),
@@ -359,7 +357,6 @@ wire [0:3] sb_2__2__0_chany_bottom_out;
 		.bottom_grid_top_width_0_height_0_subtile_16__pin_outpad_0_(cbx_1__0__0_bottom_grid_top_width_0_height_0_subtile_16__pin_outpad_0_),
 		.bottom_grid_top_width_0_height_0_subtile_17__pin_outpad_0_(cbx_1__0__0_bottom_grid_top_width_0_height_0_subtile_17__pin_outpad_0_),
 		.bottom_grid_top_width_0_height_0_subtile_18__pin_outpad_0_(cbx_1__0__0_bottom_grid_top_width_0_height_0_subtile_18__pin_outpad_0_),
-		.bottom_grid_top_width_0_height_0_subtile_19__pin_outpad_0_(cbx_1__0__0_bottom_grid_top_width_0_height_0_subtile_19__pin_outpad_0_),
 		.ccff_tail(cbx_1__0__0_ccff_tail));
 
 	cbx_1__1_ cbx_1__1_ (

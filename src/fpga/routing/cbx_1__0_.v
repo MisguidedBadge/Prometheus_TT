@@ -3,7 +3,7 @@
 //	Description: Verilog modules for Unique Connection Blocks[1][0]
 //	Author: Xifan TANG
 //	Organization: University of Utah
-//	Date: Tue Feb 20 20:44:13 2024
+//	Date: Tue Feb 20 21:08:49 2024
 //-------------------------------------------
 //----- Default net type -----
 `default_nettype none
@@ -22,7 +22,6 @@ module cbx_1__0_(prog_clk,
                  bottom_grid_top_width_0_height_0_subtile_16__pin_outpad_0_,
                  bottom_grid_top_width_0_height_0_subtile_17__pin_outpad_0_,
                  bottom_grid_top_width_0_height_0_subtile_18__pin_outpad_0_,
-                 bottom_grid_top_width_0_height_0_subtile_19__pin_outpad_0_,
                  ccff_tail);
 //----- GLOBAL PORTS -----
 input [0:0] prog_clk;
@@ -51,8 +50,6 @@ output [0:0] bottom_grid_top_width_0_height_0_subtile_17__pin_outpad_0_;
 //----- OUTPUT PORTS -----
 output [0:0] bottom_grid_top_width_0_height_0_subtile_18__pin_outpad_0_;
 //----- OUTPUT PORTS -----
-output [0:0] bottom_grid_top_width_0_height_0_subtile_19__pin_outpad_0_;
-//----- OUTPUT PORTS -----
 output [0:0] ccff_tail;
 
 //----- BEGIN wire-connection ports -----
@@ -70,14 +67,12 @@ wire [0:1] mux_tree_tapbuf_size2_3_sram;
 wire [0:1] mux_tree_tapbuf_size2_4_sram;
 wire [0:1] mux_tree_tapbuf_size2_5_sram;
 wire [0:1] mux_tree_tapbuf_size2_6_sram;
-wire [0:1] mux_tree_tapbuf_size2_7_sram;
 wire [0:0] mux_tree_tapbuf_size2_mem_0_ccff_tail;
 wire [0:0] mux_tree_tapbuf_size2_mem_1_ccff_tail;
 wire [0:0] mux_tree_tapbuf_size2_mem_2_ccff_tail;
 wire [0:0] mux_tree_tapbuf_size2_mem_3_ccff_tail;
 wire [0:0] mux_tree_tapbuf_size2_mem_4_ccff_tail;
 wire [0:0] mux_tree_tapbuf_size2_mem_5_ccff_tail;
-wire [0:0] mux_tree_tapbuf_size2_mem_6_ccff_tail;
 
 // ----- BEGIN Local short connections -----
 // ----- Local connection due to Wire 0 -----
@@ -151,11 +146,6 @@ wire [0:0] mux_tree_tapbuf_size2_mem_6_ccff_tail;
 		.sram(mux_tree_tapbuf_size2_6_sram[0:1]),
 		.out(bottom_grid_top_width_0_height_0_subtile_18__pin_outpad_0_));
 
-	mux_tree_tapbuf_size2 mux_top_ipin_7 (
-		.in({chanx_left_in[3], chanx_right_in[3]}),
-		.sram(mux_tree_tapbuf_size2_7_sram[0:1]),
-		.out(bottom_grid_top_width_0_height_0_subtile_19__pin_outpad_0_));
-
 	mux_tree_tapbuf_size2_mem mem_top_ipin_0 (
 		.prog_clk(prog_clk),
 		.ccff_head(ccff_head),
@@ -195,14 +185,8 @@ wire [0:0] mux_tree_tapbuf_size2_mem_6_ccff_tail;
 	mux_tree_tapbuf_size2_mem mem_top_ipin_6 (
 		.prog_clk(prog_clk),
 		.ccff_head(mux_tree_tapbuf_size2_mem_5_ccff_tail),
-		.ccff_tail(mux_tree_tapbuf_size2_mem_6_ccff_tail),
-		.mem_out(mux_tree_tapbuf_size2_6_sram[0:1]));
-
-	mux_tree_tapbuf_size2_mem mem_top_ipin_7 (
-		.prog_clk(prog_clk),
-		.ccff_head(mux_tree_tapbuf_size2_mem_6_ccff_tail),
 		.ccff_tail(ccff_tail),
-		.mem_out(mux_tree_tapbuf_size2_7_sram[0:1]));
+		.mem_out(mux_tree_tapbuf_size2_6_sram[0:1]));
 
 endmodule
 // ----- END Verilog module for cbx_1__0_ -----
