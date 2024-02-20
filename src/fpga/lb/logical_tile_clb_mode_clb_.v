@@ -50,6 +50,22 @@ wire [0:0] logical_tile_clb_mode_default__fle_2_ccff_tail;
 wire [0:0] logical_tile_clb_mode_default__fle_2_fle_out;
 wire [0:0] logical_tile_clb_mode_default__fle_3_ccff_tail;
 wire [0:0] logical_tile_clb_mode_default__fle_3_fle_out;
+wire [0:3] mux_fle_0_in_0_undriven_sram_inv;
+wire [0:3] mux_fle_0_in_1_undriven_sram_inv;
+wire [0:3] mux_fle_0_in_2_undriven_sram_inv;
+wire [0:3] mux_fle_0_in_3_undriven_sram_inv;
+wire [0:3] mux_fle_1_in_0_undriven_sram_inv;
+wire [0:3] mux_fle_1_in_1_undriven_sram_inv;
+wire [0:3] mux_fle_1_in_2_undriven_sram_inv;
+wire [0:3] mux_fle_1_in_3_undriven_sram_inv;
+wire [0:3] mux_fle_2_in_0_undriven_sram_inv;
+wire [0:3] mux_fle_2_in_1_undriven_sram_inv;
+wire [0:3] mux_fle_2_in_2_undriven_sram_inv;
+wire [0:3] mux_fle_2_in_3_undriven_sram_inv;
+wire [0:3] mux_fle_3_in_0_undriven_sram_inv;
+wire [0:3] mux_fle_3_in_1_undriven_sram_inv;
+wire [0:3] mux_fle_3_in_2_undriven_sram_inv;
+wire [0:3] mux_fle_3_in_3_undriven_sram_inv;
 wire [0:0] mux_tree_size14_0_out;
 wire [0:3] mux_tree_size14_0_sram;
 wire [0:0] mux_tree_size14_10_out;
@@ -158,81 +174,97 @@ wire [0:0] mux_tree_size14_mem_9_ccff_tail;
 	mux_tree_size14 mux_fle_0_in_0 (
 		.in({clb_I[0:9], logical_tile_clb_mode_default__fle_0_fle_out, logical_tile_clb_mode_default__fle_1_fle_out, logical_tile_clb_mode_default__fle_2_fle_out, logical_tile_clb_mode_default__fle_3_fle_out}),
 		.sram(mux_tree_size14_0_sram[0:3]),
+		.sram_inv(mux_fle_0_in_0_undriven_sram_inv[0:3]),
 		.out(mux_tree_size14_0_out));
 
 	mux_tree_size14 mux_fle_0_in_1 (
 		.in({clb_I[0:9], logical_tile_clb_mode_default__fle_0_fle_out, logical_tile_clb_mode_default__fle_1_fle_out, logical_tile_clb_mode_default__fle_2_fle_out, logical_tile_clb_mode_default__fle_3_fle_out}),
 		.sram(mux_tree_size14_1_sram[0:3]),
+		.sram_inv(mux_fle_0_in_1_undriven_sram_inv[0:3]),
 		.out(mux_tree_size14_1_out));
 
 	mux_tree_size14 mux_fle_0_in_2 (
 		.in({clb_I[0:9], logical_tile_clb_mode_default__fle_0_fle_out, logical_tile_clb_mode_default__fle_1_fle_out, logical_tile_clb_mode_default__fle_2_fle_out, logical_tile_clb_mode_default__fle_3_fle_out}),
 		.sram(mux_tree_size14_2_sram[0:3]),
+		.sram_inv(mux_fle_0_in_2_undriven_sram_inv[0:3]),
 		.out(mux_tree_size14_2_out));
 
 	mux_tree_size14 mux_fle_0_in_3 (
 		.in({clb_I[0:9], logical_tile_clb_mode_default__fle_0_fle_out, logical_tile_clb_mode_default__fle_1_fle_out, logical_tile_clb_mode_default__fle_2_fle_out, logical_tile_clb_mode_default__fle_3_fle_out}),
 		.sram(mux_tree_size14_3_sram[0:3]),
+		.sram_inv(mux_fle_0_in_3_undriven_sram_inv[0:3]),
 		.out(mux_tree_size14_3_out));
 
 	mux_tree_size14 mux_fle_1_in_0 (
 		.in({clb_I[0:9], logical_tile_clb_mode_default__fle_0_fle_out, logical_tile_clb_mode_default__fle_1_fle_out, logical_tile_clb_mode_default__fle_2_fle_out, logical_tile_clb_mode_default__fle_3_fle_out}),
 		.sram(mux_tree_size14_4_sram[0:3]),
+		.sram_inv(mux_fle_1_in_0_undriven_sram_inv[0:3]),
 		.out(mux_tree_size14_4_out));
 
 	mux_tree_size14 mux_fle_1_in_1 (
 		.in({clb_I[0:9], logical_tile_clb_mode_default__fle_0_fle_out, logical_tile_clb_mode_default__fle_1_fle_out, logical_tile_clb_mode_default__fle_2_fle_out, logical_tile_clb_mode_default__fle_3_fle_out}),
 		.sram(mux_tree_size14_5_sram[0:3]),
+		.sram_inv(mux_fle_1_in_1_undriven_sram_inv[0:3]),
 		.out(mux_tree_size14_5_out));
 
 	mux_tree_size14 mux_fle_1_in_2 (
 		.in({clb_I[0:9], logical_tile_clb_mode_default__fle_0_fle_out, logical_tile_clb_mode_default__fle_1_fle_out, logical_tile_clb_mode_default__fle_2_fle_out, logical_tile_clb_mode_default__fle_3_fle_out}),
 		.sram(mux_tree_size14_6_sram[0:3]),
+		.sram_inv(mux_fle_1_in_2_undriven_sram_inv[0:3]),
 		.out(mux_tree_size14_6_out));
 
 	mux_tree_size14 mux_fle_1_in_3 (
 		.in({clb_I[0:9], logical_tile_clb_mode_default__fle_0_fle_out, logical_tile_clb_mode_default__fle_1_fle_out, logical_tile_clb_mode_default__fle_2_fle_out, logical_tile_clb_mode_default__fle_3_fle_out}),
 		.sram(mux_tree_size14_7_sram[0:3]),
+		.sram_inv(mux_fle_1_in_3_undriven_sram_inv[0:3]),
 		.out(mux_tree_size14_7_out));
 
 	mux_tree_size14 mux_fle_2_in_0 (
 		.in({clb_I[0:9], logical_tile_clb_mode_default__fle_0_fle_out, logical_tile_clb_mode_default__fle_1_fle_out, logical_tile_clb_mode_default__fle_2_fle_out, logical_tile_clb_mode_default__fle_3_fle_out}),
 		.sram(mux_tree_size14_8_sram[0:3]),
+		.sram_inv(mux_fle_2_in_0_undriven_sram_inv[0:3]),
 		.out(mux_tree_size14_8_out));
 
 	mux_tree_size14 mux_fle_2_in_1 (
 		.in({clb_I[0:9], logical_tile_clb_mode_default__fle_0_fle_out, logical_tile_clb_mode_default__fle_1_fle_out, logical_tile_clb_mode_default__fle_2_fle_out, logical_tile_clb_mode_default__fle_3_fle_out}),
 		.sram(mux_tree_size14_9_sram[0:3]),
+		.sram_inv(mux_fle_2_in_1_undriven_sram_inv[0:3]),
 		.out(mux_tree_size14_9_out));
 
 	mux_tree_size14 mux_fle_2_in_2 (
 		.in({clb_I[0:9], logical_tile_clb_mode_default__fle_0_fle_out, logical_tile_clb_mode_default__fle_1_fle_out, logical_tile_clb_mode_default__fle_2_fle_out, logical_tile_clb_mode_default__fle_3_fle_out}),
 		.sram(mux_tree_size14_10_sram[0:3]),
+		.sram_inv(mux_fle_2_in_2_undriven_sram_inv[0:3]),
 		.out(mux_tree_size14_10_out));
 
 	mux_tree_size14 mux_fle_2_in_3 (
 		.in({clb_I[0:9], logical_tile_clb_mode_default__fle_0_fle_out, logical_tile_clb_mode_default__fle_1_fle_out, logical_tile_clb_mode_default__fle_2_fle_out, logical_tile_clb_mode_default__fle_3_fle_out}),
 		.sram(mux_tree_size14_11_sram[0:3]),
+		.sram_inv(mux_fle_2_in_3_undriven_sram_inv[0:3]),
 		.out(mux_tree_size14_11_out));
 
 	mux_tree_size14 mux_fle_3_in_0 (
 		.in({clb_I[0:9], logical_tile_clb_mode_default__fle_0_fle_out, logical_tile_clb_mode_default__fle_1_fle_out, logical_tile_clb_mode_default__fle_2_fle_out, logical_tile_clb_mode_default__fle_3_fle_out}),
 		.sram(mux_tree_size14_12_sram[0:3]),
+		.sram_inv(mux_fle_3_in_0_undriven_sram_inv[0:3]),
 		.out(mux_tree_size14_12_out));
 
 	mux_tree_size14 mux_fle_3_in_1 (
 		.in({clb_I[0:9], logical_tile_clb_mode_default__fle_0_fle_out, logical_tile_clb_mode_default__fle_1_fle_out, logical_tile_clb_mode_default__fle_2_fle_out, logical_tile_clb_mode_default__fle_3_fle_out}),
 		.sram(mux_tree_size14_13_sram[0:3]),
+		.sram_inv(mux_fle_3_in_1_undriven_sram_inv[0:3]),
 		.out(mux_tree_size14_13_out));
 
 	mux_tree_size14 mux_fle_3_in_2 (
 		.in({clb_I[0:9], logical_tile_clb_mode_default__fle_0_fle_out, logical_tile_clb_mode_default__fle_1_fle_out, logical_tile_clb_mode_default__fle_2_fle_out, logical_tile_clb_mode_default__fle_3_fle_out}),
 		.sram(mux_tree_size14_14_sram[0:3]),
+		.sram_inv(mux_fle_3_in_2_undriven_sram_inv[0:3]),
 		.out(mux_tree_size14_14_out));
 
 	mux_tree_size14 mux_fle_3_in_3 (
 		.in({clb_I[0:9], logical_tile_clb_mode_default__fle_0_fle_out, logical_tile_clb_mode_default__fle_1_fle_out, logical_tile_clb_mode_default__fle_2_fle_out, logical_tile_clb_mode_default__fle_3_fle_out}),
 		.sram(mux_tree_size14_15_sram[0:3]),
+		.sram_inv(mux_fle_3_in_3_undriven_sram_inv[0:3]),
 		.out(mux_tree_size14_15_out));
 
 	mux_tree_size14_mem mem_fle_0_in_0 (

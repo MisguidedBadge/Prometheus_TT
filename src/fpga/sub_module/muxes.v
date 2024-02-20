@@ -11,12 +11,14 @@
 // ----- Verilog module for mux_tree_tapbuf_size6 -----
 module mux_tree_tapbuf_size6(in,
                              sram,
+                             sram_inv,
                              out);
 //----- INPUT PORTS -----
 input [0:5] in;
 //----- INPUT PORTS -----
 input [0:2] sram;
 //----- INPUT PORTS -----
+input [0:2] sram_inv;
 //----- OUTPUT PORTS -----
 output [0:0] out;
 
@@ -129,12 +131,14 @@ endmodule
 // ----- Verilog module for mux_tree_tapbuf_size18 -----
 module mux_tree_tapbuf_size18(in,
                               sram,
+                              sram_inv,
                               out);
 //----- INPUT PORTS -----
 input [0:17] in;
 //----- INPUT PORTS -----
 input [0:4] sram;
 //----- INPUT PORTS -----
+input [0:4] sram_inv;
 //----- OUTPUT PORTS -----
 output [0:0] out;
 
@@ -391,12 +395,14 @@ endmodule
 // ----- Verilog module for mux_tree_tapbuf_size3 -----
 module mux_tree_tapbuf_size3(in,
                              sram,
+                             sram_inv,
                              out);
 //----- INPUT PORTS -----
 input [0:2] in;
 //----- INPUT PORTS -----
 input [0:1] sram;
 //----- INPUT PORTS -----
+input [0:1] sram_inv;
 //----- OUTPUT PORTS -----
 output [0:0] out;
 
@@ -473,12 +479,14 @@ endmodule
 // ----- Verilog module for mux_tree_tapbuf_size2 -----
 module mux_tree_tapbuf_size2(in,
                              sram,
+                             sram_inv,
                              out);
 //----- INPUT PORTS -----
 input [0:1] in;
 //----- INPUT PORTS -----
 input [0:1] sram;
 //----- INPUT PORTS -----
+input [0:1] sram_inv;
 //----- OUTPUT PORTS -----
 output [0:0] out;
 
@@ -543,12 +551,14 @@ endmodule
 // ----- Verilog module for mux_tree_size14 -----
 module mux_tree_size14(in,
                        sram,
+                       sram_inv,
                        out);
 //----- INPUT PORTS -----
 input [0:13] in;
 //----- INPUT PORTS -----
 input [0:3] sram;
 //----- INPUT PORTS -----
+input [0:3] sram_inv;
 //----- OUTPUT PORTS -----
 output [0:0] out;
 
@@ -757,12 +767,14 @@ endmodule
 // ----- Verilog module for lut4_mux -----
 module lut4_mux(in,
                 sram,
+                sram_inv,
                 out);
 //----- INPUT PORTS -----
 input [0:15] in;
 //----- INPUT PORTS -----
 input [0:3] sram;
 //----- INPUT PORTS -----
+input [0:3] sram_inv;
 //----- OUTPUT PORTS -----
 output [0:0] out;
 
