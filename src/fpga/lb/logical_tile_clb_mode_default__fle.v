@@ -3,7 +3,7 @@
 //	Description: Verilog modules for pb_type: fle
 //	Author: Xifan TANG
 //	Organization: University of Utah
-//	Date: Tue Feb 20 16:36:39 2024
+//	Date: Tue Feb 20 19:15:11 2024
 //-------------------------------------------
 // ----- BEGIN Physical programmable logic block Verilog module: fle -----
 //----- Default net type -----

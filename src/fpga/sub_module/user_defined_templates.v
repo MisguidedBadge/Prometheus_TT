@@ -3,7 +3,7 @@
 //	Description: Template for user-defined Verilog modules
 //	Author: Xifan TANG
 //	Organization: University of Utah
-//	Date: Tue Feb 20 16:36:39 2024
+//	Date: Tue Feb 20 19:15:11 2024
 //-------------------------------------------
 // ----- Template Verilog module for p_invert -----
 //----- Default net type -----
