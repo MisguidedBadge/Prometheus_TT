@@ -3,7 +3,7 @@
 //	Description: Verilog modules for physical tile: io_hard]
 //	Author: Xifan TANG
 //	Organization: University of Utah
-//	Date: Tue Feb 20 19:15:11 2024
+//	Date: Tue Feb 20 20:44:13 2024
 //-------------------------------------------
 // ----- BEGIN Grid Verilog module: grid_io_hard_bottom -----
 //----- Default net type -----
@@ -12,10 +12,14 @@
 // ----- Verilog module for grid_io_hard_bottom -----
 module grid_io_hard_bottom(gfpga_pad_GPIN_PAD,
                            gfpga_pad_GPOUT_PAD,
-                           top_width_0_height_0_subtile_10__pin_outpad_0_,
-                           top_width_0_height_0_subtile_11__pin_outpad_0_,
                            top_width_0_height_0_subtile_12__pin_outpad_0_,
                            top_width_0_height_0_subtile_13__pin_outpad_0_,
+                           top_width_0_height_0_subtile_14__pin_outpad_0_,
+                           top_width_0_height_0_subtile_15__pin_outpad_0_,
+                           top_width_0_height_0_subtile_16__pin_outpad_0_,
+                           top_width_0_height_0_subtile_17__pin_outpad_0_,
+                           top_width_0_height_0_subtile_18__pin_outpad_0_,
+                           top_width_0_height_0_subtile_19__pin_outpad_0_,
                            top_width_0_height_0_subtile_0__pin_inpad_0_,
                            top_width_0_height_0_subtile_1__pin_inpad_0_,
                            top_width_0_height_0_subtile_2__pin_inpad_0_,
@@ -25,19 +29,29 @@ module grid_io_hard_bottom(gfpga_pad_GPIN_PAD,
                            top_width_0_height_0_subtile_6__pin_inpad_0_,
                            top_width_0_height_0_subtile_7__pin_inpad_0_,
                            top_width_0_height_0_subtile_8__pin_inpad_0_,
-                           top_width_0_height_0_subtile_9__pin_inpad_0_);
+                           top_width_0_height_0_subtile_9__pin_inpad_0_,
+                           top_width_0_height_0_subtile_10__pin_inpad_0_,
+                           top_width_0_height_0_subtile_11__pin_inpad_0_);
 //----- GPIO PORTS -----
-inout [0:9] gfpga_pad_GPIN_PAD;
+inout [0:11] gfpga_pad_GPIN_PAD;
 //----- GPIO PORTS -----
-inout [0:3] gfpga_pad_GPOUT_PAD;
-//----- INPUT PORTS -----
-input [0:0] top_width_0_height_0_subtile_10__pin_outpad_0_;
-//----- INPUT PORTS -----
-input [0:0] top_width_0_height_0_subtile_11__pin_outpad_0_;
+inout [0:7] gfpga_pad_GPOUT_PAD;
 //----- INPUT PORTS -----
 input [0:0] top_width_0_height_0_subtile_12__pin_outpad_0_;
 //----- INPUT PORTS -----
 input [0:0] top_width_0_height_0_subtile_13__pin_outpad_0_;
+//----- INPUT PORTS -----
+input [0:0] top_width_0_height_0_subtile_14__pin_outpad_0_;
+//----- INPUT PORTS -----
+input [0:0] top_width_0_height_0_subtile_15__pin_outpad_0_;
+//----- INPUT PORTS -----
+input [0:0] top_width_0_height_0_subtile_16__pin_outpad_0_;
+//----- INPUT PORTS -----
+input [0:0] top_width_0_height_0_subtile_17__pin_outpad_0_;
+//----- INPUT PORTS -----
+input [0:0] top_width_0_height_0_subtile_18__pin_outpad_0_;
+//----- INPUT PORTS -----
+input [0:0] top_width_0_height_0_subtile_19__pin_outpad_0_;
 //----- OUTPUT PORTS -----
 output [0:0] top_width_0_height_0_subtile_0__pin_inpad_0_;
 //----- OUTPUT PORTS -----
@@ -58,6 +72,10 @@ output [0:0] top_width_0_height_0_subtile_7__pin_inpad_0_;
 output [0:0] top_width_0_height_0_subtile_8__pin_inpad_0_;
 //----- OUTPUT PORTS -----
 output [0:0] top_width_0_height_0_subtile_9__pin_inpad_0_;
+//----- OUTPUT PORTS -----
+output [0:0] top_width_0_height_0_subtile_10__pin_inpad_0_;
+//----- OUTPUT PORTS -----
+output [0:0] top_width_0_height_0_subtile_11__pin_inpad_0_;
 
 //----- BEGIN wire-connection ports -----
 //----- END wire-connection ports -----
@@ -113,21 +131,45 @@ output [0:0] top_width_0_height_0_subtile_9__pin_inpad_0_;
 		.gfpga_pad_GPIN_PAD(gfpga_pad_GPIN_PAD[9]),
 		.io_input_inpad(top_width_0_height_0_subtile_9__pin_inpad_0_));
 
-	logical_tile_io_output_mode_io_output_ logical_tile_io_output_mode_io_output__10 (
-		.gfpga_pad_GPOUT_PAD(gfpga_pad_GPOUT_PAD[0]),
-		.io_output_outpad(top_width_0_height_0_subtile_10__pin_outpad_0_));
+	logical_tile_io_input_mode_io_input_ logical_tile_io_input_mode_io_input__10 (
+		.gfpga_pad_GPIN_PAD(gfpga_pad_GPIN_PAD[10]),
+		.io_input_inpad(top_width_0_height_0_subtile_10__pin_inpad_0_));
 
-	logical_tile_io_output_mode_io_output_ logical_tile_io_output_mode_io_output__11 (
-		.gfpga_pad_GPOUT_PAD(gfpga_pad_GPOUT_PAD[1]),
-		.io_output_outpad(top_width_0_height_0_subtile_11__pin_outpad_0_));
+	logical_tile_io_input_mode_io_input_ logical_tile_io_input_mode_io_input__11 (
+		.gfpga_pad_GPIN_PAD(gfpga_pad_GPIN_PAD[11]),
+		.io_input_inpad(top_width_0_height_0_subtile_11__pin_inpad_0_));
 
 	logical_tile_io_output_mode_io_output_ logical_tile_io_output_mode_io_output__12 (
-		.gfpga_pad_GPOUT_PAD(gfpga_pad_GPOUT_PAD[2]),
+		.gfpga_pad_GPOUT_PAD(gfpga_pad_GPOUT_PAD[0]),
 		.io_output_outpad(top_width_0_height_0_subtile_12__pin_outpad_0_));
 
 	logical_tile_io_output_mode_io_output_ logical_tile_io_output_mode_io_output__13 (
-		.gfpga_pad_GPOUT_PAD(gfpga_pad_GPOUT_PAD[3]),
+		.gfpga_pad_GPOUT_PAD(gfpga_pad_GPOUT_PAD[1]),
 		.io_output_outpad(top_width_0_height_0_subtile_13__pin_outpad_0_));
+
+	logical_tile_io_output_mode_io_output_ logical_tile_io_output_mode_io_output__14 (
+		.gfpga_pad_GPOUT_PAD(gfpga_pad_GPOUT_PAD[2]),
+		.io_output_outpad(top_width_0_height_0_subtile_14__pin_outpad_0_));
+
+	logical_tile_io_output_mode_io_output_ logical_tile_io_output_mode_io_output__15 (
+		.gfpga_pad_GPOUT_PAD(gfpga_pad_GPOUT_PAD[3]),
+		.io_output_outpad(top_width_0_height_0_subtile_15__pin_outpad_0_));
+
+	logical_tile_io_output_mode_io_output_ logical_tile_io_output_mode_io_output__16 (
+		.gfpga_pad_GPOUT_PAD(gfpga_pad_GPOUT_PAD[4]),
+		.io_output_outpad(top_width_0_height_0_subtile_16__pin_outpad_0_));
+
+	logical_tile_io_output_mode_io_output_ logical_tile_io_output_mode_io_output__17 (
+		.gfpga_pad_GPOUT_PAD(gfpga_pad_GPOUT_PAD[5]),
+		.io_output_outpad(top_width_0_height_0_subtile_17__pin_outpad_0_));
+
+	logical_tile_io_output_mode_io_output_ logical_tile_io_output_mode_io_output__18 (
+		.gfpga_pad_GPOUT_PAD(gfpga_pad_GPOUT_PAD[6]),
+		.io_output_outpad(top_width_0_height_0_subtile_18__pin_outpad_0_));
+
+	logical_tile_io_output_mode_io_output_ logical_tile_io_output_mode_io_output__19 (
+		.gfpga_pad_GPOUT_PAD(gfpga_pad_GPOUT_PAD[7]),
+		.io_output_outpad(top_width_0_height_0_subtile_19__pin_outpad_0_));
 
 endmodule
 // ----- END Verilog module for grid_io_hard_bottom -----

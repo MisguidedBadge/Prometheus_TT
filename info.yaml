@@ -32,11 +32,17 @@ project:
     - fpga/lb/logical_tile_io_output_mode_physical__iopad.v
     - fpga/routing/cbx_1__0_.v
     - fpga/routing/cbx_1__1_.v
+    - fpga/routing/cbx_2__0_.v
     - fpga/routing/cby_0__1_.v
     - fpga/routing/sb_0__0_.v
     - fpga/routing/sb_0__1_.v
+    - fpga/routing/sb_0__2_.v
     - fpga/routing/sb_1__0_.v
     - fpga/routing/sb_1__1_.v
+    - fpga/routing/sb_1__2_.v
+    - fpga/routing/sb_2__0_.v
+    - fpga/routing/sb_2__1_.v
+    - fpga/routing/sb_2__2_.v
     - fpga/sub_module/arch_encoder.v
     - fpga/sub_module/inv_buf_passgate.v
     - fpga/sub_module/local_encoder.v

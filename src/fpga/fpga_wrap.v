@@ -27,9 +27,9 @@ assign uo_out[4] = ccff_tail;
 wire [9:0] fpga_io_in;
 
 wire [3:0] fpga_io_out;
-assign uo_out[3:0] = fpga_io_out;
-assign fpga_io_in = {ui_in[5:2], uio_in[3:0]};
-assign uo_out[7:5] = 'b0;
+assign uo_out[7:0] = fpga_io_out;
+// 8 + 4 = 12
+assign fpga_io_in = {ui_in[5:2], uio_in[7:0]};
 
 assign uio_oe = 0;
 assign uio_out = 0;
