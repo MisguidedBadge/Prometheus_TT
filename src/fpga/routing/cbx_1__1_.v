@@ -69,16 +69,6 @@ output [0:0] ccff_tail;
 //----- END Registered ports -----
 
 
-wire [0:4] mux_top_ipin_0_undriven_sram_inv;
-wire [0:4] mux_top_ipin_1_undriven_sram_inv;
-wire [0:4] mux_top_ipin_2_undriven_sram_inv;
-wire [0:4] mux_top_ipin_3_undriven_sram_inv;
-wire [0:4] mux_top_ipin_4_undriven_sram_inv;
-wire [0:4] mux_top_ipin_5_undriven_sram_inv;
-wire [0:4] mux_top_ipin_6_undriven_sram_inv;
-wire [0:4] mux_top_ipin_7_undriven_sram_inv;
-wire [0:4] mux_top_ipin_8_undriven_sram_inv;
-wire [0:4] mux_top_ipin_9_undriven_sram_inv;
 wire [0:4] mux_tree_tapbuf_size18_0_sram;
 wire [0:4] mux_tree_tapbuf_size18_1_sram;
 wire [0:4] mux_tree_tapbuf_size18_2_sram;
@@ -179,61 +169,51 @@ wire [0:0] mux_tree_tapbuf_size18_mem_8_ccff_tail;
 	mux_tree_tapbuf_size18 mux_top_ipin_0 (
 		.in({chanx_left_in[0], chanx_right_in[0], chanx_left_in[1], chanx_right_in[1], chanx_left_in[2], chanx_right_in[2], chanx_left_in[3], chanx_right_in[3], chanx_left_in[4], chanx_right_in[4], chanx_left_in[5], chanx_right_in[5], chanx_left_in[6], chanx_right_in[6], chanx_left_in[7], chanx_right_in[7], chanx_left_in[8], chanx_right_in[8]}),
 		.sram(mux_tree_tapbuf_size18_0_sram[0:4]),
-		.sram_inv(mux_top_ipin_0_undriven_sram_inv[0:4]),
 		.out(bottom_grid_top_width_0_height_0_subtile_0__pin_I_0_));
 
 	mux_tree_tapbuf_size18 mux_top_ipin_1 (
 		.in({chanx_left_in[0], chanx_right_in[0], chanx_left_in[1], chanx_right_in[1], chanx_left_in[2], chanx_right_in[2], chanx_left_in[3], chanx_right_in[3], chanx_left_in[4], chanx_right_in[4], chanx_left_in[5], chanx_right_in[5], chanx_left_in[6], chanx_right_in[6], chanx_left_in[7], chanx_right_in[7], chanx_left_in[8], chanx_right_in[8]}),
 		.sram(mux_tree_tapbuf_size18_1_sram[0:4]),
-		.sram_inv(mux_top_ipin_1_undriven_sram_inv[0:4]),
 		.out(bottom_grid_top_width_0_height_0_subtile_0__pin_I_1_));
 
 	mux_tree_tapbuf_size18 mux_top_ipin_2 (
 		.in({chanx_left_in[0], chanx_right_in[0], chanx_left_in[1], chanx_right_in[1], chanx_left_in[2], chanx_right_in[2], chanx_left_in[3], chanx_right_in[3], chanx_left_in[4], chanx_right_in[4], chanx_left_in[5], chanx_right_in[5], chanx_left_in[6], chanx_right_in[6], chanx_left_in[7], chanx_right_in[7], chanx_left_in[8], chanx_right_in[8]}),
 		.sram(mux_tree_tapbuf_size18_2_sram[0:4]),
-		.sram_inv(mux_top_ipin_2_undriven_sram_inv[0:4]),
 		.out(bottom_grid_top_width_0_height_0_subtile_0__pin_I_2_));
 
 	mux_tree_tapbuf_size18 mux_top_ipin_3 (
 		.in({chanx_left_in[0], chanx_right_in[0], chanx_left_in[1], chanx_right_in[1], chanx_left_in[2], chanx_right_in[2], chanx_left_in[3], chanx_right_in[3], chanx_left_in[4], chanx_right_in[4], chanx_left_in[5], chanx_right_in[5], chanx_left_in[6], chanx_right_in[6], chanx_left_in[7], chanx_right_in[7], chanx_left_in[8], chanx_right_in[8]}),
 		.sram(mux_tree_tapbuf_size18_3_sram[0:4]),
-		.sram_inv(mux_top_ipin_3_undriven_sram_inv[0:4]),
 		.out(bottom_grid_top_width_0_height_0_subtile_0__pin_I_3_));
 
 	mux_tree_tapbuf_size18 mux_top_ipin_4 (
 		.in({chanx_left_in[0], chanx_right_in[0], chanx_left_in[1], chanx_right_in[1], chanx_left_in[2], chanx_right_in[2], chanx_left_in[3], chanx_right_in[3], chanx_left_in[4], chanx_right_in[4], chanx_left_in[5], chanx_right_in[5], chanx_left_in[6], chanx_right_in[6], chanx_left_in[7], chanx_right_in[7], chanx_left_in[8], chanx_right_in[8]}),
 		.sram(mux_tree_tapbuf_size18_4_sram[0:4]),
-		.sram_inv(mux_top_ipin_4_undriven_sram_inv[0:4]),
 		.out(bottom_grid_top_width_0_height_0_subtile_0__pin_I_4_));
 
 	mux_tree_tapbuf_size18 mux_top_ipin_5 (
 		.in({chanx_left_in[0], chanx_right_in[0], chanx_left_in[1], chanx_right_in[1], chanx_left_in[2], chanx_right_in[2], chanx_left_in[3], chanx_right_in[3], chanx_left_in[4], chanx_right_in[4], chanx_left_in[5], chanx_right_in[5], chanx_left_in[6], chanx_right_in[6], chanx_left_in[7], chanx_right_in[7], chanx_left_in[8], chanx_right_in[8]}),
 		.sram(mux_tree_tapbuf_size18_5_sram[0:4]),
-		.sram_inv(mux_top_ipin_5_undriven_sram_inv[0:4]),
 		.out(bottom_grid_top_width_0_height_0_subtile_0__pin_I_5_));
 
 	mux_tree_tapbuf_size18 mux_top_ipin_6 (
 		.in({chanx_left_in[0], chanx_right_in[0], chanx_left_in[1], chanx_right_in[1], chanx_left_in[2], chanx_right_in[2], chanx_left_in[3], chanx_right_in[3], chanx_left_in[4], chanx_right_in[4], chanx_left_in[5], chanx_right_in[5], chanx_left_in[6], chanx_right_in[6], chanx_left_in[7], chanx_right_in[7], chanx_left_in[8], chanx_right_in[8]}),
 		.sram(mux_tree_tapbuf_size18_6_sram[0:4]),
-		.sram_inv(mux_top_ipin_6_undriven_sram_inv[0:4]),
 		.out(bottom_grid_top_width_0_height_0_subtile_0__pin_I_6_));
 
 	mux_tree_tapbuf_size18 mux_top_ipin_7 (
 		.in({chanx_left_in[0], chanx_right_in[0], chanx_left_in[1], chanx_right_in[1], chanx_left_in[2], chanx_right_in[2], chanx_left_in[3], chanx_right_in[3], chanx_left_in[4], chanx_right_in[4], chanx_left_in[5], chanx_right_in[5], chanx_left_in[6], chanx_right_in[6], chanx_left_in[7], chanx_right_in[7], chanx_left_in[8], chanx_right_in[8]}),
 		.sram(mux_tree_tapbuf_size18_7_sram[0:4]),
-		.sram_inv(mux_top_ipin_7_undriven_sram_inv[0:4]),
 		.out(bottom_grid_top_width_0_height_0_subtile_0__pin_I_7_));
 
 	mux_tree_tapbuf_size18 mux_top_ipin_8 (
 		.in({chanx_left_in[0], chanx_right_in[0], chanx_left_in[1], chanx_right_in[1], chanx_left_in[2], chanx_right_in[2], chanx_left_in[3], chanx_right_in[3], chanx_left_in[4], chanx_right_in[4], chanx_left_in[5], chanx_right_in[5], chanx_left_in[6], chanx_right_in[6], chanx_left_in[7], chanx_right_in[7], chanx_left_in[8], chanx_right_in[8]}),
 		.sram(mux_tree_tapbuf_size18_8_sram[0:4]),
-		.sram_inv(mux_top_ipin_8_undriven_sram_inv[0:4]),
 		.out(bottom_grid_top_width_0_height_0_subtile_0__pin_I_8_));
 
 	mux_tree_tapbuf_size18 mux_top_ipin_9 (
 		.in({chanx_left_in[0], chanx_right_in[0], chanx_left_in[1], chanx_right_in[1], chanx_left_in[2], chanx_right_in[2], chanx_left_in[3], chanx_right_in[3], chanx_left_in[4], chanx_right_in[4], chanx_left_in[5], chanx_right_in[5], chanx_left_in[6], chanx_right_in[6], chanx_left_in[7], chanx_right_in[7], chanx_left_in[8], chanx_right_in[8]}),
 		.sram(mux_tree_tapbuf_size18_9_sram[0:4]),
-		.sram_inv(mux_top_ipin_9_undriven_sram_inv[0:4]),
 		.out(bottom_grid_top_width_0_height_0_subtile_0__pin_I_9_));
 
 	mux_tree_tapbuf_size18_mem mem_top_ipin_0 (
