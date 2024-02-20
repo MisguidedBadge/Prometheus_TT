@@ -50,7 +50,6 @@ wire [0:0] direct_interc_4_out;
 wire [0:0] logical_tile_clb_mode_default__fle_mode_n1_lut4__ble4_mode_default__ff_0_ff_Q;
 wire [0:0] logical_tile_clb_mode_default__fle_mode_n1_lut4__ble4_mode_default__lut4_0_ccff_tail;
 wire [0:0] logical_tile_clb_mode_default__fle_mode_n1_lut4__ble4_mode_default__lut4_0_lut4_out;
-wire [0:1] mux_ble4_out_0_undriven_sram_inv;
 wire [0:1] mux_tree_tapbuf_size2_0_sram;
 
 // ----- BEGIN Local short connections -----
@@ -74,7 +73,6 @@ wire [0:1] mux_tree_tapbuf_size2_0_sram;
 	mux_tree_tapbuf_size2 mux_ble4_out_0 (
 		.in({logical_tile_clb_mode_default__fle_mode_n1_lut4__ble4_mode_default__ff_0_ff_Q, logical_tile_clb_mode_default__fle_mode_n1_lut4__ble4_mode_default__lut4_0_lut4_out}),
 		.sram(mux_tree_tapbuf_size2_0_sram[0:1]),
-		.sram_inv(mux_ble4_out_0_undriven_sram_inv[0:1]),
 		.out(ble4_out));
 
 	mux_tree_tapbuf_size2_mem mem_ble4_out_0 (
