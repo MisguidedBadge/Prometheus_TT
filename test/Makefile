@@ -5,7 +5,7 @@
 SIM ?= icarus
 TOPLEVEL_LANG ?= verilog
 SRC_DIR = $(PWD)/../src
-PROJECT_SOURCES = project.v
+PROJECT_SOURCES =      fpga/fpga_wrap.v fpga/fpga_top.v fpga/gpio.v fpga/circuit_wrapper.v fpga/lb/grid_clb.v fpga/lb/grid_io_hard_bottom.v fpga/lb/logical_tile_clb_mode_clb_.v fpga/lb/logical_tile_clb_mode_default__fle.v fpga/lb/logical_tile_clb_mode_default__fle_mode_n1_lut4__ble4.v fpga/lb/logical_tile_clb_mode_default__fle_mode_n1_lut4__ble4_mode_default__ff.v fpga/lb/logical_tile_clb_mode_default__fle_mode_n1_lut4__ble4_mode_default__lut4.v fpga/lb/logical_tile_io_input_mode_io_input_.v fpga/lb/logical_tile_io_input_mode_physical__iopad.v fpga/lb/logical_tile_io_output_mode_io_output_.v fpga/lb/logical_tile_io_output_mode_physical__iopad.v fpga/routing/cbx_1__0_.v fpga/routing/cbx_1__1_.v fpga/routing/cby_0__1_.v fpga/routing/sb_0__0_.v fpga/routing/sb_0__1_.v fpga/routing/sb_1__0_.v fpga/routing/sb_1__1_.v fpga/sub_module/arch_encoder.v fpga/sub_module/inv_buf_passgate.v fpga/sub_module/local_encoder.v fpga/sub_module/luts.v fpga/sub_module/memories.v fpga/sub_module/muxes.v fpga/sub_module/mux_primitives.v fpga/sub_module/shift_register_banks.v fpga/sub_module/wires.v
 
 ifneq ($(GATES),yes)
 
