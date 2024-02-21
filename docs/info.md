@@ -17,13 +17,13 @@ The Tzeentch FPGA is a tileable FPGA generated via OpenFPGA. It has 14 input I/O
 
 ## Pin map
 
-| FPGA Pin                   | TinyTapeoutPin            | Purpose
+| FPGA Pin                   | TinyTapeoutPin            | Purpose                        |
 | ------------- | ------ |
 | fpga_io_in                 | ui_in[7:2] , uio_in[7:0]  | FPGA General Purpose Input Port|
 | fpga_io_out                | uo_out[6:0]               | FPGA General Purpose Output Port |
 | Configuration Chain Head   | ui_in[1]                  | FPGA scan chain head (programming)
-| Configuration Chain Tail   | uo_out[0]                 | FPGA scan chain tail
-| Programming Clock          | ui_in[0]                  | Clock in CC Head bits
+| Configuration Chain Tail   | uo_out[0]                 | FPGA scan chain tail |
+| Programming Clock          | ui_in[0]                  | Clock in CC Head bits |
 
 
 ## How to test
