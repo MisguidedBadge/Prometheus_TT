@@ -3,7 +3,7 @@
 //	Description: FPGA Verilog full testbench for top-level netlist of design: and2
 //	Author: Xifan TANG
 //	Organization: University of Utah
-//	Date: Tue Feb 20 21:20:57 2024
+//	Date: Wed Feb 21 16:56:07 2024
 //-------------------------------------------
 //----- Default net type -----
 `default_nettype none
@@ -128,7 +128,7 @@ initial
 // ----- Begin connecting global ports of FPGA fabric to stimuli -----
 	assign clk[0] = __op_clock__[0];
 	assign prog_clk[0] = __prog_clock__[0];
-	assign reset[0] = __greset__[0];
+	assign reset[0] = ~__greset__[0];
 // ----- End connecting global ports of FPGA fabric to stimuli -----
 // ----- FPGA top-level module to be capsulated -----
 	fpga_top FPGA_DUT (
@@ -5085,7 +5085,7 @@ initial begin
 	$timeformat(-9, 2, "ns", 20);
 	$display("Simulation start");
 // ----- Can be changed by the user for his/her need -------
-	#4535
+	#4541
 	if(nb_error == 0) begin
 		$display("Simulation Succeed");
 	end else begin
