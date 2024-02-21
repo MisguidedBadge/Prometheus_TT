@@ -1,4 +1,3 @@
-
 module p_ff (
     D,
     Q,
@@ -16,7 +15,7 @@ module p_ff (
         else
             Q <= D;
     end
-    
+
 /*
     sky130_fd_sc_hd__dfrtp_1 #() dff (
         .Q(Q),
