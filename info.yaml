@@ -1,9 +1,9 @@
 # Tiny Tapeout project information
 project:
-  title:        "Prometheus"      # Project title
+  title:        "Tzeentch FPGA"      # Project title
   author:       "MisguidedBadge"      # Your name
   discord:      "MisguidedBadge"      # Your discord username, for communication and automatically assigning you a Tapeout role (optional)
-  description:  "FPGA Thingy"      # One line description of what your project does
+  description:  "FPGA K4N4 2 CLB"      # One line description of what your project does
   language:     "Verilog" # other examples include SystemVerilog, Amaranth, VHDL, etc
   clock_hz:     0       # Clock frequency in Hz (or 0 if not applicable)
 
