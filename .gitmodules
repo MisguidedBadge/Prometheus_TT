@@ -1,0 +1,3 @@
+[submodule "Tzeentch_FPGA"]
+	path = Tzeentch_FPGA
+	url = https://github.com/MisguidedBadge/Tzeentch_FPGA
