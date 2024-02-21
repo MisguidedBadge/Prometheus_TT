@@ -3,7 +3,7 @@
 //	Description: FPGA Verilog full testbench for top-level netlist of design: and2
 //	Author: Xifan TANG
 //	Organization: University of Utah
-//	Date: Tue Feb 20 19:15:11 2024
+//	Date: Wed Feb 21 15:28:28 2024
 //-------------------------------------------
 //----- Default net type -----
 `default_nettype none
@@ -15,8 +15,8 @@ wire [0:0] reset;
 wire [0:0] clk;
 
 // ----- Local wires for I/Os of FPGA fabric -----
-wire [0:9] gfpga_pad_GPIN_PAD;
-wire [0:3] gfpga_pad_GPOUT_PAD;
+wire [0:13] gfpga_pad_GPIN_PAD;
+wire [0:6] gfpga_pad_GPOUT_PAD;
 
 
 
@@ -49,7 +49,7 @@ wire [0:0] ccff_tail;
 
 // ----- Error counter: Deposit an error for config_done signal is not raised at the beginning -----
 	integer nb_error= 1;
-// ----- Number of clock cycles in configuration phase: 251 -----
+// ----- Number of clock cycles in configuration phase: 221 -----
 // ----- Begin configuration done signal generation -----
 initial
 	begin
@@ -81,7 +81,7 @@ initial
 	end
 always wait(~__greset__)
 	begin
-		#0.7472590804	__op_clock___reg__[0] = ~__op_clock___reg__[0];
+		#0.5915455222	__op_clock___reg__[0] = ~__op_clock___reg__[0];
 	end
 
 // ----- End raw operating clock signal generation -----
@@ -112,8 +112,8 @@ initial
 	begin
 		__greset__[0] = 1'b1;
 	wait(__config_all_done__)
-	#1.494518161	__greset__[0] = 1'b1;
-	#2.989036322	__greset__[0] = 1'b0;
+	#1.183091044	__greset__[0] = 1'b1;
+	#2.366182089	__greset__[0] = 1'b0;
 	end
 
 // ----- End operating reset signal generation -----
@@ -128,15 +128,15 @@ initial
 // ----- Begin connecting global ports of FPGA fabric to stimuli -----
 	assign clk[0] = __op_clock__[0];
 	assign prog_clk[0] = __prog_clock__[0];
-	assign reset[0] = __greset__[0];
+	assign reset[0] = ~__greset__[0];
 // ----- End connecting global ports of FPGA fabric to stimuli -----
 // ----- FPGA top-level module to be capsulated -----
 	fpga_top FPGA_DUT (
 		.prog_clk(prog_clk[0]),
 		.reset(reset[0]),
 		.clk(clk[0]),
-		.gfpga_pad_GPIN_PAD(gfpga_pad_GPIN_PAD[0:9]),
-		.gfpga_pad_GPOUT_PAD(gfpga_pad_GPOUT_PAD[0:3]),
+		.gfpga_pad_GPIN_PAD(gfpga_pad_GPIN_PAD[0:13]),
+		.gfpga_pad_GPOUT_PAD(gfpga_pad_GPOUT_PAD[0:6]),
 		.ccff_head(ccff_head[0]),
 		.ccff_tail(ccff_tail[0]));
 
@@ -159,10 +159,17 @@ initial
 	assign gfpga_pad_GPIN_PAD[7] = 1'b0;
 	assign gfpga_pad_GPIN_PAD[8] = 1'b0;
 	assign gfpga_pad_GPIN_PAD[9] = 1'b0;
+	assign gfpga_pad_GPIN_PAD[10] = 1'b0;
+	assign gfpga_pad_GPIN_PAD[11] = 1'b0;
+	assign gfpga_pad_GPIN_PAD[12] = 1'b0;
+	assign gfpga_pad_GPIN_PAD[13] = 1'b0;
 
 	assign gfpga_pad_GPOUT_PAD[1] = 1'b0;
 	assign gfpga_pad_GPOUT_PAD[2] = 1'b0;
 	assign gfpga_pad_GPOUT_PAD[3] = 1'b0;
+	assign gfpga_pad_GPOUT_PAD[4] = 1'b0;
+	assign gfpga_pad_GPOUT_PAD[5] = 1'b0;
+	assign gfpga_pad_GPOUT_PAD[6] = 1'b0;
 
 // ----- Reference Benchmark Instanication -------
 	and2 REF_DUT(
@@ -173,7 +180,7 @@ initial
 // ----- End reference Benchmark Instanication -------
 
 // ----- Begin bitstream loading during configuration phase -----
-`define BITSTREAM_LENGTH 250
+`define BITSTREAM_LENGTH 220
 `define BITSTREAM_WIDTH 1
 // ----- Virtual memory to store the bitstream from external file -----
 reg [0:`BITSTREAM_WIDTH - 1] bit_mem[0:`BITSTREAM_LENGTH - 1];
@@ -1981,14 +1988,44 @@ end
 // ------ END driver initialization -----
 // ------ BEGIN driver initialization -----
 	initial begin
+		$deposit(FPGA_DUT.sb_0__0_.mux_right_track_0.mux_l2_in_1_.A1, $random % 2 ? 1'b1 : 1'b0);
+		$deposit(FPGA_DUT.sb_0__0_.mux_right_track_0.mux_l2_in_1_.A0, $random % 2 ? 1'b1 : 1'b0);
+	end
+// ------ END driver initialization -----
+// ------ BEGIN driver initialization -----
+	initial begin
+		$deposit(FPGA_DUT.sb_0__0_.mux_right_track_0.mux_l3_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
+		$deposit(FPGA_DUT.sb_0__0_.mux_right_track_0.mux_l3_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
+	end
+// ------ END driver initialization -----
+// ------ BEGIN driver initialization -----
+	initial begin
 		$deposit(FPGA_DUT.sb_0__0_.mux_right_track_2.mux_l1_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
 		$deposit(FPGA_DUT.sb_0__0_.mux_right_track_2.mux_l1_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
 	end
 // ------ END driver initialization -----
 // ------ BEGIN driver initialization -----
 	initial begin
+		$deposit(FPGA_DUT.sb_0__0_.mux_right_track_2.mux_l1_in_1_.A1, $random % 2 ? 1'b1 : 1'b0);
+		$deposit(FPGA_DUT.sb_0__0_.mux_right_track_2.mux_l1_in_1_.A0, $random % 2 ? 1'b1 : 1'b0);
+	end
+// ------ END driver initialization -----
+// ------ BEGIN driver initialization -----
+	initial begin
 		$deposit(FPGA_DUT.sb_0__0_.mux_right_track_2.mux_l2_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
 		$deposit(FPGA_DUT.sb_0__0_.mux_right_track_2.mux_l2_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
+	end
+// ------ END driver initialization -----
+// ------ BEGIN driver initialization -----
+	initial begin
+		$deposit(FPGA_DUT.sb_0__0_.mux_right_track_2.mux_l2_in_1_.A1, $random % 2 ? 1'b1 : 1'b0);
+		$deposit(FPGA_DUT.sb_0__0_.mux_right_track_2.mux_l2_in_1_.A0, $random % 2 ? 1'b1 : 1'b0);
+	end
+// ------ END driver initialization -----
+// ------ BEGIN driver initialization -----
+	initial begin
+		$deposit(FPGA_DUT.sb_0__0_.mux_right_track_2.mux_l3_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
+		$deposit(FPGA_DUT.sb_0__0_.mux_right_track_2.mux_l3_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
 	end
 // ------ END driver initialization -----
 // ------ BEGIN driver initialization -----
@@ -2005,6 +2042,18 @@ end
 // ------ END driver initialization -----
 // ------ BEGIN driver initialization -----
 	initial begin
+		$deposit(FPGA_DUT.sb_0__0_.mux_right_track_4.mux_l2_in_1_.A1, $random % 2 ? 1'b1 : 1'b0);
+		$deposit(FPGA_DUT.sb_0__0_.mux_right_track_4.mux_l2_in_1_.A0, $random % 2 ? 1'b1 : 1'b0);
+	end
+// ------ END driver initialization -----
+// ------ BEGIN driver initialization -----
+	initial begin
+		$deposit(FPGA_DUT.sb_0__0_.mux_right_track_4.mux_l3_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
+		$deposit(FPGA_DUT.sb_0__0_.mux_right_track_4.mux_l3_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
+	end
+// ------ END driver initialization -----
+// ------ BEGIN driver initialization -----
+	initial begin
 		$deposit(FPGA_DUT.sb_0__0_.mux_right_track_6.mux_l1_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
 		$deposit(FPGA_DUT.sb_0__0_.mux_right_track_6.mux_l1_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
 	end
@@ -2017,62 +2066,14 @@ end
 // ------ END driver initialization -----
 // ------ BEGIN driver initialization -----
 	initial begin
-		$deposit(FPGA_DUT.sb_0__0_.mux_right_track_8.mux_l1_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.sb_0__0_.mux_right_track_8.mux_l1_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
+		$deposit(FPGA_DUT.sb_0__0_.mux_right_track_6.mux_l2_in_1_.A1, $random % 2 ? 1'b1 : 1'b0);
+		$deposit(FPGA_DUT.sb_0__0_.mux_right_track_6.mux_l2_in_1_.A0, $random % 2 ? 1'b1 : 1'b0);
 	end
 // ------ END driver initialization -----
 // ------ BEGIN driver initialization -----
 	initial begin
-		$deposit(FPGA_DUT.sb_0__0_.mux_right_track_8.mux_l2_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.sb_0__0_.mux_right_track_8.mux_l2_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.sb_0__0_.mux_right_track_10.mux_l1_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.sb_0__0_.mux_right_track_10.mux_l1_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.sb_0__0_.mux_right_track_10.mux_l2_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.sb_0__0_.mux_right_track_10.mux_l2_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.sb_0__0_.mux_right_track_12.mux_l1_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.sb_0__0_.mux_right_track_12.mux_l1_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.sb_0__0_.mux_right_track_12.mux_l2_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.sb_0__0_.mux_right_track_12.mux_l2_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.sb_0__0_.mux_right_track_14.mux_l1_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.sb_0__0_.mux_right_track_14.mux_l1_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.sb_0__0_.mux_right_track_14.mux_l2_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.sb_0__0_.mux_right_track_14.mux_l2_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.sb_0__0_.mux_right_track_16.mux_l1_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.sb_0__0_.mux_right_track_16.mux_l1_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.sb_0__0_.mux_right_track_16.mux_l2_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.sb_0__0_.mux_right_track_16.mux_l2_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
+		$deposit(FPGA_DUT.sb_0__0_.mux_right_track_6.mux_l3_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
+		$deposit(FPGA_DUT.sb_0__0_.mux_right_track_6.mux_l3_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
 	end
 // ------ END driver initialization -----
 // ------ BEGIN driver initialization -----
@@ -2143,14 +2144,44 @@ end
 // ------ END driver initialization -----
 // ------ BEGIN driver initialization -----
 	initial begin
+		$deposit(FPGA_DUT.sb_1__0_.mux_left_track_1.mux_l2_in_1_.A1, $random % 2 ? 1'b1 : 1'b0);
+		$deposit(FPGA_DUT.sb_1__0_.mux_left_track_1.mux_l2_in_1_.A0, $random % 2 ? 1'b1 : 1'b0);
+	end
+// ------ END driver initialization -----
+// ------ BEGIN driver initialization -----
+	initial begin
+		$deposit(FPGA_DUT.sb_1__0_.mux_left_track_1.mux_l3_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
+		$deposit(FPGA_DUT.sb_1__0_.mux_left_track_1.mux_l3_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
+	end
+// ------ END driver initialization -----
+// ------ BEGIN driver initialization -----
+	initial begin
 		$deposit(FPGA_DUT.sb_1__0_.mux_left_track_3.mux_l1_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
 		$deposit(FPGA_DUT.sb_1__0_.mux_left_track_3.mux_l1_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
 	end
 // ------ END driver initialization -----
 // ------ BEGIN driver initialization -----
 	initial begin
+		$deposit(FPGA_DUT.sb_1__0_.mux_left_track_3.mux_l1_in_1_.A1, $random % 2 ? 1'b1 : 1'b0);
+		$deposit(FPGA_DUT.sb_1__0_.mux_left_track_3.mux_l1_in_1_.A0, $random % 2 ? 1'b1 : 1'b0);
+	end
+// ------ END driver initialization -----
+// ------ BEGIN driver initialization -----
+	initial begin
 		$deposit(FPGA_DUT.sb_1__0_.mux_left_track_3.mux_l2_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
 		$deposit(FPGA_DUT.sb_1__0_.mux_left_track_3.mux_l2_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
+	end
+// ------ END driver initialization -----
+// ------ BEGIN driver initialization -----
+	initial begin
+		$deposit(FPGA_DUT.sb_1__0_.mux_left_track_3.mux_l2_in_1_.A1, $random % 2 ? 1'b1 : 1'b0);
+		$deposit(FPGA_DUT.sb_1__0_.mux_left_track_3.mux_l2_in_1_.A0, $random % 2 ? 1'b1 : 1'b0);
+	end
+// ------ END driver initialization -----
+// ------ BEGIN driver initialization -----
+	initial begin
+		$deposit(FPGA_DUT.sb_1__0_.mux_left_track_3.mux_l3_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
+		$deposit(FPGA_DUT.sb_1__0_.mux_left_track_3.mux_l3_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
 	end
 // ------ END driver initialization -----
 // ------ BEGIN driver initialization -----
@@ -2167,6 +2198,18 @@ end
 // ------ END driver initialization -----
 // ------ BEGIN driver initialization -----
 	initial begin
+		$deposit(FPGA_DUT.sb_1__0_.mux_left_track_5.mux_l2_in_1_.A1, $random % 2 ? 1'b1 : 1'b0);
+		$deposit(FPGA_DUT.sb_1__0_.mux_left_track_5.mux_l2_in_1_.A0, $random % 2 ? 1'b1 : 1'b0);
+	end
+// ------ END driver initialization -----
+// ------ BEGIN driver initialization -----
+	initial begin
+		$deposit(FPGA_DUT.sb_1__0_.mux_left_track_5.mux_l3_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
+		$deposit(FPGA_DUT.sb_1__0_.mux_left_track_5.mux_l3_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
+	end
+// ------ END driver initialization -----
+// ------ BEGIN driver initialization -----
+	initial begin
 		$deposit(FPGA_DUT.sb_1__0_.mux_left_track_7.mux_l1_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
 		$deposit(FPGA_DUT.sb_1__0_.mux_left_track_7.mux_l1_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
 	end
@@ -2179,62 +2222,14 @@ end
 // ------ END driver initialization -----
 // ------ BEGIN driver initialization -----
 	initial begin
-		$deposit(FPGA_DUT.sb_1__0_.mux_left_track_9.mux_l1_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.sb_1__0_.mux_left_track_9.mux_l1_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
+		$deposit(FPGA_DUT.sb_1__0_.mux_left_track_7.mux_l2_in_1_.A1, $random % 2 ? 1'b1 : 1'b0);
+		$deposit(FPGA_DUT.sb_1__0_.mux_left_track_7.mux_l2_in_1_.A0, $random % 2 ? 1'b1 : 1'b0);
 	end
 // ------ END driver initialization -----
 // ------ BEGIN driver initialization -----
 	initial begin
-		$deposit(FPGA_DUT.sb_1__0_.mux_left_track_9.mux_l2_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.sb_1__0_.mux_left_track_9.mux_l2_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.sb_1__0_.mux_left_track_11.mux_l1_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.sb_1__0_.mux_left_track_11.mux_l1_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.sb_1__0_.mux_left_track_11.mux_l2_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.sb_1__0_.mux_left_track_11.mux_l2_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.sb_1__0_.mux_left_track_13.mux_l1_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.sb_1__0_.mux_left_track_13.mux_l1_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.sb_1__0_.mux_left_track_13.mux_l2_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.sb_1__0_.mux_left_track_13.mux_l2_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.sb_1__0_.mux_left_track_15.mux_l1_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.sb_1__0_.mux_left_track_15.mux_l1_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.sb_1__0_.mux_left_track_15.mux_l2_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.sb_1__0_.mux_left_track_15.mux_l2_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.sb_1__0_.mux_left_track_17.mux_l1_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.sb_1__0_.mux_left_track_17.mux_l1_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.sb_1__0_.mux_left_track_17.mux_l2_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.sb_1__0_.mux_left_track_17.mux_l2_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
+		$deposit(FPGA_DUT.sb_1__0_.mux_left_track_7.mux_l3_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
+		$deposit(FPGA_DUT.sb_1__0_.mux_left_track_7.mux_l3_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
 	end
 // ------ END driver initialization -----
 // ------ BEGIN driver initialization -----
@@ -2293,32 +2288,8 @@ end
 // ------ END driver initialization -----
 // ------ BEGIN driver initialization -----
 	initial begin
-		$deposit(FPGA_DUT.cbx_1__0_.mux_top_ipin_0.mux_l1_in_1_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__0_.mux_top_ipin_0.mux_l1_in_1_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__0_.mux_top_ipin_0.mux_l1_in_2_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__0_.mux_top_ipin_0.mux_l1_in_2_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
 		$deposit(FPGA_DUT.cbx_1__0_.mux_top_ipin_0.mux_l2_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
 		$deposit(FPGA_DUT.cbx_1__0_.mux_top_ipin_0.mux_l2_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__0_.mux_top_ipin_0.mux_l2_in_1_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__0_.mux_top_ipin_0.mux_l2_in_1_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__0_.mux_top_ipin_0.mux_l3_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__0_.mux_top_ipin_0.mux_l3_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
 	end
 // ------ END driver initialization -----
 // ------ BEGIN driver initialization -----
@@ -2329,32 +2300,8 @@ end
 // ------ END driver initialization -----
 // ------ BEGIN driver initialization -----
 	initial begin
-		$deposit(FPGA_DUT.cbx_1__0_.mux_top_ipin_1.mux_l1_in_1_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__0_.mux_top_ipin_1.mux_l1_in_1_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__0_.mux_top_ipin_1.mux_l1_in_2_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__0_.mux_top_ipin_1.mux_l1_in_2_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
 		$deposit(FPGA_DUT.cbx_1__0_.mux_top_ipin_1.mux_l2_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
 		$deposit(FPGA_DUT.cbx_1__0_.mux_top_ipin_1.mux_l2_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__0_.mux_top_ipin_1.mux_l2_in_1_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__0_.mux_top_ipin_1.mux_l2_in_1_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__0_.mux_top_ipin_1.mux_l3_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__0_.mux_top_ipin_1.mux_l3_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
 	end
 // ------ END driver initialization -----
 // ------ BEGIN driver initialization -----
@@ -2365,32 +2312,8 @@ end
 // ------ END driver initialization -----
 // ------ BEGIN driver initialization -----
 	initial begin
-		$deposit(FPGA_DUT.cbx_1__0_.mux_top_ipin_2.mux_l1_in_1_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__0_.mux_top_ipin_2.mux_l1_in_1_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__0_.mux_top_ipin_2.mux_l1_in_2_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__0_.mux_top_ipin_2.mux_l1_in_2_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
 		$deposit(FPGA_DUT.cbx_1__0_.mux_top_ipin_2.mux_l2_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
 		$deposit(FPGA_DUT.cbx_1__0_.mux_top_ipin_2.mux_l2_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__0_.mux_top_ipin_2.mux_l2_in_1_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__0_.mux_top_ipin_2.mux_l2_in_1_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__0_.mux_top_ipin_2.mux_l3_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__0_.mux_top_ipin_2.mux_l3_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
 	end
 // ------ END driver initialization -----
 // ------ BEGIN driver initialization -----
@@ -2401,50 +2324,50 @@ end
 // ------ END driver initialization -----
 // ------ BEGIN driver initialization -----
 	initial begin
-		$deposit(FPGA_DUT.cbx_1__0_.mux_top_ipin_3.mux_l1_in_1_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__0_.mux_top_ipin_3.mux_l1_in_1_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__0_.mux_top_ipin_3.mux_l1_in_2_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__0_.mux_top_ipin_3.mux_l1_in_2_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
 		$deposit(FPGA_DUT.cbx_1__0_.mux_top_ipin_3.mux_l2_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
 		$deposit(FPGA_DUT.cbx_1__0_.mux_top_ipin_3.mux_l2_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
 	end
 // ------ END driver initialization -----
 // ------ BEGIN driver initialization -----
 	initial begin
-		$deposit(FPGA_DUT.cbx_1__0_.mux_top_ipin_3.mux_l2_in_1_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__0_.mux_top_ipin_3.mux_l2_in_1_.A0, $random % 2 ? 1'b1 : 1'b0);
+		$deposit(FPGA_DUT.cbx_1__0_.mux_top_ipin_4.mux_l1_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
+		$deposit(FPGA_DUT.cbx_1__0_.mux_top_ipin_4.mux_l1_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
 	end
 // ------ END driver initialization -----
 // ------ BEGIN driver initialization -----
 	initial begin
-		$deposit(FPGA_DUT.cbx_1__0_.mux_top_ipin_3.mux_l3_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__0_.mux_top_ipin_3.mux_l3_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
+		$deposit(FPGA_DUT.cbx_1__0_.mux_top_ipin_4.mux_l2_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
+		$deposit(FPGA_DUT.cbx_1__0_.mux_top_ipin_4.mux_l2_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
+	end
+// ------ END driver initialization -----
+// ------ BEGIN driver initialization -----
+	initial begin
+		$deposit(FPGA_DUT.cbx_1__0_.mux_top_ipin_5.mux_l1_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
+		$deposit(FPGA_DUT.cbx_1__0_.mux_top_ipin_5.mux_l1_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
+	end
+// ------ END driver initialization -----
+// ------ BEGIN driver initialization -----
+	initial begin
+		$deposit(FPGA_DUT.cbx_1__0_.mux_top_ipin_5.mux_l2_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
+		$deposit(FPGA_DUT.cbx_1__0_.mux_top_ipin_5.mux_l2_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
+	end
+// ------ END driver initialization -----
+// ------ BEGIN driver initialization -----
+	initial begin
+		$deposit(FPGA_DUT.cbx_1__0_.mux_top_ipin_6.mux_l1_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
+		$deposit(FPGA_DUT.cbx_1__0_.mux_top_ipin_6.mux_l1_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
+	end
+// ------ END driver initialization -----
+// ------ BEGIN driver initialization -----
+	initial begin
+		$deposit(FPGA_DUT.cbx_1__0_.mux_top_ipin_6.mux_l2_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
+		$deposit(FPGA_DUT.cbx_1__0_.mux_top_ipin_6.mux_l2_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
 	end
 // ------ END driver initialization -----
 // ------ BEGIN driver initialization -----
 	initial begin
 		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_0.mux_l1_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
 		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_0.mux_l1_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_0.mux_l1_in_1_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_0.mux_l1_in_1_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_0.mux_l1_in_2_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_0.mux_l1_in_2_.A0, $random % 2 ? 1'b1 : 1'b0);
 	end
 // ------ END driver initialization -----
 // ------ BEGIN driver initialization -----
@@ -2461,98 +2384,14 @@ end
 // ------ END driver initialization -----
 // ------ BEGIN driver initialization -----
 	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_0.mux_l2_in_2_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_0.mux_l2_in_2_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_0.mux_l2_in_3_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_0.mux_l2_in_3_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_0.mux_l2_in_4_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_0.mux_l2_in_4_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_0.mux_l2_in_5_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_0.mux_l2_in_5_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_0.mux_l2_in_6_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_0.mux_l2_in_6_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_0.mux_l2_in_7_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_0.mux_l2_in_7_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
 		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_0.mux_l3_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
 		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_0.mux_l3_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
 	end
 // ------ END driver initialization -----
 // ------ BEGIN driver initialization -----
 	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_0.mux_l3_in_1_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_0.mux_l3_in_1_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_0.mux_l3_in_2_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_0.mux_l3_in_2_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_0.mux_l3_in_3_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_0.mux_l3_in_3_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_0.mux_l4_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_0.mux_l4_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_0.mux_l4_in_1_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_0.mux_l4_in_1_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_0.mux_l5_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_0.mux_l5_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
 		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_1.mux_l1_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
 		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_1.mux_l1_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_1.mux_l1_in_1_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_1.mux_l1_in_1_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_1.mux_l1_in_2_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_1.mux_l1_in_2_.A0, $random % 2 ? 1'b1 : 1'b0);
 	end
 // ------ END driver initialization -----
 // ------ BEGIN driver initialization -----
@@ -2569,98 +2408,14 @@ end
 // ------ END driver initialization -----
 // ------ BEGIN driver initialization -----
 	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_1.mux_l2_in_2_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_1.mux_l2_in_2_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_1.mux_l2_in_3_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_1.mux_l2_in_3_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_1.mux_l2_in_4_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_1.mux_l2_in_4_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_1.mux_l2_in_5_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_1.mux_l2_in_5_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_1.mux_l2_in_6_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_1.mux_l2_in_6_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_1.mux_l2_in_7_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_1.mux_l2_in_7_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
 		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_1.mux_l3_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
 		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_1.mux_l3_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
 	end
 // ------ END driver initialization -----
 // ------ BEGIN driver initialization -----
 	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_1.mux_l3_in_1_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_1.mux_l3_in_1_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_1.mux_l3_in_2_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_1.mux_l3_in_2_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_1.mux_l3_in_3_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_1.mux_l3_in_3_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_1.mux_l4_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_1.mux_l4_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_1.mux_l4_in_1_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_1.mux_l4_in_1_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_1.mux_l5_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_1.mux_l5_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
 		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_2.mux_l1_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
 		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_2.mux_l1_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_2.mux_l1_in_1_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_2.mux_l1_in_1_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_2.mux_l1_in_2_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_2.mux_l1_in_2_.A0, $random % 2 ? 1'b1 : 1'b0);
 	end
 // ------ END driver initialization -----
 // ------ BEGIN driver initialization -----
@@ -2677,98 +2432,14 @@ end
 // ------ END driver initialization -----
 // ------ BEGIN driver initialization -----
 	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_2.mux_l2_in_2_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_2.mux_l2_in_2_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_2.mux_l2_in_3_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_2.mux_l2_in_3_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_2.mux_l2_in_4_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_2.mux_l2_in_4_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_2.mux_l2_in_5_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_2.mux_l2_in_5_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_2.mux_l2_in_6_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_2.mux_l2_in_6_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_2.mux_l2_in_7_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_2.mux_l2_in_7_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
 		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_2.mux_l3_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
 		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_2.mux_l3_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
 	end
 // ------ END driver initialization -----
 // ------ BEGIN driver initialization -----
 	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_2.mux_l3_in_1_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_2.mux_l3_in_1_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_2.mux_l3_in_2_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_2.mux_l3_in_2_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_2.mux_l3_in_3_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_2.mux_l3_in_3_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_2.mux_l4_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_2.mux_l4_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_2.mux_l4_in_1_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_2.mux_l4_in_1_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_2.mux_l5_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_2.mux_l5_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
 		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_3.mux_l1_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
 		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_3.mux_l1_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_3.mux_l1_in_1_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_3.mux_l1_in_1_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_3.mux_l1_in_2_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_3.mux_l1_in_2_.A0, $random % 2 ? 1'b1 : 1'b0);
 	end
 // ------ END driver initialization -----
 // ------ BEGIN driver initialization -----
@@ -2785,98 +2456,14 @@ end
 // ------ END driver initialization -----
 // ------ BEGIN driver initialization -----
 	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_3.mux_l2_in_2_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_3.mux_l2_in_2_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_3.mux_l2_in_3_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_3.mux_l2_in_3_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_3.mux_l2_in_4_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_3.mux_l2_in_4_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_3.mux_l2_in_5_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_3.mux_l2_in_5_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_3.mux_l2_in_6_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_3.mux_l2_in_6_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_3.mux_l2_in_7_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_3.mux_l2_in_7_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
 		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_3.mux_l3_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
 		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_3.mux_l3_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
 	end
 // ------ END driver initialization -----
 // ------ BEGIN driver initialization -----
 	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_3.mux_l3_in_1_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_3.mux_l3_in_1_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_3.mux_l3_in_2_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_3.mux_l3_in_2_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_3.mux_l3_in_3_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_3.mux_l3_in_3_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_3.mux_l4_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_3.mux_l4_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_3.mux_l4_in_1_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_3.mux_l4_in_1_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_3.mux_l5_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_3.mux_l5_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
 		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_4.mux_l1_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
 		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_4.mux_l1_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_4.mux_l1_in_1_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_4.mux_l1_in_1_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_4.mux_l1_in_2_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_4.mux_l1_in_2_.A0, $random % 2 ? 1'b1 : 1'b0);
 	end
 // ------ END driver initialization -----
 // ------ BEGIN driver initialization -----
@@ -2893,98 +2480,14 @@ end
 // ------ END driver initialization -----
 // ------ BEGIN driver initialization -----
 	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_4.mux_l2_in_2_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_4.mux_l2_in_2_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_4.mux_l2_in_3_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_4.mux_l2_in_3_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_4.mux_l2_in_4_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_4.mux_l2_in_4_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_4.mux_l2_in_5_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_4.mux_l2_in_5_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_4.mux_l2_in_6_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_4.mux_l2_in_6_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_4.mux_l2_in_7_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_4.mux_l2_in_7_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
 		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_4.mux_l3_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
 		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_4.mux_l3_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
 	end
 // ------ END driver initialization -----
 // ------ BEGIN driver initialization -----
 	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_4.mux_l3_in_1_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_4.mux_l3_in_1_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_4.mux_l3_in_2_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_4.mux_l3_in_2_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_4.mux_l3_in_3_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_4.mux_l3_in_3_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_4.mux_l4_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_4.mux_l4_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_4.mux_l4_in_1_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_4.mux_l4_in_1_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_4.mux_l5_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_4.mux_l5_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
 		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_5.mux_l1_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
 		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_5.mux_l1_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_5.mux_l1_in_1_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_5.mux_l1_in_1_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_5.mux_l1_in_2_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_5.mux_l1_in_2_.A0, $random % 2 ? 1'b1 : 1'b0);
 	end
 // ------ END driver initialization -----
 // ------ BEGIN driver initialization -----
@@ -3001,98 +2504,14 @@ end
 // ------ END driver initialization -----
 // ------ BEGIN driver initialization -----
 	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_5.mux_l2_in_2_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_5.mux_l2_in_2_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_5.mux_l2_in_3_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_5.mux_l2_in_3_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_5.mux_l2_in_4_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_5.mux_l2_in_4_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_5.mux_l2_in_5_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_5.mux_l2_in_5_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_5.mux_l2_in_6_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_5.mux_l2_in_6_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_5.mux_l2_in_7_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_5.mux_l2_in_7_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
 		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_5.mux_l3_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
 		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_5.mux_l3_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
 	end
 // ------ END driver initialization -----
 // ------ BEGIN driver initialization -----
 	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_5.mux_l3_in_1_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_5.mux_l3_in_1_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_5.mux_l3_in_2_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_5.mux_l3_in_2_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_5.mux_l3_in_3_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_5.mux_l3_in_3_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_5.mux_l4_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_5.mux_l4_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_5.mux_l4_in_1_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_5.mux_l4_in_1_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_5.mux_l5_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_5.mux_l5_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
 		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_6.mux_l1_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
 		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_6.mux_l1_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_6.mux_l1_in_1_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_6.mux_l1_in_1_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_6.mux_l1_in_2_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_6.mux_l1_in_2_.A0, $random % 2 ? 1'b1 : 1'b0);
 	end
 // ------ END driver initialization -----
 // ------ BEGIN driver initialization -----
@@ -3109,98 +2528,14 @@ end
 // ------ END driver initialization -----
 // ------ BEGIN driver initialization -----
 	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_6.mux_l2_in_2_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_6.mux_l2_in_2_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_6.mux_l2_in_3_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_6.mux_l2_in_3_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_6.mux_l2_in_4_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_6.mux_l2_in_4_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_6.mux_l2_in_5_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_6.mux_l2_in_5_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_6.mux_l2_in_6_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_6.mux_l2_in_6_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_6.mux_l2_in_7_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_6.mux_l2_in_7_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
 		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_6.mux_l3_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
 		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_6.mux_l3_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
 	end
 // ------ END driver initialization -----
 // ------ BEGIN driver initialization -----
 	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_6.mux_l3_in_1_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_6.mux_l3_in_1_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_6.mux_l3_in_2_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_6.mux_l3_in_2_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_6.mux_l3_in_3_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_6.mux_l3_in_3_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_6.mux_l4_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_6.mux_l4_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_6.mux_l4_in_1_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_6.mux_l4_in_1_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_6.mux_l5_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_6.mux_l5_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
 		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_7.mux_l1_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
 		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_7.mux_l1_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_7.mux_l1_in_1_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_7.mux_l1_in_1_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_7.mux_l1_in_2_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_7.mux_l1_in_2_.A0, $random % 2 ? 1'b1 : 1'b0);
 	end
 // ------ END driver initialization -----
 // ------ BEGIN driver initialization -----
@@ -3217,98 +2552,14 @@ end
 // ------ END driver initialization -----
 // ------ BEGIN driver initialization -----
 	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_7.mux_l2_in_2_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_7.mux_l2_in_2_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_7.mux_l2_in_3_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_7.mux_l2_in_3_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_7.mux_l2_in_4_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_7.mux_l2_in_4_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_7.mux_l2_in_5_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_7.mux_l2_in_5_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_7.mux_l2_in_6_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_7.mux_l2_in_6_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_7.mux_l2_in_7_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_7.mux_l2_in_7_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
 		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_7.mux_l3_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
 		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_7.mux_l3_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
 	end
 // ------ END driver initialization -----
 // ------ BEGIN driver initialization -----
 	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_7.mux_l3_in_1_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_7.mux_l3_in_1_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_7.mux_l3_in_2_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_7.mux_l3_in_2_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_7.mux_l3_in_3_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_7.mux_l3_in_3_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_7.mux_l4_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_7.mux_l4_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_7.mux_l4_in_1_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_7.mux_l4_in_1_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_7.mux_l5_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_7.mux_l5_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
 		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_8.mux_l1_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
 		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_8.mux_l1_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_8.mux_l1_in_1_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_8.mux_l1_in_1_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_8.mux_l1_in_2_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_8.mux_l1_in_2_.A0, $random % 2 ? 1'b1 : 1'b0);
 	end
 // ------ END driver initialization -----
 // ------ BEGIN driver initialization -----
@@ -3325,98 +2576,14 @@ end
 // ------ END driver initialization -----
 // ------ BEGIN driver initialization -----
 	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_8.mux_l2_in_2_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_8.mux_l2_in_2_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_8.mux_l2_in_3_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_8.mux_l2_in_3_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_8.mux_l2_in_4_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_8.mux_l2_in_4_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_8.mux_l2_in_5_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_8.mux_l2_in_5_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_8.mux_l2_in_6_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_8.mux_l2_in_6_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_8.mux_l2_in_7_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_8.mux_l2_in_7_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
 		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_8.mux_l3_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
 		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_8.mux_l3_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
 	end
 // ------ END driver initialization -----
 // ------ BEGIN driver initialization -----
 	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_8.mux_l3_in_1_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_8.mux_l3_in_1_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_8.mux_l3_in_2_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_8.mux_l3_in_2_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_8.mux_l3_in_3_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_8.mux_l3_in_3_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_8.mux_l4_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_8.mux_l4_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_8.mux_l4_in_1_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_8.mux_l4_in_1_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_8.mux_l5_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_8.mux_l5_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
 		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_9.mux_l1_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
 		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_9.mux_l1_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_9.mux_l1_in_1_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_9.mux_l1_in_1_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_9.mux_l1_in_2_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_9.mux_l1_in_2_.A0, $random % 2 ? 1'b1 : 1'b0);
 	end
 // ------ END driver initialization -----
 // ------ BEGIN driver initialization -----
@@ -3433,80 +2600,8 @@ end
 // ------ END driver initialization -----
 // ------ BEGIN driver initialization -----
 	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_9.mux_l2_in_2_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_9.mux_l2_in_2_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_9.mux_l2_in_3_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_9.mux_l2_in_3_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_9.mux_l2_in_4_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_9.mux_l2_in_4_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_9.mux_l2_in_5_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_9.mux_l2_in_5_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_9.mux_l2_in_6_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_9.mux_l2_in_6_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_9.mux_l2_in_7_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_9.mux_l2_in_7_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
 		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_9.mux_l3_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
 		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_9.mux_l3_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_9.mux_l3_in_1_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_9.mux_l3_in_1_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_9.mux_l3_in_2_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_9.mux_l3_in_2_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_9.mux_l3_in_3_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_9.mux_l3_in_3_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_9.mux_l4_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_9.mux_l4_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_9.mux_l4_in_1_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_9.mux_l4_in_1_.A0, $random % 2 ? 1'b1 : 1'b0);
-	end
-// ------ END driver initialization -----
-// ------ BEGIN driver initialization -----
-	initial begin
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_9.mux_l5_in_0_.A1, $random % 2 ? 1'b1 : 1'b0);
-		$deposit(FPGA_DUT.cbx_1__1_.mux_top_ipin_9.mux_l5_in_0_.A0, $random % 2 ? 1'b1 : 1'b0);
 	end
 // ------ END driver initialization -----
 // ----- Begin reset signal generation -----
@@ -3566,7 +2661,7 @@ initial begin
 	$timeformat(-9, 2, "ns", 20);
 	$display("Simulation start");
 // ----- Can be changed by the user for his/her need -------
-	#2536
+	#2235
 	if(nb_error == 0) begin
 		$display("Simulation Succeed");
 	end else begin
