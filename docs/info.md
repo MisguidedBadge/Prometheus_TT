@@ -33,3 +33,7 @@ The device is meant to function as an FPGA. For purposes of time, a fixed channe
 ## External hardware
 
 External hardware needed is probably another microcontroller to control the stimulus (FPGA, arduino, pi, etc)
+
+## Credit where Credit is Due 
+
+
