@@ -7,7 +7,7 @@
 //-------------------------------------------
 //----- Default net type -----
 `default_nettype none
-
+/* verilator lint_off ASCRANGE */
 // ----- Verilog module for fpga_top -----
 module fpga_top(prog_clk,
                 reset,
@@ -465,6 +465,6 @@ endmodule
 //----- Default net type -----
 `default_nettype wire
 
-
+/* verilator lint_on ASCRANGE */
 
 
