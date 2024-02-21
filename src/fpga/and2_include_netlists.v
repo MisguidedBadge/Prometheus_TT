@@ -1,3 +1,5 @@
+/* verilator lint_off MULTIDRIVEN */
+/* verilator lint_off ASCRANGE */
 //-------------------------------------------
 //	FPGA Synthesizable Verilog Netlist
 //	Description: Netlist Summary
@@ -13,4 +15,6 @@
 
 `include "and2_output_verilog.v"
 
+/* verilator lint_on ASCRANGE */
+/* verilator lint_on MULTIDRIVEN */
 `include "./SRC/and2_autocheck_top_tb.v"

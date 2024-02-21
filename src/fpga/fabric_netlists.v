@@ -1,3 +1,5 @@
+/* verilator lint_off MULTIDRIVEN */
+/* verilator lint_off ASCRANGE */
 //-------------------------------------------
 //	FPGA Synthesizable Verilog Netlist
 //	Description: Fabric Netlist Summary
@@ -55,4 +57,6 @@
 
 // ------ Include fabric top-level netlists -----
 `include "./SRC/fpga_top.v"
+/* verilator lint_on ASCRANGE */
+/* verilator lint_on MULTIDRIVEN */
 

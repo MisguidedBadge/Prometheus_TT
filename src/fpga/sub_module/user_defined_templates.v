@@ -1,3 +1,5 @@
+/* verilator lint_off MULTIDRIVEN */
+/* verilator lint_off ASCRANGE */
 //-------------------------------------------
 //	FPGA Synthesizable Verilog Netlist
 //	Description: Template for user-defined Verilog modules
@@ -262,4 +264,6 @@ endmodule
 //----- Default net type -----
 `default_nettype wire
 
+/* verilator lint_on ASCRANGE */
+/* verilator lint_on MULTIDRIVEN */
 

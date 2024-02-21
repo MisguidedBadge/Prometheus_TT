@@ -1,3 +1,5 @@
+/* verilator lint_off MULTIDRIVEN */
+/* verilator lint_off ASCRANGE */
 module p_ff (
     D,
     Q,
@@ -94,4 +96,6 @@ module p_buf (X, A);
         .A(A)
     );
 */
+/* verilator lint_on ASCRANGE */
+/* verilator lint_on MULTIDRIVEN */
 endmodule

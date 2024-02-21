@@ -1,3 +1,5 @@
+/* verilator lint_off MULTIDRIVEN */
+/* verilator lint_off ASCRANGE */
 //-------------------------------------------
 //	FPGA Synthesizable Verilog Netlist
 //	Description: Verilog modules for Unique Connection Blocks[1][0]
@@ -196,4 +198,6 @@ endmodule
 
 
 
+/* verilator lint_on ASCRANGE */
+/* verilator lint_on MULTIDRIVEN */
 

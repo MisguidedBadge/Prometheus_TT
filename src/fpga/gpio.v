@@ -1,3 +1,5 @@
+/* verilator lint_off MULTIDRIVEN */
+/* verilator lint_off ASCRANGE */
 //-----------------------------------------------------
 // Design Name : General Purpose I/Os
 // File Name   : gpio.v
@@ -23,4 +25,6 @@ module GPOUT (
   input A // Data output
 );
   assign Y = A;
+/* verilator lint_on ASCRANGE */
+/* verilator lint_on MULTIDRIVEN */
 endmodule

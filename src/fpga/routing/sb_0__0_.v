@@ -1,3 +1,5 @@
+/* verilator lint_off MULTIDRIVEN */
+/* verilator lint_off ASCRANGE */
 //-------------------------------------------
 //	FPGA Synthesizable Verilog Netlist
 //	Description: Verilog modules for Unique Switch Blocks[0][0]
@@ -161,4 +163,6 @@ endmodule
 `default_nettype wire
 
 
+/* verilator lint_on ASCRANGE */
+/* verilator lint_on MULTIDRIVEN */
 

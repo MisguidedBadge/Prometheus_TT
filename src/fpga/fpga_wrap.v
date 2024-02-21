@@ -1,3 +1,5 @@
+/* verilator lint_off MULTIDRIVEN */
+/* verilator lint_off ASCRANGE */
 
 
 module tt_um_template (
@@ -40,4 +42,6 @@ fpga_top fpga(.prog_clk(prog_clk), .reset(rst_n),
 
 endmodule
 
+/* verilator lint_on ASCRANGE */
+/* verilator lint_on MULTIDRIVEN */
 `undef BOGUS_USE

@@ -1,3 +1,5 @@
+/* verilator lint_off MULTIDRIVEN */
+/* verilator lint_off ASCRANGE */
 //-------------------------------------------
 //	FPGA Synthesizable Verilog Netlist
 //	Description: Verilog modules for pb_type: fle
@@ -90,4 +92,6 @@ endmodule
 
 
 
+/* verilator lint_on ASCRANGE */
+/* verilator lint_on MULTIDRIVEN */
 // ----- END Physical programmable logic block Verilog module: fle -----
