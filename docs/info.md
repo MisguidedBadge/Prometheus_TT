@@ -17,13 +17,13 @@ The Tzeentch FPGA is a tileable FPGA generated via OpenFPGA. It has 14 input I/O
 
 ## Pin map
 
-| FPGA Pin                   | TinyTapeoutPin            | Purpose                        |
-| ------------- | ------ |
-| fpga_io_in                 | ui_in[7:2] , uio_in[7:0]  | FPGA General Purpose Input Port|
-| fpga_io_out                | uo_out[6:0]               | FPGA General Purpose Output Port |
-| Configuration Chain Head   | ui_in[1]                  | FPGA scan chain head (programming)
-| Configuration Chain Tail   | uo_out[0]                 | FPGA scan chain tail |
-| Programming Clock          | ui_in[0]                  | Clock in CC Head bits |
+| FPGA Pin                   | TinyTapeoutPin            | Purpose                            |
+|---------|-------|--------|
+| fpga_io_in                 | ui_in[7:2] , uio_in[7:0]  | FPGA General Purpose Input Port    |
+| fpga_io_out                | uo_out[6:0]               | FPGA General Purpose Output Port   |
+| Configuration Chain Head   | ui_in[1]                  | FPGA scan chain head (programming) |
+| Configuration Chain Tail   | uo_out[0]                 | FPGA scan chain tail               |
+| Programming Clock          | ui_in[0]                  | Clock in CC Head bits              |
 
 
 ## How to test
@@ -35,5 +35,8 @@ The device is meant to function as an FPGA. For purposes of time, a fixed channe
 External hardware needed is probably another microcontroller to control the stimulus (FPGA, arduino, pi, etc)
 
 ## Credit where Credit is Due 
+OpenFPGA - X. Tang, E. Giacomin, B. Chauviere, A. Alacchi and P. -E. Gaillardon, "OpenFPGA: An Open-Source Framework for Agile Prototyping Customizable FPGAs," in IEEE Micro, vol. 40, no. 4, pp. 41-48, 1 July-Aug. 2020, doi: 10.1109/MM.2020.2995854.
+
+VPR/VTR Team - K. E. Murray, O. Petelin, S. Zhong, J. M. Wang, M. ElDafrawy, J.-P. Legault, E. Sha, A. G. Graham, J. Wu, M. J. P. Walker, H. Zeng, P. Patros, J. Luu, K. B. Kent and V. Betz "VTR 8: High Performance CAD and Customizable FPGA Architecture Modelling", ACM TRETS, 2020.
 
 
