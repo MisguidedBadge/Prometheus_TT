@@ -14,7 +14,7 @@ Tzeentch the "Changer of Ways" is much like the development and purpose of this 
 
 ## How it works
 
-The Tzeentch FPGA is a tileable FPGA generated via OpenFPGA. It has 14 input I/O pins and 7 Output I/O pins. The device architecture consists of a K4N4 2 CLB FPGA. K4 being a 4 input lookup table followed by a D Flip Flop -> This creates a Basic Logic Element (BLE) . N4 consists of 4 the number of BLE in a Configurable Logic Block (CLB). Thus there are 8 LUTs and 8 FF usable for a design. Super small but a proof of concept no less!
+The Tzeentch FPGA is a tileable FPGA generated via OpenFPGA. It has 14 input I/O pins and 7 Output I/O pins. The device architecture consists of a K4N4 2 CLB FPGA. K4 being a 4 input lookup table followed by a D Flip Flop -> This creates a Basic Logic Element (BLE) . N4 consists of 4 the number of BLE in a Configurable Logic Block (CLB). Thus there are 8 LUTs and 8 FF usable for a design. Super small but a proof of concept no less! A simple cocotb test is paired with the project to show how the bitstream will be loaded in and tested.
 
 ## Pin map
 
