@@ -4,3 +4,6 @@
 [submodule "tt06-tzeentchFPGA"]
 	path = tt06-tzeentchFPGA
 	url = https://github.com/MisguidedBadge/tt06-tzeentchFPGA
+[submodule "tzeentchArch"]
+	path = tzeentchArch
+	url = https://github.com/MisguidedBadge/tzeentchArch
