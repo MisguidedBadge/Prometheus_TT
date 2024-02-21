@@ -10,7 +10,7 @@ You can also include images in this folder and reference them in the markdown. E
 
 ## Porpose ##
 Tzeentch the "Changer of Ways" is much like the development and purpose of this FPGA.
-![](TzeentchMark.png "Symbol")
+![](TzeentchMark.png)
 
 ## How it works
 
