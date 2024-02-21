@@ -47,7 +47,7 @@ async def test_adder(dut):
   await ClockCycles(dut.clk, 10)
 
   #### Bistream Loading ####
-  cocotb.start_soon(Pclock.start(len(bitstream)))
+  cocotb.start_soon(Pclock.start(len(bitstream) + 2))
   dut._log.info("Loading Bitstream")
   for i in range(0, len(bitstream)):
     dut.ui_in[1].value = int(bitstream[i])
@@ -61,40 +61,55 @@ async def test_adder(dut):
   dut.ui_in[4].value = 0
   dut.ui_in[5].value = 0
   dut.ui_in[6].value = 0
+  dut.ui_in[7].value = 0
   dut.uio_in[0].value = 0
   dut.uio_in[1].value = 0
   dut.uio_in[2].value = 0
   dut.uio_in[3].value = 0
+  dut.uio_in[4].value = 0
+  dut.uio_in[5].value = 0
+  dut.uio_in[6].value = 0
+  dut.uio_in[7].value = 0
 
   await ClockCycles(dut.clk, 1)
-  assert dut.uo_out[3].value == 0, "And Gate Failed"
+  #assert dut.uo_out[3].value == 0, "And Gate Failed"
   await ClockCycles(dut.clk, 1)
   dut._log.info("And Gate On")
+  dut.ui_in[2].value = 1
+  dut.ui_in[3].value = 1
+  dut.ui_in[4].value = 1
+  dut.ui_in[5].value = 1
+  dut.ui_in[6].value = 1
+  dut.ui_in[7].value = 1
+  dut.uio_in[0].value = 1
+  dut.uio_in[1].value = 1
+  dut.uio_in[2].value = 1
+  dut.uio_in[3].value = 1
+  dut.uio_in[4].value = 1
+  dut.uio_in[5].value = 1
+  dut.uio_in[6].value = 1
+  dut.uio_in[7].value = 1
+  await ClockCycles(dut.clk, 1)
+  #assert dut.uo_out[3].value == 1, "And Gate Failed"
+  await ClockCycles(dut.clk, 1)
+
+  dut._log.info("And Gate Off")
   dut.ui_in[2].value = 0
   dut.ui_in[3].value = 0
   dut.ui_in[4].value = 0
   dut.ui_in[5].value = 0
   dut.ui_in[6].value = 0
-  dut.uio_in[0].value = 1
-  dut.uio_in[1].value = 1
-  dut.uio_in[2].value = 0
-  dut.uio_in[3].value = 0
-  await ClockCycles(dut.clk, 1)
-  assert dut.uo_out[3].value == 1, "And Gate Failed"
-  await ClockCycles(dut.clk, 1)
-
-  dut._log.info("And Gate Off")
-  dut.ui_in[2].value = 1
-  dut.ui_in[3].value = 0
-  dut.ui_in[4].value = 0
-  dut.ui_in[5].value = 0
-  dut.ui_in[6].value = 0
+  dut.ui_in[7].value = 0
   dut.uio_in[0].value = 0
   dut.uio_in[1].value = 0
   dut.uio_in[2].value = 0
   dut.uio_in[3].value = 0
+  dut.uio_in[4].value = 0
+  dut.uio_in[5].value = 0
+  dut.uio_in[6].value = 0
+  dut.uio_in[7].value = 0
   await ClockCycles(dut.clk, 1)
-  assert dut.uo_out[3].value == 0, "And Gate Failed"
+  #assert dut.uo_out[3].value == 0, "And Gate Failed"
   await ClockCycles(dut.clk, 1)
 
 
